@@ -1,9 +1,11 @@
-import { register } from "@/services/auth.service"
 
-export const useRegister = () => {
-  const handleRegister = async (data :any) => {
-    return await register(data)
-  }
+import { SignupInput } from "../types";
+import { mockSignup } from "../services/authService";
+import { useMutation } from "@tanstack/react-query";
+;
 
-  return { handleRegister }
+export function useSignup() {
+  return useMutation({
+    mutationFn: (input: SignupInput) => mockSignup(input)
+  });
 }
