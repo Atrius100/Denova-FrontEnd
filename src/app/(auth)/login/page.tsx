@@ -49,7 +49,7 @@ export default function LoginPage() {
           </p>
         ) : null}
         {login.isSuccess ? (
-          <p className="text-sm text-primary" role="status">
+          <p className="text-sm text-[var(--denova-primary)]" role="status">
             Login successful. Welcome back to DENOVA.
           </p>
         ) : null}
@@ -59,7 +59,7 @@ export default function LoginPage() {
       </form>
       <p className="mt-4 text-center text-sm text-slate-500">
         Don&apos;t have an account?{" "}
-        <Link href="/signup" className="font-semibold text-primary transition hover:text-secondary">
+        <Link href="/signup" className="font-semibold text-[var(--denova-primary)] transition hover:text-[var(--denova-secondary)]">
           Create an account
         </Link>
       </p>

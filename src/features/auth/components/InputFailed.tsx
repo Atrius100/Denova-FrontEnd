@@ -10,7 +10,7 @@ type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 export function InputField({ id, label, icon, compact = false, className = "", ...props }: InputFieldProps) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={id} className="block text-sm font-medium text-primary">
+      <label htmlFor={id} className="block text-sm font-medium text-[var(--denova-primary)]">
         {label}
       </label>
       <div className="relative">

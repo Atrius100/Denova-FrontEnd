@@ -12,7 +12,7 @@ export function PasswordField({ id, label, compact = false, className = "", ...p
 
   return (
     <div className="space-y-1.5">
-      <label htmlFor={id} className="block text-sm font-medium text-primary">
+      <label htmlFor={id} className="block text-sm font-medium text-[var(--denova-primary)]">
         {label}
       </label>
       <div className="relative">
@@ -33,7 +33,7 @@ export function PasswordField({ id, label, compact = false, className = "", ...p
           type="button"
           aria-label={visible ? "Hide password" : "Show password"}
           onClick={() => setVisible((current) => !current)}
-          className="absolute inset-y-0 right-3 flex items-center text-slate-500 transition hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="absolute inset-y-0 right-3 flex items-center text-slate-500 transition hover:text-[var(--denova-primary)] focus:outline-none focus:ring-2 focus:ring-primary/20"
         >
           {visible ? <EyeOff aria-hidden="true" className="h-5 w-5" /> : <Eye aria-hidden="true" className="h-5 w-5" />}
         </button>

@@ -105,7 +105,7 @@ export default function SignupPage() {
       </form>
       <p className="mt-4 text-center text-sm text-slate-500">
         Already have an account?{" "}
-        <Link href="/login" className="font-semibold text-primary transition hover:text-secondary">
+        <Link href="/login" className="font-semibold text-[var(--denova-primary)] transition hover:text-[var(--denova-secondary)]">
           Login
         </Link>
       </p>
