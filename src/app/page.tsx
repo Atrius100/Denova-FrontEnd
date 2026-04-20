@@ -6,6 +6,7 @@ import Steps from "@/components/landing/sections/Steps";
 import CTA from "@/components/landing/sections/CTA";
 import Footer from "@/components/layout/Footer";
 import SupportSection from "@/components/landing/sections/Support";
+import SearchSection from "@/components/landing/sections/SearchSection";
 
 export default function Home() {
     return (
@@ -26,6 +27,9 @@ export default function Home() {
                 </section>
                 <section>
                     <SupportSection />
+                </section>
+                <section id="search">
+                    <SearchSection />
                 </section>
                 <section id="cta">
                     <CTA />

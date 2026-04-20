@@ -27,7 +27,7 @@ export default function Hero() {
                     </p>
 
                     <div className="flex gap-4 justify-center mt-10">
-                        <button className="primary-gradient text-white px-8 py-4 rounded-full text-lg font-bold">
+                        <button className="bg-[linear-gradient(135deg,var(--denova-primary),#0f2540)] text-white px-8 py-4 rounded-full text-lg font-bold">
                             اشترك الآن
                         </button>
 

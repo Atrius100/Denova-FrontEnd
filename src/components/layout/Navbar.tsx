@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/config/navigation";
+import ThemeToggle from "../ThemeToggle";
 
 export default function Navbar() {
   const [active, setActive] = useState("hero");
@@ -80,11 +81,10 @@ export default function Navbar() {
               href={`#${link.id}`}
               ref={(el) => (refs.current[link.id] = el)}
               onClick={(e) => handleScroll(e, link.id)}
-              className={`pb-2 transition-colors duration-300 ${
-                active === link.id
+              className={`pb-2 transition-colors duration-300 ${active === link.id
                   ? "text-blue-600 font-bold"
                   : "text-slate-600 hover:text-blue-500"
-              }`}
+                }`}
             >
               {link.label}
             </Link>
@@ -115,8 +115,10 @@ export default function Navbar() {
             {open ? <X /> : <Menu />}
           </button>
         </div>
+      <div className="flex items-center gap-3">
+        <ThemeToggle />
+      </div>
       </nav>
-
       {/* Mobile */}
       {open && (
         <div className="md:hidden bg-white p-6 flex flex-col gap-4 text-right">
@@ -126,11 +128,10 @@ export default function Navbar() {
               key={link.id}
               href={`#${link.id}`}
               onClick={(e) => handleScroll(e, link.id)}
-              className={`${
-                active === link.id
+              className={`${active === link.id
                   ? "text-blue-600 font-bold"
                   : "text-slate-600"
-              }`}
+                }`}
             >
               {link.label}
             </Link>

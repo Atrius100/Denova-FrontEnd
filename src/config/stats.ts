@@ -1,22 +1,24 @@
+import { FileCheck, TrendingUp, AlertTriangle } from "lucide-react";
+
 export const STATS = [
   {
     title: "إجمالي الحالات",
     value: "١٤٢ حالة",
-    icon: "fact_check",
+    icon: FileCheck,
     variant: "progress",
     accent: "secondary",
   },
   {
     title: "معدل الإنجاز",
     value: "٨٩٪",
-    icon: "trending_up",
+    icon: TrendingUp,
     variant: "bars",
     accent: "primary",
   },
   {
     title: "حالات عاجلة",
     value: "٣ مواعيد",
-    icon: "notification_important",
+    icon: AlertTriangle,
     variant: "alert",
     description: "اليوم في الساعة ٤:٠٠ م",
     accent: "error",
