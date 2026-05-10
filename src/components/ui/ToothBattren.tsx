@@ -1,7 +1,7 @@
 
 export function ToothPattern() {
   return (
-    <div className="absolute inset-0 z-0 text-primary opacity-[0.04]" aria-hidden="true">
+    <div className="absolute inset-0 z-0 text-[var(--denova-primary)] opacity-[0.04]" aria-hidden="true">
       <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="denova-tooth-pattern" x="0" y="0" width="92" height="104" patternUnits="userSpaceOnUse">

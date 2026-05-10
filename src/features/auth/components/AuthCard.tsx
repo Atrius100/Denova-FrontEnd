@@ -22,7 +22,7 @@ export function AuthCard({ title, children, compact = false, minimal = false }: 
         <div className={minimal ? " flex justify-center" : "flex justify-center"}>
           <Logo />
         </div>
-        {title ? <h1 className="mb-5 text-center text-2xl font-bold tracking-tight text-primary">{title}</h1> : null}
+        {title ? <h1 className="mb-5 text-center text-2xl font-bold tracking-tight text-[var(--denova-primary)]">{title}</h1> : null}
         {children}
       </section>
     </main>
