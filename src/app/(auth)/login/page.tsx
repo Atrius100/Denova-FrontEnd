@@ -3,17 +3,19 @@
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { Mail } from "lucide-react";
+
 import { AuthCard } from "@/features/auth/components/AuthCard";
 import { InputField } from "@/features/auth/components/InputFailed";
 import { PasswordField } from "@/features/auth/components/PassworedFailed";
 
 import { useLogin } from "@/features/auth/hooks/useLogin";
-import Button from "@/features/auth/components/ButtonAuth";
 
+import Button from "@/features/auth/components/ButtonAuth";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const login = useLogin();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -35,6 +37,7 @@ export default function LoginPage() {
           icon={<Mail aria-hidden="true" className="h-5 w-5" />}
           required
         />
+
         <PasswordField
           id="password"
           label="Password"
@@ -43,23 +46,37 @@ export default function LoginPage() {
           onChange={(event) => setPassword(event.target.value)}
           required
         />
+
         {login.isError ? (
           <p className="text-sm text-red-600" role="alert">
             {login.error.message}
           </p>
         ) : null}
+
         {login.isSuccess ? (
-          <p className="text-sm text-[var(--denova-primary)]" role="status">
+          <p
+            className="text-sm text-[var(--denova-primary)]"
+            role="status"
+          >
             Login successful. Welcome back to DENOVA.
           </p>
         ) : null}
-        <Button type="submit" isLoading={login.isPending} loadingText="Signing in...">
+
+        <Button
+          type="submit"
+          isLoading={login.isPending}
+          loadingText="Signing in..."
+        >
           Login to Portal →
         </Button>
       </form>
+
       <p className="mt-4 text-center text-sm text-slate-500">
         Don&apos;t have an account?{" "}
-        <Link href="/signup" className="font-semibold text-[var(--denova-primary)] transition hover:text-[var(--denova-secondary)]">
+        <Link
+          href="/signup"
+          className="font-semibold text-[var(--denova-primary)] transition hover:text-[var(--denova-secondary)]"
+        >
           Create an account
         </Link>
       </p>

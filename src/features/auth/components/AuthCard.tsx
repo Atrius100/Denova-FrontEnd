@@ -1,3 +1,4 @@
+
 import { ToothPattern } from "@/components/ui/ToothBattren";
 import { Logo } from "./Logo";
 
@@ -26,5 +27,6 @@ export function AuthCard({ title, children, compact = false, minimal = false }: 
         {children}
       </section>
     </main>
-  );
+  )
+
 }
