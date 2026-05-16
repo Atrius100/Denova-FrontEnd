@@ -1,0 +1,67 @@
+{
+  "auth": {
+    "welcomeBack": "Welcome Back",
+
+    "createAccount": "Create your account",
+
+    "firstName": "First Name",
+
+    "lastName": "Last Name",
+
+    "email": "Email",
+
+    "password": "Password",
+
+    "confirmPassword": "Confirm Password",
+
+    "university": "University",
+
+    "academicYear": "Academic Year",
+
+    "selectUniversity": "Select university",
+
+    "selectYear": "Select year",
+
+    "year": "Year",
+
+    "signup": "Create Account",
+
+    "login": "Login",
+
+    "alreadyHaveAccount": "Already have an account?",
+
+    "dontHaveAccount": "Don't have an account?",
+
+    "creating": "Creating account...",
+
+    "signingIn": "Signing in...",
+
+    "universities": {
+      "damascus": "Damascus University",
+
+      "tishreen": "Tishreen University",
+
+      "aleppo": "Aleppo University",
+
+      "baath": "Al-Baath University"
+    }
+  },
+  "receptionSidebar": {
+    "dashboard": "Dashboard",
+    "patients": "Patients",
+    "requests": "Requests",
+    "profile": "Profile",
+    "settings": "Settings",
+    "subtitle": "Reception Dashboard",
+    "footerTitle": "Reception Panel",
+    "footerSubtitle": "DENOVA Platform"
+},
+ "receptionNavbar": {
+    "dashboard": "Dashboard",
+    "arabic": "العربية",
+    "english": "English",
+    "logout": "Logout",
+    "admin": "Admin",
+    "employee": "Employee"
+  }
+}

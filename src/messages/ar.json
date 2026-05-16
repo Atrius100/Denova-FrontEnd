@@ -1,0 +1,65 @@
+{
+  "auth": {
+    "welcomeBack": "مرحبًا بعودتك",
+    "createAccount": "إنشاء حساب",
+
+    "firstName": "الاسم الأول",
+    "lastName": "الاسم الأخير",
+
+    "email": "البريد الإلكتروني",
+
+    "password": "كلمة المرور",
+
+    "confirmPassword": "تأكيد كلمة المرور",
+
+    "university": "الجامعة",
+
+    "academicYear": "السنة الدراسية",
+
+    "selectUniversity": "اختر الجامعة",
+
+    "selectYear": "اختر السنة",
+
+    "year": "السنة",
+
+    "signup": "إنشاء حساب",
+
+    "login": "تسجيل الدخول",
+
+    "alreadyHaveAccount": "لديك حساب بالفعل؟",
+
+    "dontHaveAccount": "ليس لديك حساب؟",
+
+    "creating": "جاري إنشاء الحساب...",
+
+    "signingIn": "جاري تسجيل الدخول...",
+
+    "universities": {
+      "damascus": "جامعة دمشق",
+
+      "tishreen": "جامعة تشرين",
+
+      "aleppo": "جامعة حلب",
+
+      "baath": "جامعة البعث"
+    }
+  },
+  "receptionSidebar": {
+    "dashboard": "لوحة التحكم",
+    "patients": "المرضى",
+    "requests": "الطلبات",
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "subtitle": "لوحة الاستقبال",
+    "footerTitle": "غرفة الاستقبال",
+    "footerSubtitle": "منصة DENOVA"
+  },
+  "receptionNavbar": {
+    "dashboard": "لوحة التحكم",
+    "arabic": "العربية",
+    "english": "English",
+    "logout": "تسجيل الخروج",
+    "admin": "مدير",
+    "employee": "موظف"
+  }
+}

@@ -17,7 +17,7 @@ export function PasswordField({
   const [visible, setVisible] = useState(false);
 
   return (
-    <div className="space-y-1.5">
+    <div className="space-y-1 lg:space-y-1.5">
       <label
         htmlFor={id}
         className="block text-sm font-medium text-[var(--denova-primary)]"
@@ -28,7 +28,7 @@ export function PasswordField({
       <div className="relative">
         <Lock
           aria-hidden="true"
-          className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500"
+          className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-500"
         />
 
         <input
@@ -51,9 +51,9 @@ export function PasswordField({
           className="absolute inset-y-0 right-3 flex items-center text-slate-500 transition hover:text-[var(--denova-primary)] focus:outline-none focus:ring-2 focus:ring-primary/20"
         >
           {visible ? (
-            <EyeOff aria-hidden="true" className="h-5 w-5" />
+            <EyeOff aria-hidden="true" className="size-4" />
           ) : (
-            <Eye aria-hidden="true" className="h-5 w-5" />
+            <Eye aria-hidden="true" className="size-4" />
           )}
         </button>
       </div>

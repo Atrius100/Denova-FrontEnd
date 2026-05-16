@@ -1,30 +1,16 @@
-import { NextRequest, NextResponse } from "next/server"
+import createMiddleware from "next-intl/middleware";
 
-export function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl
+const intlMiddleware =
+  createMiddleware({
+    locales: ["ar", "en"],
 
-  // 🟩 1. استثناء صفحات auth
-  if (
-    pathname.startsWith("/login") ||
-    pathname.startsWith("/register")
-  ) {
-    return NextResponse.next()
-  }
+    defaultLocale: "ar",
+  });
 
-  // 🟩 2. استثناء الصفحة الرئيسية (اختياري)
-  if (pathname === "/") {
-    return NextResponse.next()
-  }
+export default intlMiddleware;
 
-  const token = req.cookies.get("token")
-
-  // 🟥 3. إذا ما في توكن → redirect
-  if (!token) {
-    return NextResponse.redirect(new URL("/login", req.url))
-  }
-
-  return NextResponse.next()
-}
 export const config = {
-  matcher: ["/student/:path*", "/admin/:path*"],
-}
+  matcher: [
+    "/((?!api|_next|.*\\..*).*)",
+  ],
+};

@@ -32,8 +32,12 @@ export function JourneySection() {
     return (
         <section className="relative overflow-hidden bg-[#041b4a] py-20">
             {/* Tooth Pattern */}
-            <div className="absolute inset-0 opacity-[0.07]">
-                <ToothPattern />
+            <div className="">
+                <ToothPattern
+                    patternId="journey-pattern"
+                    stroke="#ffffff"
+                    opacity={0.05}
+                />
             </div>
 
             <div className=" relative z-10 px-5 md:px-10 lg:px-[60px]">

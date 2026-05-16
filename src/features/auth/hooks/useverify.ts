@@ -1,10 +1,9 @@
-
 import { useMutation } from "@tanstack/react-query";
-import { mockVerify } from "../services/authService";
 
+import { verifyApi } from "../api/verifyApi";
 
 export function useVerify() {
   return useMutation({
-    mutationFn: mockVerify
+    mutationFn: verifyApi,
   });
 }
