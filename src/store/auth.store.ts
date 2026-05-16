@@ -1,21 +1,40 @@
-import { create } from "zustand"
+import { create } from "zustand";
 
-type User = {
-  id: number
-  name: string
-  subscription: "active" | "inactive"
-}
+import {
+  clearAuthSession,
+  saveAuthSession,
+  type SubscriptionStatus,
+} from "@/lib/auth/session";
+
+export type AuthUser = {
+  id: string;
+  name: string;
+  universityId: string;
+  subscription: SubscriptionStatus;
+  token: string;
+};
 
 type AuthStore = {
-  user: User | null
-  setUser: (user: User) => void
-  logout: () => void
-}
+  user: AuthUser | null;
+  setUser: (user: AuthUser) => void;
+  logout: () => void;
+};
 
 export const useAuthStore = create<AuthStore>((set) => ({
   user: null,
 
-  setUser: (user) => set({ user }),
+  setUser: (user) => {
+    saveAuthSession({
+      token: user.token,
+      studentId: user.id,
+      universityId: user.universityId,
+      subscription: user.subscription,
+    });
+    set({ user });
+  },
 
-  logout: () => set({ user: null }),
-}))
+  logout: () => {
+    clearAuthSession();
+    set({ user: null });
+  },
+}));

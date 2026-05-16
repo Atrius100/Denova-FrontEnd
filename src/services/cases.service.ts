@@ -1,3 +1,4 @@
-import api from "./apiClient"
+import { fetchMedicalCases } from "@/services/medical-cases.service";
 
-export const getCases = () => api.get("/cases")
+/** @deprecated Use medical-cases.service instead */
+export const getCases = () => fetchMedicalCases();
