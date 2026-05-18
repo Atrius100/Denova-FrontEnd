@@ -4,7 +4,7 @@ import abouthand from "./../../../../public/abouthand.png";
 
 export default function About() {
   return (
-    <section className="py-24 bg-surface-container-low">
+    <section id="about" className="py-24 bg-surface-container-low">
       <div className="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
         
         <div className="text-right">

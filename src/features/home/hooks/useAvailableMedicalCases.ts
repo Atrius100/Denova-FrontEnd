@@ -4,10 +4,11 @@ import { useQuery } from "@tanstack/react-query";
 
 import { useAuthSession } from "@/hooks/useAuthSession";
 import { toMedicalCaseCard } from "@/lib/api/normalize";
+import { hasApiBaseUrl } from "@/config/api";
 import { fetchAvailableMedicalCases } from "@/services/medical-cases.service";
 
 export function useAvailableMedicalCases() {
-  const { session, ready, canAccessCases } = useAuthSession();
+  const { session, ready, isLoggedIn } = useAuthSession();
 
   return useQuery({
     queryKey: [
@@ -16,7 +17,7 @@ export function useAvailableMedicalCases() {
       session?.universityId,
     ],
     queryFn: async () => {
-      if (!session) return [];
+      if (!session?.studentId || !session.universityId) return [];
 
       const cases = await fetchAvailableMedicalCases({
         studentId: session.studentId,
@@ -25,7 +26,12 @@ export function useAvailableMedicalCases() {
 
       return cases.map(toMedicalCaseCard);
     },
-    enabled: ready && canAccessCases,
+    enabled:
+      ready &&
+      isLoggedIn &&
+      hasApiBaseUrl &&
+      Boolean(session?.studentId && session?.universityId),
+    retry: false,
     staleTime: 30_000,
   });
 }

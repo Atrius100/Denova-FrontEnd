@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* Brand & surfaces — light */
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+
+  --denova-primary: #1e3a6d;
+  --denova-secondary: #5f8fbf;
+  --denova-background: #f3f9ff;
+
+  --dnv-navy: #1e3a6d;
+  --dnv-blue: #2563eb;
+  --dnv-accent: #3b82f6;
+  --dnv-soft: #f4f6f9;
+  --dnv-muted: #64748b;
+  --dnv-heading: #1e293b;
+  --dnv-border: #e2e8f0;
+  --dnv-deep: #041b4a;
+  --dnv-deep-mid: #0c2458;
+}
+
+.dark {
+  --background: #0b1220;
+  --foreground: #e8ecf4;
+
+  --denova-primary: #93c5fd;
+  --denova-secondary: #60a5fa;
+  --denova-background: #020617;
+
+  --dnv-navy: #93c5fd;
+  --dnv-blue: #60a5fa;
+  --dnv-accent: #7dd3fc;
+  --dnv-soft: #0f172a;
+  --dnv-muted: #94a3b8;
+  --dnv-heading: #e8ecf4;
+  --dnv-border: rgba(148, 163, 184, 0.25);
+  --dnv-deep: #020617;
+  --dnv-deep-mid: #0f172a;
+}
+
+/* Tailwind 4 semantic utilities */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-dnv-navy: var(--dnv-navy);
+  --color-dnv-blue: var(--dnv-blue);
+  --color-dnv-accent: var(--dnv-accent);
+  --color-dnv-soft: var(--dnv-soft);
+  --color-dnv-muted: var(--dnv-muted);
+  --color-dnv-heading: var(--dnv-heading);
+  --color-dnv-border: var(--dnv-border);
+  --color-dnv-deep: var(--dnv-deep);
+  --color-dnv-deep-mid: var(--dnv-deep-mid);
+
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+button,
+input {
+  font: inherit;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255) inset !important;
+  -webkit-text-fill-color: #334155 !important;
+  transition: background-color 9999s ease-in-out 0s;
+}

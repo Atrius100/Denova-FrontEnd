@@ -58,7 +58,7 @@ export function HeroSection() {
           <div className="mx-auto mt-auto flex flex-wrap justify-center gap-12 pt-8 sm:gap-20">
             <div className="min-w-[5.5rem] text-center">
               <div className="text-4xl font-bold text-dnv-navy md:text-[2.85rem]">
-                +10
+                +3
               </div>
               <div className="mt-3 text-[15px] font-medium leading-snug text-dnv-muted">
                 {landing.hero.statUnis}
@@ -74,7 +74,7 @@ export function HeroSection() {
             </div>
             <div className="min-w-[5.5rem] text-center">
               <div className="text-4xl font-bold text-dnv-navy md:text-[2.85rem]">
-                +1000
+                +100
               </div>
               <div className="mt-3 text-[15px] font-medium leading-snug text-dnv-muted">
                 {landing.hero.statCases}

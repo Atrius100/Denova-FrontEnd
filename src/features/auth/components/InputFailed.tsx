@@ -16,7 +16,7 @@ export function InputField({
   ...props
 }: InputFieldProps) {
   return (
-    <div className="space-y-1.5">
+    <div className="space-y-1 lg:space-y-1.5">
       <label
         htmlFor={id}
         className="block text-sm font-medium text-[var(--denova-primary)]"

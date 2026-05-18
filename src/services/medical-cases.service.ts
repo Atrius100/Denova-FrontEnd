@@ -38,3 +38,21 @@ export async function fetchMedicalCaseById(id: string): Promise<MedicalCaseDto> 
   const { data } = await api.get<MedicalCaseDto>(`/api/MedicalCases/${id}`);
   return data;
 }
+
+export type CreateMedicalCasePayload = {
+  categoryId: number;
+  subcategoryId?: number;
+  patientCode: string;
+  patientAge: number;
+  patientGender: string;
+  clinicalNotes: string;
+  studentId?: string;
+  universityId?: string;
+};
+
+export async function createMedicalCase(
+  payload: CreateMedicalCasePayload,
+): Promise<MedicalCaseDto> {
+  const { data } = await api.post<MedicalCaseDto>("/api/MedicalCases", payload);
+  return data;
+}

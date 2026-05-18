@@ -12,7 +12,7 @@ import { usePreferences } from "@/providers/PreferencesProvider";
 
 export function SearchSection() {
   const { landing } = usePreferences();
-  const { ready, canAccessCases, isLoggedIn } = useAuthSession();
+  const { ready, isLoggedIn } = useAuthSession();
   const [query, setQuery] = useState("");
   const { data: cases = [], isLoading, isError } = useAvailableMedicalCases();
 
@@ -37,7 +37,7 @@ export function SearchSection() {
 
       <div className="mx-auto mb-12 max-w-3xl">
         <div
-          className={`flex h-16 items-center gap-3 rounded-full border border-dnv-border/80 bg-background px-7 shadow-xl shadow-dnv-border/35 dark:border-white/15 dark:bg-slate-950 ${!canAccessCases ? "opacity-60" : ""}`}
+          className={`flex h-16 items-center gap-3 rounded-full border border-dnv-border/80 bg-background px-7 shadow-xl shadow-dnv-border/35 dark:border-white/15 dark:bg-slate-950 ${!isLoggedIn ? "opacity-60" : ""}`}
         >
           <Search className="h-6 w-6 shrink-0 text-dnv-muted" aria-hidden />
           <label className="sr-only" htmlFor="landing-case-search">
@@ -48,7 +48,7 @@ export function SearchSection() {
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            disabled={!canAccessCases}
+            disabled={!isLoggedIn}
             placeholder={landing.search.placeholder}
             className="w-full rounded-full bg-transparent text-dnv-heading outline-none placeholder:text-dnv-muted disabled:cursor-not-allowed dark:text-neutral-50"
           />
@@ -59,7 +59,7 @@ export function SearchSection() {
         <div className="flex justify-center py-12">
           <Spinner />
         </div>
-      ) : canAccessCases ? (
+      ) : isLoggedIn ? (
         <CasesResults
           title={landing.search.resultsTitle}
           loadingLabel={landing.search.loading}

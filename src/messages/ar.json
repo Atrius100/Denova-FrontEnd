@@ -1,0 +1,112 @@
+{
+  "auth": {
+    "welcomeBack": "مرحبًا بعودتك",
+    "createAccount": "إنشاء حساب",
+
+    "firstName": "الاسم الأول",
+    "lastName": "الاسم الأخير",
+
+    "email": "البريد الإلكتروني",
+
+    "password": "كلمة المرور",
+
+    "confirmPassword": "تأكيد كلمة المرور",
+
+    "university": "الجامعة",
+
+    "academicYear": "السنة الدراسية",
+
+    "selectUniversity": "اختر الجامعة",
+
+    "selectYear": "اختر السنة",
+
+    "year": "السنة",
+
+    "signup": "إنشاء حساب",
+
+    "login": "تسجيل الدخول",
+
+    "alreadyHaveAccount": "لديك حساب بالفعل؟",
+
+    "dontHaveAccount": "ليس لديك حساب؟",
+
+    "creating": "جاري إنشاء الحساب...",
+
+    "signingIn": "جاري تسجيل الدخول...",
+
+    "universities": {
+      "damascus": "جامعة دمشق",
+
+      "tishreen": "جامعة تشرين",
+
+      "aleppo": "جامعة حلب",
+
+      "baath": "جامعة البعث"
+    }
+  },
+  "receptionSidebar": {
+    "dashboard": "لوحة التحكم",
+    "patients": "المرضى",
+    "requests": "الطلبات",
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "subtitle": "لوحة الاستقبال",
+    "footerTitle": "غرفة الاستقبال",
+    "footerSubtitle": "منصة DENOVA"
+  },
+  "receptionNavbar": {
+    "dashboard": "لوحة التحكم",
+    "arabic": "العربية",
+    "english": "English",
+    "logout": "تسجيل الخروج",
+    "admin": "مدير",
+    "employee": "موظف"  },
+  "studentCases": {
+    "title": "تسجيل حالة طبية جديدة",
+    "description": "قم بإدخال بيانات المريض ونوع الحالة الطبية ليتم حفظها في نظام الطالب.",
+    "fields": {
+      "patientCode": "رقم المريض أو الكود",
+      "patientAge": "عمر المريض",
+      "patientGender": "جنس المريض",
+      "category": "نوع الحالة",
+      "subcategory": "النوع الفرعي للحالة",
+      "clinicalNotes": "الملاحظات السريرية"
+    },
+    "placeholders": {
+      "patientCode": "مثال: 12345 أو ABC-001",
+      "patientAge": "العمر بالسنوات",
+      "selectGender": "اختر الجنس",
+      "selectCategory": "اختر نوع الحالة",
+      "selectSubcategory": "اختر النوع الفرعي",
+      "clinicalNotes": "اكتب ملاحظات تشخيصية أو تفاصيل إضافية"
+    },
+    "submit": "تسجيل الحالة",
+    "helpText": "يمكنك العودة لاحقًا لمراجعة الحالات المسجلة في قسم الحالات الخاصة بك.",
+    "loadingCategories": "جاري تحميل الأقسام...",
+    "errors": {
+      "required": "يرجى ملء جميع الحقول المطلوبة.",
+      "submitFailed": "حدث خطأ أثناء إرسال الحالة. حاول مرة أخرى.",
+      "loadingCategories": "تعذر تحميل تصنيفات الحالات من الخادم.",
+      "loadingCategoriesDetail": "خدمة التصنيفات أعادت خطأ. حاول إعادة المحاولة أو تواصل مع الدعم."
+    },
+    "retry": "أعد المحاولة",
+    "successMessage": "تم تسجيل الحالة الطبية بنجاح."
+  },
+  "studentSidebar": {
+    "subtitle": "لوحة الطالب",
+    "profile": "الملف الشخصي",
+    "addCase": "إضافة حالة",
+    "myCases": "حالاتي",
+    "footerTitle": "لوحة الطالب",
+    "footerSubtitle": "إدارة الحالات السريرية"
+  },
+  "studentProfile": {
+    "title": "الملف الشخصي للطالب",
+    "description": "من هنا يمكنك إدارة ملفك الشخصي وإضافة حالة طبية جديدة.",
+    "infoHeading": "معلومات الملف",
+    "infoText": "اكمل بياناتك الدراسية واحتفظ بمعلوماتك الشخصية محدثة.",
+    "newCaseHeading": "إضافة حالة طبية جديدة",
+    "newCaseText": "سجل حالة المريض مباشرة من لوحة تحكم الطالب.",
+    "addCaseButton": "إضافة حالة"
+  }
+}

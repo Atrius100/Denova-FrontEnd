@@ -3,20 +3,26 @@
 import { useEffect, useState } from "react";
 
 import {
-  canAccessMedicalCases,
+  isLoggedIn as checkLoggedIn,
   readAuthSession,
   type AuthSession,
 } from "@/lib/auth/session";
 
 export function useAuthSession() {
   const [session, setSession] = useState<AuthSession | null>(null);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [ready, setReady] = useState(false);
 
-  useEffect(() => {
+  const refresh = () => {
     setSession(readAuthSession());
+    setLoggedIn(checkLoggedIn());
+  };
+
+  useEffect(() => {
+    refresh();
     setReady(true);
 
-    const onStorage = () => setSession(readAuthSession());
+    const onStorage = () => refresh();
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
   }, []);
@@ -24,7 +30,6 @@ export function useAuthSession() {
   return {
     session,
     ready,
-    isLoggedIn: Boolean(session?.token),
-    canAccessCases: canAccessMedicalCases(session),
+    isLoggedIn: loggedIn,
   };
 }

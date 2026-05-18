@@ -9,7 +9,7 @@ const steps = [
 
 export default function Steps() {
   return (
-    <section className="py-24 bg-[var(--denova-background)] text-[var(--denova-primary)]">
+    <section id="steps" className="py-24 bg-[var(--denova-background)] text-[var(--denova-primary)]">
       <div className="container mx-auto px-6 text-center">
 
         <h2 className="text-4xl font-black mb-12">

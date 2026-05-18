@@ -21,10 +21,10 @@ export function Navbar() {
 
   const navLinks = useMemo(
     () => [
-      { label: landing.nav.home, href: "/" },
-      { label: landing.nav.cases, href: "/cases" },
-      { label: landing.nav.universities, href: "/universities" },
-      { label: landing.nav.about, href: "/about" },
+      { label: landing.nav.home, href: "/#home" },
+      { label: landing.nav.cases, href: "/#cases" },
+      { label: landing.nav.universities, href: "/#universities" },
+      { label: landing.nav.about, href: "/#about" },
     ],
     [landing.nav],
   );
@@ -124,7 +124,19 @@ export function Navbar() {
             )}
           </button>
 
-          <Link href="/login" className="text-sm font-semibold text-dnv-heading">
+          <Link
+            href="/login"
+            className={`text-sm font-semibold transition duration-200 ${
+              theme === "dark"
+                ? "text-dnv-deep px-4 py-2 rounded-xl"
+                : "text-dnv-heading"
+            }`}
+            style={
+              theme === "dark"
+                ? { backgroundColor: "var(--foreground)" }
+                : undefined
+            }
+          >
             {landing.nav.login}
           </Link>
 

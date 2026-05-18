@@ -18,7 +18,7 @@ export function TitleSectionCommon({
     className2 ?? "text-lg text-dnv-muted md:text-xl dark:text-neutral-400";
 
   return (
-    <>
+    <div className="flex justify-center items-center flex-col"  >
       <h2 className={`${titleCls} mb-4 leading-tight max-w-[40ch]`}>
         {title}
       </h2>
@@ -28,6 +28,6 @@ export function TitleSectionCommon({
           {subtitle}
         </p>
       ) : null}
-    </>
+    </div>
   );
 }

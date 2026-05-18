@@ -39,6 +39,14 @@ export const landingMessages = {
     cases: {
       title: "معاينة الحالات المتاحة",
       subtitle: "استعرض الحالات التعليمية والطبية المتوفرة بسهولة",
+      lockTitle: "سجّل الدخول لعرض الحالات",
+      lockDesc:
+        "هذا القسم يعرض الحالات الحقيقية من المنصة. أنشئ حساباً أو سجّل دخولك للمتابعة.",
+      login: "تسجيل الدخول",
+      searchPlaceholder: "ابحث في الحالات…",
+      loading: "جاري تحميل الحالات…",
+      empty: "لا توجد حالات مطابقة.",
+      error: "تعذّر تحميل الحالات. تأكد من اتصالك وحاول مجدداً.",
       fallbackNotice:
         "تعذّر تحميل التصنيفات من الخادم — يُعرض محتوى افتراضي مؤقتًا.",
       items: [
@@ -89,7 +97,30 @@ export const landingMessages = {
     universities: {
       title: "فرق الدعم",
       subtitle: "تواصل مباشر مع فرق الدعم والجامعات التعليمية",
-      medicalSupport: "الدعم الطبي",
+      support: "الدعم التقني",
+      medicalSupport: "الدعم الإداري",
+      branches: [
+        {
+          name: "جامعة اللاذقية",
+          phone: "0911111111",
+          email: "Lattakia@denova.com",
+        },
+        {
+          name: "جامعة المنارة",
+          phone: "0933333333",
+          email: "Al-manara@denova.com",
+        },
+        {
+          name: " جامعة الشام الخاصة",
+          phone: "0922222222",
+          email: "al-shamprivate@denova.com",
+        },
+        {
+          name: "Atrius",
+          phone: "0922222222",
+          email: "atrius@denova.com",
+        },
+      ]
     },
     footer: {
       rights: "جميع الحقوق محفوظة",
@@ -137,6 +168,14 @@ export const landingMessages = {
     cases: {
       title: "Preview available cases",
       subtitle: "Browse educational and clinical cases at a glance",
+      lockTitle: "Log in to view cases",
+      lockDesc:
+        "This section shows live cases from the platform. Sign in to continue.",
+      login: "Log in",
+      searchPlaceholder: "Search cases…",
+      loading: "Loading cases…",
+      empty: "No matching cases.",
+      error: "Could not load cases. Check your connection and try again.",
       fallbackNotice:
         "Could not load categories from the server — showing temporary defaults.",
       items: [
@@ -188,6 +227,28 @@ export const landingMessages = {
       title: "Support teams",
       subtitle: "Reach support staff and partner universities directly",
       medicalSupport: "Medical support",
+      branches: [
+        {
+          name: "Latakia University",
+          phone: "0911111111",
+          email: "Lattakia@denova.com",
+        },
+        {
+          name: "Al-Manra University",
+          phone: "0933333333",
+          email: "Al-manara@denova.com",
+        },
+        {
+          name: "Al-Sham Private University",
+          phone: "0922222222",
+          email: "al-shamprivate@denova.com",
+        },
+        {
+          name: "Atrius",
+          phone: "0922222222",
+          email: "al-shamprivate@denova.com",
+        },
+      ]
     },
     footer: {
       rights: "All rights reserved",

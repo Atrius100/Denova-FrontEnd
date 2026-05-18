@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { toCaseCategoryCard } from "@/lib/api/normalize";
 import { usePreferences } from "@/providers/PreferencesProvider";
+import { hasApiBaseUrl } from "@/config/api";
 import { fetchCaseCategories } from "@/services/case-categories.service";
 
 export function useCaseCategories() {
@@ -15,6 +16,8 @@ export function useCaseCategories() {
       const categories = await fetchCaseCategories();
       return categories.map((item) => toCaseCategoryCard(item, locale));
     },
+    enabled: hasApiBaseUrl,
+    retry: false,
     staleTime: 60_000,
   });
 }

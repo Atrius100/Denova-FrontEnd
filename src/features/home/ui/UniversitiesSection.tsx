@@ -40,7 +40,7 @@ export function UniversitiesSection() {
       </div>
 
       <div className="mt-6 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {universities.map((uni) => (
+        {landing.universities.branches.map((uni) => (
           <div
             key={uni.email}
             className="group space-y-5 rounded-3xl border border-dnv-border bg-gradient-to-b from-background to-dnv-soft/50 p-6 shadow-md transition duration-300 hover:-translate-y-2 hover:border-dnv-accent/35 hover:shadow-2xl dark:border-white/10 dark:from-slate-950 dark:to-slate-950/80"
@@ -51,7 +51,11 @@ export function UniversitiesSection() {
 
             <div className="space-y-3">
               <SupportItem
-                title={landing.universities.medicalSupport}
+                title={
+                  uni.name === "Atrius"
+                    ? landing.universities.support
+                    : landing.universities.medicalSupport
+                }
                 phone={uni.phone}
                 email={uni.email}
               />

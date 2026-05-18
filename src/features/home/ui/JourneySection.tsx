@@ -1,5 +1,4 @@
 "use client";
-
 import { TitleSectionCommon } from "@/components/ui/TitleSectionCommon";
 import { ToothPattern } from "@/components/ui/ToothBattren";
 import { usePreferences } from "@/providers/PreferencesProvider";
@@ -8,18 +7,23 @@ export function JourneySection() {
   const { landing } = usePreferences();
 
   return (
-    <section className="relative overflow-hidden bg-dnv-deep py-20 md:py-24">
-      <div className="absolute inset-0 opacity-[0.09] dark:opacity-[0.06]">
-        <ToothPattern />
-      </div>
+        <section className="relative overflow-hidden bg-[#041b4a] py-20">
+            {/* Tooth Pattern */}
+            <div className="">
+                <ToothPattern
+                    patternId="journey-pattern"
+                    stroke="#ffffff"
+                    opacity={0.05}
+                />
+            </div>
 
       <div className="relative z-10 px-5 md:px-10 lg:px-[60px]">
         <div className="mb-20 mx-auto max-w-[58rem] text-center">
           <TitleSectionCommon
             title={landing.journey.title}
             subtitle={landing.journey.subtitle}
-            classh="text-white"
-            className2="text-lg text-blue-50/95 md:text-xl"
+            classh="text-white text-dnv-navy text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.65rem]"
+            className2="text-lg w-full text-center text-blue-50/95 md:text-xl "
           />
         </div>
 

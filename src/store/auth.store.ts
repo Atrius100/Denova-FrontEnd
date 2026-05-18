@@ -2,15 +2,14 @@ import { create } from "zustand";
 
 import {
   clearAuthSession,
-  saveAuthSession,
-  type SubscriptionStatus,
+  saveAuthProfile,
+  saveAuthToken,
 } from "@/lib/auth/session";
 
 export type AuthUser = {
-  id: string;
+  id?: string;
   name: string;
-  universityId: string;
-  subscription: SubscriptionStatus;
+  universityId?: string;
   token: string;
 };
 
@@ -24,11 +23,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
   user: null,
 
   setUser: (user) => {
-    saveAuthSession({
-      token: user.token,
+    saveAuthToken(user.token);
+    saveAuthProfile({
       studentId: user.id,
       universityId: user.universityId,
-      subscription: user.subscription,
     });
     set({ user });
   },
