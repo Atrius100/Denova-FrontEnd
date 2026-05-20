@@ -1,0 +1,126 @@
+{
+  "auth": {
+    "welcomeBack": "Welcome Back",
+
+    "createAccount": "Create your account",
+
+    "firstName": "First Name",
+
+    "lastName": "Last Name",
+
+    "email": "Email",
+
+    "password": "Password",
+
+    "confirmPassword": "Confirm Password",
+
+    "university": "University",
+
+    "academicYear": "Academic Year",
+
+    "selectUniversity": "Select university",
+
+    "selectYear": "Select year",
+
+    "year": "Year",
+
+    "signup": "Create Account",
+
+    "login": "Login",
+
+    "alreadyHaveAccount": "Already have an account?",
+
+    "dontHaveAccount": "Don't have an account?",
+
+    "creating": "Creating account...",
+
+    "signingIn": "Signing in...",
+
+    "universities": {
+      "damascus": "Damascus University",
+
+      "tishreen": "Tishreen University",
+
+      "aleppo": "Aleppo University",
+
+      "baath": "Al-Baath University"
+    }
+  },
+  "receptionSidebar": {
+    "dashboard": "Dashboard",
+    "patients": "Patients",
+    "requests": "Requests",
+    "profile": "Profiles Student",
+    "subtitle": "Reception Dashboard",
+    "footerTitle": "Reception Panel",
+    "footerSubtitle": "DENOVA Platform"
+},
+ "receptionNavbar": {
+    "dashboard": "Dashboard",
+    "arabic": "العربية",
+    "english": "English",
+    "logout": "Logout",
+    "admin": "Admin",
+    "employee": "Employee"
+  },
+  "dashboardActions": {
+    "searchPlaceholder": "Search patient...",
+    "addPatient": "Add Patient"
+  },
+  "dashboardStats": {
+    "pendingRequests": "Pending Requests",
+    "pendingRequestsDesc": "Waiting for review",
+
+    "waitingPatients": "Waiting Patients",
+    "waitingPatientsDesc": "Approved but not started",
+
+    "activeTreatments": "Active Treatments",
+    "activeTreatmentsDesc": "Currently in progress",
+
+    "registeredPatients": "Registered Patients",
+    "registeredPatientsDesc": "Total in the system"
+  },
+ 
+  "addPatientModal": {
+    "title": "Add Patient",
+    "subtitle": "Create a new patient profile",
+
+    "patientName": "Patient Name",
+    "age": "Age",
+    "phone": "Phone Number",
+    "university": "University",
+    "nationalId": "National ID",
+    "toothNumber": "Tooth Number",
+    "condition": "Condition",
+
+    "cancel": "Cancel",
+    "save": "Save Patient",
+
+    "universities": {
+      "tishreen": "Tishreen University",
+      "manara": "Manara University",
+      "alsham": "Al Sham Private University"
+    }
+  },
+  "patientsFilters": {
+    "all": "All Patients",
+    "pending": "Pending Treatments",
+    "previous": "Previous Treatments"
+  },
+ "patientsTable": {
+  "title": "Patients",
+  "subtitle": "Manage all registered patients",
+
+  "patient": "Patient",
+  "university": "University",
+  "tooth": "Tooth",
+  "condition": "Condition",
+  "status": "Status",
+  "date": "Date",
+  "actions": "Actions",
+
+  "waiting": "Waiting",
+  "active": "Active",
+  "completed": "Completed"
+}
+}
