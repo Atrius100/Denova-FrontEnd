@@ -122,5 +122,380 @@
   "waiting": "Waiting",
   "active": "Active",
   "completed": "Completed"
-}
+  },
+  "payment": {
+    "pageTitle": "Payment & Subscription",
+    "pageSubtitle": "Pay securely with Syriatel Cash and activate your DENOVA subscription",
+    "planTitle": "Choose a subscription plan",
+    "planSubtitle": "All plans unlock full access to the clinical case database",
+    "popular": "Most popular",
+    "continue": "Continue",
+    "back": "Back",
+    "proceedToPay": "Proceed to payment",
+    "payNow": "Pay with Syriatel Cash",
+    "initiating": "Creating transaction...",
+    "verifying": "Verifying...",
+    "confirmPayment": "Confirm payment",
+    "phoneTitle": "Syriatel Cash number",
+    "phoneSubtitle": "Enter the mobile number registered on your Syriatel Cash wallet",
+    "phoneLabel": "Mobile number",
+    "phoneHint": "Must start with 09 and be 10 digits (e.g. 0944123456)",
+    "verificationOptionalTitle": "Confirmation code (optional)",
+    "verificationOptionalDesc": "If you received an SMS code, enter it here. You can also wait for automatic verification.",
+    "confirmationCodeLabel": "Confirmation code",
+    "helpTitle": "Helpful tips",
+    "helpTip1": "Ensure sufficient Syriatel Cash wallet balance",
+    "helpTip2": "Do not close this page until the payment completes",
+    "helpTip3": "For testing: numbers ending in 0 will fail",
+    "steps": {
+      "plan": "Plan",
+      "summary": "Summary",
+      "phone": "Phone",
+      "pay": "Pay",
+      "done": "Done"
+    },
+    "syriatel": {
+      "title": "Syriatel Cash",
+      "subtitle": "The most widely used mobile wallet in Syria"
+    },
+    "summary": {
+      "title": "Order summary",
+      "plan": "Plan",
+      "duration": "Duration",
+      "method": "Payment method",
+      "syriatelCash": "Syriatel Cash",
+      "reference": "Reference",
+      "total": "Total amount",
+      "currency": "SYP",
+      "secureNote": "Payments are processed securely. We never store your wallet PIN."
+    },
+    "plans": {
+      "monthly": {
+        "name": "Monthly",
+        "description": "Good for trying the platform",
+        "duration": "30 days"
+      },
+      "semester": {
+        "name": "Semester",
+        "description": "Best for 4th and 5th year students",
+        "duration": "4 months"
+      },
+      "annual": {
+        "name": "Annual",
+        "description": "Best value for long-term use",
+        "duration": "12 months"
+      }
+    },
+    "instructions": {
+      "title": "Steps on your phone",
+      "openSyriatelApp": "Open the Syriatel Cash app or use USSD",
+      "confirmAmount": "Review and approve the transaction amount",
+      "enterPin": "Enter your wallet PIN",
+      "waitConfirmation": "Wait for the confirmation SMS, then return here",
+      "amountHint": "Amount {amount} SYP — number {phone}",
+      "ussdNote": "If no SMS arrives within 2 minutes, check your balance and retry."
+    },
+    "status": {
+      "processingTitle": "Preparing payment",
+      "processingDesc": "Please wait a moment...",
+      "verifyingTitle": "Verifying payment",
+      "verifyingDesc": "Checking status with Syriatel Cash",
+      "pendingTitle": "Awaiting payment confirmation",
+      "pendingDesc": "Approve the transaction on your phone. Status will update automatically when complete.",
+      "reference": "Reference",
+      "confirmManually": "I confirmed on my phone",
+      "autoChecking": "Auto-checking status...",
+      "successTitle": "Payment successful",
+      "successDesc": "Your subscription is active. You can now browse the case database.",
+      "failedTitle": "Payment failed",
+      "failedDesc": "The transaction did not complete. You can try again.",
+      "retry": "Try again",
+      "backHome": "Back to home"
+    },
+    "errors": {
+      "invalidPhone": "Invalid mobile number. Use Syrian format starting with 09.",
+      "createFailed": "Could not create the payment. Check your connection and retry.",
+      "verifyFailed": "Could not verify the payment. Please try again.",
+      "statusFailed": "Could not check payment status. Please retry.",
+      "paymentDeclined": "Syriatel Cash declined the transaction or it expired.",
+      "invalidConfirmationCode": "Invalid confirmation code."
+    }
+  },
+  "adminSidebar": {
+    "dashboard": "Dashboard",
+    "students": "Students",
+    "cases": "Cases",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "subtitle": "Admin Panel",
+    "footerTitle": "Platform Admin",
+    "footerSubtitle": "DENOVA Admin"
+  },
+  "adminDashboard": {
+    "title": "Admin Dashboard",
+    "subtitle": "Manage platform, students, and settings",
+    "links": {
+      "students": {
+        "title": "Manage Students",
+        "desc": "View and organize student accounts"
+      },
+      "cases": {
+        "title": "Manage Cases",
+        "desc": "Review educational clinical cases"
+      },
+      "notifications": {
+        "title": "Notification Center",
+        "desc": "Track system, payment, and security activity"
+      },
+      "settings": {
+        "title": "Platform Settings",
+        "desc": "Full control over system configuration"
+      }
+    }
+  },
+  "adminNavbar": {
+    "dashboard": "Admin Dashboard",
+    "arabic": "العربية",
+    "english": "English",
+    "logout": "Logout",
+    "admin": "Admin",
+    "employee": "Employee"
+  },
+  "adminSettings": {
+    "pageTitle": "Platform Settings",
+    "pageSubtitle": "Manage all DENOVA configuration in one place",
+    "navTitle": "Settings sections",
+    "loading": "Loading settings...",
+    "loadErrorTitle": "Could not load settings",
+    "loadErrorDesc": "Check your connection and try again",
+    "retry": "Retry",
+    "sections": {
+      "general": {
+        "title": "General Settings",
+        "description": "Name, support, maintenance mode, registration"
+      },
+      "platform": {
+        "title": "Platform Information",
+        "description": "Company details and legal links"
+      },
+      "branding": {
+        "title": "Branding",
+        "description": "Logo, colors, and brand identity"
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Theme, UI, and layout"
+      },
+      "users": {
+        "title": "Users & Permissions",
+        "description": "Roles, signup, and verification"
+      },
+      "payment": {
+        "title": "Payment Settings",
+        "description": "Syriatel Cash and webhooks"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "description": "Email, SMS, and system alerts"
+      },
+      "security": {
+        "title": "Security",
+        "description": "Sessions, passwords, and protection"
+      },
+      "integrations": {
+        "title": "API & Integrations",
+        "description": "API keys and audit logging"
+      },
+      "subscription": {
+        "title": "Subscriptions",
+        "description": "Pricing, trial, and grace period"
+      },
+      "localization": {
+        "title": "Localization",
+        "description": "Default language, RTL, and date format"
+      }
+    },
+    "actions": {
+      "save": "Save changes",
+      "cancel": "Cancel",
+      "saving": "Saving...",
+      "saved": "Saved successfully",
+      "saveFailed": "Save failed",
+      "unsavedChanges": "You have unsaved changes",
+      "noChanges": "No changes",
+      "resetDefaults": "Reset to defaults"
+    },
+    "errors": {
+      "required": "This field is required",
+      "invalidEmail": "Invalid email address",
+      "invalidPhone": "Invalid mobile number",
+      "invalidColor": "Invalid color (e.g. #1e3a6d)",
+      "invalidUrl": "Invalid URL",
+      "minAmount": "Minimum amount is 1000 SYP",
+      "minSession": "Minimum 5 minutes",
+      "minAttempts": "At least 1 attempt",
+      "minPrice": "Invalid price",
+      "minZero": "Cannot be negative"
+    },
+    "options": {
+      "themeLight": "Light",
+      "themeDark": "Dark",
+      "themeSystem": "System",
+      "radiusMd": "Medium",
+      "radiusLg": "Large",
+      "radiusXl": "Extra large",
+      "localeAr": "Arabic",
+      "localeEn": "English",
+      "dateDmy": "DD/MM/YYYY",
+      "dateYmd": "YYYY-MM-DD",
+      "roles": {
+        "student": "Student",
+        "reception": "Reception",
+        "admin": "Admin",
+        "super_admin": "Super Admin"
+      }
+    },
+    "fields": {
+      "general": {
+        "siteName": "Platform name",
+        "siteNameHint": "Shown in title and sidebar",
+        "supportEmail": "Support email",
+        "supportPhone": "Support phone",
+        "supportPhoneHint": "Syrian format: 09xxxxxxxx",
+        "maintenanceMode": "Maintenance mode",
+        "maintenanceModeHint": "Temporarily block user access",
+        "allowRegistration": "Allow registration",
+        "allowRegistrationHint": "Enable new account signups"
+      },
+      "platform": {
+        "platformTagline": "Platform tagline",
+        "companyName": "Company name",
+        "companyAddress": "Address",
+        "termsUrl": "Terms URL",
+        "privacyUrl": "Privacy URL"
+      },
+      "branding": {
+        "logoUrl": "Logo URL",
+        "faviconUrl": "Favicon URL",
+        "primaryColor": "Primary color",
+        "secondaryColor": "Secondary color",
+        "showPoweredBy": "Show Powered by"
+      },
+      "appearance": {
+        "defaultTheme": "Default theme",
+        "borderRadius": "Border radius",
+        "compactSidebar": "Compact sidebar",
+        "showHeroPattern": "Hero background pattern"
+      },
+      "users": {
+        "defaultRole": "Default role for new users",
+        "defaultRoleHint": "Applied on first signup",
+        "maxStudentsPerUniversity": "Max students per university",
+        "requireEmailVerification": "Require email verification",
+        "allowStudentSelfSignup": "Allow student self-signup"
+      },
+      "payment": {
+        "syriatelEnabled": "Enable Syriatel Cash",
+        "syriatelEnabledHint": "Primary payment method in Syria",
+        "syriatelMerchantId": "Merchant ID",
+        "minAmountSyp": "Minimum payment (SYP)",
+        "webhookUrl": "Payment webhook URL",
+        "webhookUrlHint": "Receive payment confirmations from server",
+        "paymentMockMode": "Payment mock mode",
+        "paymentMockModeHint": "Development and testing only"
+      },
+      "notifications": {
+        "adminAlertEmail": "Admin alert email",
+        "emailNotifications": "Email notifications",
+        "smsNotifications": "SMS notifications",
+        "smsNotificationsHint": "Requires SMS provider integration",
+        "notifyNewCase": "Notify on new case",
+        "notifyPaymentSuccess": "Notify on payment success"
+      },
+      "security": {
+        "sessionTimeoutMinutes": "Session timeout (minutes)",
+        "maxLoginAttempts": "Max login attempts",
+        "requireStrongPassword": "Require strong password",
+        "twoFactorEnabled": "Two-factor authentication",
+        "twoFactorEnabledHint": "Coming soon — ready to wire",
+        "ipAllowlist": "IP allowlist",
+        "ipAllowlistHint": "One IP per line, leave empty to allow all"
+      },
+      "integrations": {
+        "apiBaseUrl": "API base URL",
+        "syriatelApiKey": "Syriatel API key",
+        "syriatelApiSecret": "Syriatel API secret",
+        "webhookSecret": "Webhook signing secret",
+        "webhookSecretHint": "Verify incoming server requests",
+        "enableAuditLog": "Enable audit log",
+        "enableAuditLogHint": "Log settings changes"
+      },
+      "subscription": {
+        "monthlyPriceSyp": "Monthly price (SYP)",
+        "semesterPriceSyp": "Semester price (SYP)",
+        "annualPriceSyp": "Annual price (SYP)",
+        "trialDays": "Free trial days",
+        "gracePeriodDays": "Grace period after expiry"
+      },
+      "localization": {
+        "defaultLocale": "Default locale",
+        "fallbackLocale": "Fallback locale",
+        "dateFormat": "Date format",
+        "rtlByDefault": "RTL by default for Arabic"
+      }
+    }
+  },
+  "adminNotifications": {
+    "pageTitle": "Notification Center",
+    "pageSubtitle": "Admin-only alerts — system, payment, and security activity",
+    "dropdownTitle": "Notifications",
+    "bellLabel": "Open notifications",
+    "viewAll": "View all notifications",
+    "markAllRead": "Mark all as read",
+    "markRead": "Mark as read",
+    "markUnread": "Mark as unread",
+    "delete": "Delete",
+    "deleteRead": "Delete read",
+    "loadError": "Could not load notifications",
+    "retry": "Retry",
+    "unreadBadge": "{count} unread",
+    "byActor": "By {name}",
+    "filters": {
+      "all": "All",
+      "unread": "Unread",
+      "payment": "Payment",
+      "security": "Security",
+      "system": "System",
+      "admin": "Admin"
+    },
+    "empty": {
+      "title": "No notifications",
+      "dropdownDesc": "System, payment, and security alerts will appear here",
+      "inboxDesc": "No admin notifications yet. Check back later."
+    },
+    "items": {
+      "paymentReceived": "New subscription payment",
+      "paymentReceivedMsg": "A Syriatel Cash payment was received successfully",
+      "loginAttempt": "Login attempt detected",
+      "loginAttemptMsg": "A sign-in attempt from a new IP address was logged",
+      "settingsUpdated": "Settings updated",
+      "settingsUpdatedMsg": "Platform general settings were modified",
+      "casePendingApproval": "Case pending approval",
+      "casePendingApprovalMsg": "A new educational case requires admin review",
+      "systemBackup": "Backup completed",
+      "systemBackupMsg": "System backup finished successfully",
+      "maintenanceScheduled": "Maintenance scheduled",
+      "maintenanceScheduledMsg": "Maintenance mode will activate tonight at 2:00 AM",
+      "studentRegistered": "New student",
+      "studentRegisteredMsg": "A new student joined the platform",
+      "paymentFailed": "Payment failed",
+      "paymentFailedMsg": "A subscription payment failed — review required",
+      "reviewSubscriptions": "Reminder: review subscriptions",
+      "reviewSubscriptionsMsg": "Some subscriptions expire within 7 days",
+      "apiConnected": "API connected",
+      "apiConnectedMsg": "Server API connection verified successfully",
+      "realtimeTest": "Test notification",
+      "realtimeTestMsg": "New alert received via sync channel (simulated)"
+    }
+  }
 }

@@ -120,8 +120,380 @@
   "waiting": "قيد الانتظار",
   "active": "نشطة",
   "completed": "مكتملة"
-}
-
-
-
+  },
+  "payment": {
+    "pageTitle": "الدفع والاشتراك",
+    "pageSubtitle": "ادفع بأمان عبر سيرياتيل كاش وفعّل اشتراكك في DENOVA فور تأكيد العملية",
+    "planTitle": "اختر باقة الاشتراك",
+    "planSubtitle": "جميع الباقات تمنحك وصولاً كاملاً لقاعدة الحالات التعليمية",
+    "popular": "الأكثر اختياراً",
+    "continue": "متابعة",
+    "back": "رجوع",
+    "proceedToPay": "المتابعة للدفع",
+    "payNow": "ادفع عبر سيرياتيل كاش",
+    "initiating": "جاري إنشاء العملية...",
+    "verifying": "جاري التحقق...",
+    "confirmPayment": "تأكيد الدفع",
+    "phoneTitle": "رقم سيرياتيل كاش",
+    "phoneSubtitle": "أدخل رقم الموبايل المسجّل في محفظة سيرياتيل كاش",
+    "phoneLabel": "رقم الموبايل",
+    "phoneHint": "يجب أن يبدأ الرقم بـ 09 ويتكون من 10 أرقام (مثال: 0944123456)",
+    "verificationOptionalTitle": "رمز التأكيد (اختياري)",
+    "verificationOptionalDesc": "إذا وصلك رمز تأكيد في رسالة SMS، أدخله هنا. يمكنك أيضاً الانتظار حتى يتم التحقق تلقائياً.",
+    "confirmationCodeLabel": "رمز التأكيد",
+    "helpTitle": "نصائح مهمة",
+    "helpTip1": "تأكد من وجود رصيد كافٍ في محفظة سيرياتيل كاش",
+    "helpTip2": "لا تغلق الصفحة حتى تظهر نتيجة العملية",
+    "helpTip3": "للاختبار: الأرقام التي تنتهي بـ 0 تفشل العملية",
+    "steps": {
+      "plan": "الباقة",
+      "summary": "الملخص",
+      "phone": "الرقم",
+      "pay": "الدفع",
+      "done": "تم"
+    },
+    "syriatel": {
+      "title": "سيرياتيل كاش",
+      "subtitle": "طريقة الدفع الإلكتروني الأكثر انتشاراً في سوريا"
+    },
+    "summary": {
+      "title": "ملخص الطلب",
+      "plan": "الباقة",
+      "duration": "المدة",
+      "method": "طريقة الدفع",
+      "syriatelCash": "سيرياتيل كاش",
+      "reference": "رقم العملية",
+      "total": "المبلغ الإجمالي",
+      "currency": "ل.س",
+      "secureNote": "يتم معالجة الدفع عبر قناة آمنة. لن نحفظ رمز PIN الخاص بك."
+    },
+    "plans": {
+      "monthly": {
+        "name": "اشتراك شهري",
+        "description": "مناسب للتجربة والبداية",
+        "duration": "30 يوماً"
+      },
+      "semester": {
+        "name": "اشتراك فصلي",
+        "description": "الخيار الأفضل لطلاب السنة الرابعة والخامسة",
+        "duration": "4 أشهر"
+      },
+      "annual": {
+        "name": "اشتراك سنوي",
+        "description": "أفضل قيمة للاستخدام المستمر",
+        "duration": "12 شهراً"
+      }
+    },
+    "instructions": {
+      "title": "خطوات الدفع على هاتفك",
+      "openSyriatelApp": "افتح تطبيق سيرياتيل كاش أو استخدم رمز USSD",
+      "confirmAmount": "راجع مبلغ العملية ووافق عليه",
+      "enterPin": "أدخل رمز PIN السري الخاص بمحفظتك",
+      "waitConfirmation": "انتظر رسالة التأكيد ثم ارجع لهذه الصفحة",
+      "amountHint": "المبلغ {amount} ل.س — الرقم {phone}",
+      "ussdNote": "إذا لم تصلك رسالة خلال دقيقتين، تأكد من الرصيد وحاول مرة أخرى."
+    },
+    "status": {
+      "processingTitle": "جاري تجهيز عملية الدفع",
+      "processingDesc": "يرجى الانتظار قليلاً...",
+      "verifyingTitle": "جاري التحقق من العملية",
+      "verifyingDesc": "نتأكد من حالة الدفع لدى سيرياتيل كاش",
+      "pendingTitle": "بانتظار تأكيد الدفع",
+      "pendingDesc": "وافق على العملية من هاتفك. سيتم تحديث الحالة تلقائياً عند اكتمال الدفع.",
+      "reference": "المرجع",
+      "confirmManually": "تحققت من الهاتف — تأكيد الآن",
+      "autoChecking": "جاري التحقق التلقائي...",
+      "successTitle": "تم الدفع بنجاح",
+      "successDesc": "تم تفعيل اشتراكك. يمكنك الآن تصفح قاعدة الحالات التعليمية.",
+      "failedTitle": "فشلت عملية الدفع",
+      "failedDesc": "لم تكتمل العملية. يمكنك المحاولة مرة أخرى.",
+      "retry": "إعادة المحاولة",
+      "backHome": "العودة للرئيسية"
+    },
+    "errors": {
+      "invalidPhone": "رقم الموبايل غير صالح. استخدم صيغة سورية تبدأ بـ 09.",
+      "createFailed": "تعذر إنشاء عملية الدفع. تحقق من الاتصال وحاول مجدداً.",
+      "verifyFailed": "تعذر التحقق من العملية. حاول مرة أخرى.",
+      "statusFailed": "تعذر متابعة حالة العملية. أعد المحاولة.",
+      "paymentDeclined": "تم رفض العملية من سيرياتيل كاش أو انتهت صلاحيتها.",
+      "invalidConfirmationCode": "رمز التأكيد غير صحيح."
+    }
+  },
+  "adminSidebar": {
+    "dashboard": "لوحة التحكم",
+    "students": "الطلاب",
+    "cases": "الحالات",
+    "notifications": "الإشعارات",
+    "settings": "الإعدادات",
+    "subtitle": "لوحة الإدارة",
+    "footerTitle": "إدارة المنصة",
+    "footerSubtitle": "DENOVA Admin"
+  },
+  "adminDashboard": {
+    "title": "لوحة تحكم الإدارة",
+    "subtitle": "إدارة المنصة والطلاب والإعدادات",
+    "links": {
+      "students": {
+        "title": "إدارة الطلاب",
+        "desc": "عرض وتنظيم حسابات الطلاب"
+      },
+      "cases": {
+        "title": "إدارة الحالات",
+        "desc": "مراجعة الحالات التعليمية"
+      },
+      "notifications": {
+        "title": "مركز الإشعارات",
+        "desc": "متابعة نشاط النظام والدفع والأمان"
+      },
+      "settings": {
+        "title": "إعدادات المنصة",
+        "desc": "التحكم الكامل بإعدادات النظام"
+      }
+    }
+  },
+  "adminNavbar": {
+    "dashboard": "لوحة الإدارة",
+    "arabic": "العربية",
+    "english": "English",
+    "logout": "تسجيل الخروج",
+    "admin": "مدير",
+    "employee": "موظف"
+  },
+  "adminSettings": {
+    "pageTitle": "إعدادات المنصة",
+    "pageSubtitle": "إدارة جميع إعدادات DENOVA من مكان واحد",
+    "navTitle": "أقسام الإعدادات",
+    "loading": "جاري تحميل الإعدادات...",
+    "loadErrorTitle": "تعذر تحميل الإعدادات",
+    "loadErrorDesc": "تحقق من الاتصال وحاول مرة أخرى",
+    "retry": "إعادة المحاولة",
+    "sections": {
+      "general": {
+        "title": "إعدادات عامة",
+        "description": "الاسم، الدعم، وضع الصيانة، والتسجيل"
+      },
+      "platform": {
+        "title": "معلومات المنصة",
+        "description": "بيانات الشركة والروابط القانونية"
+      },
+      "branding": {
+        "title": "الهوية البصرية",
+        "description": "الشعار والألوان والعلامة التجارية"
+      },
+      "appearance": {
+        "title": "المظهر",
+        "description": "الثيم والواجهة والتخطيط"
+      },
+      "users": {
+        "title": "المستخدمون والصلاحيات",
+        "description": "الأدوار والتسجيل والتحقق"
+      },
+      "payment": {
+        "title": "إعدادات الدفع",
+        "description": "سيرياتيل كاش والويب هوك"
+      },
+      "notifications": {
+        "title": "الإشعارات",
+        "description": "البريد والرسائل وتنبيهات النظام"
+      },
+      "security": {
+        "title": "الأمان",
+        "description": "الجلسات وكلمات المرور والحماية"
+      },
+      "integrations": {
+        "title": "التكاملات و API",
+        "description": "مفاتيح API وسجل التدقيق"
+      },
+      "subscription": {
+        "title": "الاشتراكات",
+        "description": "الأسعار والتجربة وفترة السماح"
+      },
+      "localization": {
+        "title": "اللغة والتوطين",
+        "description": "اللغة الافتراضية و RTL والتاريخ"
+      }
+    },
+    "actions": {
+      "save": "حفظ التغييرات",
+      "cancel": "إلغاء",
+      "saving": "جاري الحفظ...",
+      "saved": "تم الحفظ بنجاح",
+      "saveFailed": "فشل الحفظ",
+      "unsavedChanges": "لديك تغييرات غير محفوظة",
+      "noChanges": "لا توجد تغييرات",
+      "resetDefaults": "استعادة الافتراضي"
+    },
+    "errors": {
+      "required": "هذا الحقل مطلوب",
+      "invalidEmail": "بريد إلكتروني غير صالح",
+      "invalidPhone": "رقم موبايل غير صالح",
+      "invalidColor": "لون غير صالح (مثال: #1e3a6d)",
+      "invalidUrl": "رابط غير صالح",
+      "minAmount": "الحد الأدنى 1000 ل.س",
+      "minSession": "الحد الأدنى 5 دقائق",
+      "minAttempts": "محاولة واحدة على الأقل",
+      "minPrice": "السعر غير صالح",
+      "minZero": "لا يمكن أن تكون سالبة"
+    },
+    "options": {
+      "themeLight": "فاتح",
+      "themeDark": "داكن",
+      "themeSystem": "حسب النظام",
+      "radiusMd": "متوسط",
+      "radiusLg": "كبير",
+      "radiusXl": "كبير جداً",
+      "localeAr": "العربية",
+      "localeEn": "English",
+      "dateDmy": "يوم/شهر/سنة",
+      "dateYmd": "سنة-شهر-يوم",
+      "roles": {
+        "student": "طالب",
+        "reception": "استقبال",
+        "admin": "مدير",
+        "super_admin": "مدير عام"
+      }
+    },
+    "fields": {
+      "general": {
+        "siteName": "اسم المنصة",
+        "siteNameHint": "يظهر في العنوان والشريط الجانبي",
+        "supportEmail": "بريد الدعم",
+        "supportPhone": "هاتف الدعم",
+        "supportPhoneHint": "صيغة سورية: 09xxxxxxxx",
+        "maintenanceMode": "وضع الصيانة",
+        "maintenanceModeHint": "إيقاف الوصول للمستخدمين مؤقتاً",
+        "allowRegistration": "السماح بالتسجيل",
+        "allowRegistrationHint": "تفعيل إنشاء حسابات جديدة"
+      },
+      "platform": {
+        "platformTagline": "الشعار التعريفي",
+        "companyName": "اسم الجهة",
+        "companyAddress": "العنوان",
+        "termsUrl": "رابط الشروط",
+        "privacyUrl": "رابط الخصوصية"
+      },
+      "branding": {
+        "logoUrl": "رابط الشعار",
+        "faviconUrl": "رابط الأيقونة",
+        "primaryColor": "اللون الأساسي",
+        "secondaryColor": "اللون الثانوي",
+        "showPoweredBy": "إظهار Powered by"
+      },
+      "appearance": {
+        "defaultTheme": "الثيم الافتراضي",
+        "borderRadius": "انحناء الزوايا",
+        "compactSidebar": "شريط جانبي مضغوط",
+        "showHeroPattern": "نمط الخلفية في الصفحة الرئيسية"
+      },
+      "users": {
+        "defaultRole": "الدور الافتراضي للمستخدم الجديد",
+        "defaultRoleHint": "يُطبّق عند التسجيل الأول",
+        "maxStudentsPerUniversity": "الحد الأقصى للطلاب لكل جامعة",
+        "requireEmailVerification": "تفعيل التحقق من البريد",
+        "allowStudentSelfSignup": "السماح بتسجيل الطلاب ذاتياً"
+      },
+      "payment": {
+        "syriatelEnabled": "تفعيل سيرياتيل كاش",
+        "syriatelEnabledHint": "طريقة الدفع الرئيسية في سوريا",
+        "syriatelMerchantId": "معرّف التاجر",
+        "minAmountSyp": "الحد الأدنى للدفع (ل.س)",
+        "webhookUrl": "رابط Webhook للدفع",
+        "webhookUrlHint": "لاستقبال تأكيدات الدفع من الخادم",
+        "paymentMockMode": "وضع المحاكاة للدفع",
+        "paymentMockModeHint": "للتطوير والاختبار فقط"
+      },
+      "notifications": {
+        "adminAlertEmail": "بريد تنبيهات الإدارة",
+        "emailNotifications": "إشعارات البريد",
+        "smsNotifications": "إشعارات SMS",
+        "smsNotificationsHint": "يتطلب تكامل مزود رسائل",
+        "notifyNewCase": "تنبيه عند حالة جديدة",
+        "notifyPaymentSuccess": "تنبيه عند نجاح الدفع"
+      },
+      "security": {
+        "sessionTimeoutMinutes": "مدة انتهاء الجلسة (دقيقة)",
+        "maxLoginAttempts": "أقصى محاولات تسجيل الدخول",
+        "requireStrongPassword": "كلمة مرور قوية إلزامية",
+        "twoFactorEnabled": "المصادقة الثنائية",
+        "twoFactorEnabledHint": "قريباً — جاهز للربط",
+        "ipAllowlist": "قائمة IP المسموحة",
+        "ipAllowlistHint": "عنوان واحد في كل سطر، اتركه فارغاً للسماح للجميع"
+      },
+      "integrations": {
+        "apiBaseUrl": "رابط API الأساسي",
+        "syriatelApiKey": "مفتاح Syriatel API",
+        "syriatelApiSecret": "سر Syriatel API",
+        "webhookSecret": "سر توقيع Webhook",
+        "webhookSecretHint": "للتحقق من طلبات الخادم",
+        "enableAuditLog": "تفعيل سجل التدقيق",
+        "enableAuditLogHint": "تسجيل تغييرات الإعدادات"
+      },
+      "subscription": {
+        "monthlyPriceSyp": "سعر الاشتراك الشهري (ل.س)",
+        "semesterPriceSyp": "سعر الاشتراك الفصلي (ل.س)",
+        "annualPriceSyp": "سعر الاشتراك السنوي (ل.س)",
+        "trialDays": "أيام التجربة المجانية",
+        "gracePeriodDays": "أيام السماح بعد الانتهاء"
+      },
+      "localization": {
+        "defaultLocale": "اللغة الافتراضية",
+        "fallbackLocale": "لغة احتياطية",
+        "dateFormat": "تنسيق التاريخ",
+        "rtlByDefault": "RTL افتراضياً للعربية"
+      }
+    }
+  },
+  "adminNotifications": {
+    "pageTitle": "مركز الإشعارات",
+    "pageSubtitle": "إشعارات الإدارة فقط — نشاط النظام، الدفع، والأمان",
+    "dropdownTitle": "الإشعارات",
+    "bellLabel": "فتح الإشعارات",
+    "viewAll": "عرض جميع الإشعارات",
+    "markAllRead": "تعليم الكل كمقروء",
+    "markRead": "تعليم كمقروء",
+    "markUnread": "تعليم كغير مقروء",
+    "delete": "حذف",
+    "deleteRead": "حذف المقروءة",
+    "loadError": "تعذر تحميل الإشعارات",
+    "retry": "إعادة المحاولة",
+    "unreadBadge": "{count} غير مقروء",
+    "byActor": "بواسطة {name}",
+    "filters": {
+      "all": "الكل",
+      "unread": "غير مقروء",
+      "payment": "الدفع",
+      "security": "الأمان",
+      "system": "النظام",
+      "admin": "الإدارة"
+    },
+    "empty": {
+      "title": "لا توجد إشعارات",
+      "dropdownDesc": "ستظهر هنا تنبيهات النظام والدفع والأمان",
+      "inboxDesc": "لم يصل أي إشعار إداري بعد. تحقق لاحقاً."
+    },
+    "items": {
+      "paymentReceived": "دفعة اشتراك جديدة",
+      "paymentReceivedMsg": "تم استلام دفعة عبر سيرياتيل كاش بنجاح",
+      "loginAttempt": "محاولة تسجيل دخول",
+      "loginAttemptMsg": "تم رصد محاولة دخول من عنوان IP جديد",
+      "settingsUpdated": "تحديث إعدادات",
+      "settingsUpdatedMsg": "تم تعديل إعدادات المنصة العامة",
+      "casePendingApproval": "حالة بانتظار الموافقة",
+      "casePendingApprovalMsg": "حالة تعليمية جديدة تحتاج مراجعة إدارية",
+      "systemBackup": "نسخ احتياطي مكتمل",
+      "systemBackupMsg": "تم إنشاء نسخة احتياطية للنظام بنجاح",
+      "maintenanceScheduled": "صيانة مجدولة",
+      "maintenanceScheduledMsg": "سيتم تفعيل وضع الصيانة الليلة الساعة 2:00",
+      "studentRegistered": "طالب جديد",
+      "studentRegisteredMsg": "انضم طالب جديد إلى المنصة",
+      "paymentFailed": "فشل دفعة",
+      "paymentFailedMsg": "فشلت عملية دفع اشتراك — يتطلب مراجعة",
+      "reviewSubscriptions": "تذكير: مراجعة الاشتراكات",
+      "reviewSubscriptionsMsg": "لديك اشتراكات تنتهي خلال 7 أيام",
+      "apiConnected": "اتصال API",
+      "apiConnectedMsg": "تم التحقق من اتصال الخادم بنجاح",
+      "realtimeTest": "إشعار تجريبي",
+      "realtimeTestMsg": "إشعار جديد وصل عبر قناة المزامنة (محاكاة)"
+    }
+  }
 }

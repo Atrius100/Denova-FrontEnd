@@ -1,4 +1,4 @@
-
+import Link from "next/link";
 import { Lock, Search } from "lucide-react";
 import { TitleSectionCommon } from "../../../components/ui/TitleSectionCommon";
 
@@ -47,9 +47,12 @@ export function SearchSection() {
                 </p>
 
                 {/* Button */}
-                <button className="rounded-full bg-gradient-to-r from-[#1e3a6d] to-[#2563eb] px-10 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:scale-[1.02] hover:from-[#244684] hover:to-[#2a6eff]">
+                <Link
+                    href="/payment?plan=semester"
+                    className="inline-block rounded-full bg-gradient-to-r from-[#1e3a6d] to-[#2563eb] px-10 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:scale-[1.02] hover:from-[#244684] hover:to-[#2a6eff]"
+                >
                     اشترك الآن
-                </button>
+                </Link>
             </div>
 
         </section>
