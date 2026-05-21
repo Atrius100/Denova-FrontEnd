@@ -16,16 +16,18 @@ export default function SignupPage() {
   const [localError, setLocalError] =
     useState("");
 
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    university: "",
-    academicYear: 1,
+const [form, setForm] = useState({
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+  university: "",
+  academicYear: 1,
 
-  });
+  phoneNumber: "",
+  nationalNumber: "",
+});
   function updateField(
     field: string,
     value: string | number

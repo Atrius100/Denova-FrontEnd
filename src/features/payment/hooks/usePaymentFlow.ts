@@ -89,25 +89,7 @@ export function usePaymentFlow(
   }, [createPayment, verifyPayment])
 
 
-  const applyTerminalStep = useCallback(
-    (status: PaymentTransaction["status"]) => {
-      if (status === "completed") {
-        setStep("success")
-        return
-      }
-
-      if (
-        status === "failed" ||
-        status === "expired"
-      ) {
-        setStep("failed")
-        return
-      }
-
-      setStep("pending")
-    },
-    []
-  )
+ 
 
   const initiatePayment = useCallback(() => {
     if (!selectedPlan) return

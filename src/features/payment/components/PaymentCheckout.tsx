@@ -191,25 +191,12 @@ export function PaymentCheckout() {
                       {t("back")}
                     </Button>
                     <Button
-                      type="button"
-
-                      onClick={goToReview}
-                      className="bg-gradient-to-br from-[#2563eb] to-[#1e3a6d]"
-                    >
-                      {t("continueToReview")}
-
-                      onClick={initiatePayment}
-                      isLoading={
-                        createPayment.isPending
-                      }
-                      loadingText={t(
-                        "initiating"
-                      )}
-                      className="bg-gradient-to-br from-[#2563eb] to-[#1e3a6d]"
-                    >
-                      {t("payNow")}
-
-                    </Button>
+    type="button"
+    onClick={goToReview}
+    className="bg-gradient-to-br from-[#2563eb] to-[#1e3a6d]"
+>
+    {t("continueToReview")}
+</Button>
                   </div>
                 </>
               )}
