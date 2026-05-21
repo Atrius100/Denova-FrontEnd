@@ -1,9 +1,10 @@
 "use client";
 
 import { LucideIcon }
-    from "lucide-react";
+from "lucide-react";
 
 type StatCardProps = {
+
     title: string;
 
     value: number;
@@ -27,13 +28,12 @@ export function StatCard({
 
         <div
             className="
-        rounded-[1.75rem]
+        rounded-3xl
         border border-slate-200
         bg-white
 
-        p-4
-        sm:p-5
-        lg:p-6
+        p-5
+        sm:p-6
 
         shadow-sm
         transition-all duration-300
@@ -43,10 +43,9 @@ export function StatCard({
       "
         >
 
-            <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start justify-between gap-4">
 
-                {/* Content */}
-                <div className="min-w-0 flex-1">
+                <div className="min-w-0">
 
                     <p
                         className="
@@ -60,10 +59,9 @@ export function StatCard({
 
                     <h2
                         className="
-              mt-2
+              mt-3
 
               text-3xl font-bold text-slate-800
-              sm:mt-3
               sm:text-4xl
             "
                     >
@@ -73,10 +71,9 @@ export function StatCard({
 
                     <p
                         className="
-              mt-1
+              mt-2
 
-              text-[11px] text-slate-400
-              sm:mt-2
+              text-xs text-slate-400
               sm:text-sm
             "
                     >
@@ -85,13 +82,9 @@ export function StatCard({
                     </p>
                 </div>
 
-                {/* Icon */}
                 <div
                     className={`
-            flex shrink-0 items-center justify-center
-            rounded-2xl
-
-            h-12 w-12
+            flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl
             sm:h-14 sm:w-14
 
             ${iconBg}

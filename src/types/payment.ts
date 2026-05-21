@@ -15,6 +15,7 @@ export type PaymentFlowStep =
   | "summary"
   | "phone"
   | "review"
+
   | "initiating"
   | "pending"
   | "verifying"

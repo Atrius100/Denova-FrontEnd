@@ -17,8 +17,12 @@ type PaymentStepIndicatorProps = {
 }
 
 function stepIndex(step: PaymentFlowStep) {
+
   if (step === "review") return 2
   if (step === "initiating") return 3
+
+  if (step === "initiating") return 2
+
   if (step === "verifying") return 3
   if (step === "failed") return 3
   if (step === "success") return 4

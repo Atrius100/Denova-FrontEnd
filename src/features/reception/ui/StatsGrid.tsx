@@ -1,69 +1,32 @@
 "use client";
 
-import { useTranslations }
-    from "next-intl";
-
-import {
-    Clock3,
-    UserCheck,
-    Activity,
-    Users,
-} from "lucide-react";
+import { LucideIcon }
+from "lucide-react";
 
 import { StatCard }
-    from "./StatCard";
+from "./StatCard";
 
-import { useDashboardStats }
-    from "../hook/useDashboardStats";
+export type StatsItem = {
 
-const statsConfig = [
+    title: string;
 
-    {
-        key: "pendingRequests",
-        descKey: "pendingRequestsDesc",
-        valueKey: "pendingRequests",
-        icon: Clock3,
-        iconBg:
-            "bg-gradient-to-br from-[#1e3a6d]/10 to-[#3b82f6]/20",
-    },
+    value: number;
 
-    {
-        key: "waitingPatients",
-        descKey: "waitingPatientsDesc",
-        valueKey: "waitingPatients",
-        icon: UserCheck,
-        iconBg:
-            "bg-gradient-to-br from-[#1e3a6d]/10 to-[#3b82f6]/20",
-    },
+    description: string;
 
-    {
-        key: "activeTreatments",
-        descKey: "activeTreatmentsDesc",
-        valueKey: "activeTreatments",
-        icon: Activity,
-        iconBg:
-            "bg-gradient-to-br from-[#1e3a6d]/10 to-[#3b82f6]/20",
-    },
+    icon: LucideIcon;
 
-    {
-        key: "registeredPatients",
-        descKey: "registeredPatientsDesc",
-        valueKey: "registeredPatients",
-        icon: Users,
-        iconBg:
-            "bg-gradient-to-br from-[#1e3a6d]/10 to-[#3b82f6]/20",
-    },
-];
+    iconBg: string;
+};
 
-export function StatsGrid() {
+type StatsGridProps = {
 
-    const t =
-        useTranslations(
-            "dashboardStats"
-        );
+    items: StatsItem[];
+};
 
-    const { data } =
-        useDashboardStats();
+export function StatsGrid({
+    items,
+}: StatsGridProps) {
 
     return (
 
@@ -73,25 +36,26 @@ export function StatsGrid() {
 
         grid-cols-1
         sm:grid-cols-2
-        xl:grid-cols-4
+        2xl:grid-cols-4
       "
         >
 
-            {statsConfig.map((item) => (
+            {items.map(
+                (
+                    item,
+                    index
+                ) => (
 
-                <StatCard
-                    key={item.key}
-                    title={t(item.key)}
-                    value={
-                        data?.[
-                        item.valueKey as keyof typeof data
-                        ] || 0
-                    }
-                    description={t(item.descKey)}
-                    icon={item.icon}
-                    iconBg={item.iconBg}
-                />
-            ))}
+                    <StatCard
+                        key={index}
+                        title={item.title}
+                        value={item.value}
+                        description={item.description}
+                        icon={item.icon}
+                        iconBg={item.iconBg}
+                    />
+                )
+            )}
         </div>
     );
 }

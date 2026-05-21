@@ -112,20 +112,53 @@
     "searchPlaceholder": "Search patient...",
     "addPatient": "Add Patient"
   },
-  "dashboardStats": {
-    "pendingRequests": "Pending Requests",
-    "pendingRequestsDesc": "Waiting for review",
+  "receptionDashboard": {
 
-    "waitingPatients": "Waiting Patients",
-    "waitingPatientsDesc": "Approved but not started",
+  "pendingRequests": "New Requests",
 
-    "activeTreatments": "Active Treatments",
-    "activeTreatmentsDesc": "Currently in progress",
+  "pendingRequestsDesc": "Requests waiting for review",
 
-    "registeredPatients": "Registered Patients",
-    "registeredPatientsDesc": "Total in the system"
-  },
- 
+  "waitingPatients": "Waiting Patients",
+
+  "waitingPatientsDesc": "Patients waiting for assignment",
+
+  "activeTreatments": "Active Treatments",
+
+  "activeTreatmentsDesc": "Cases under follow-up",
+
+  "registeredPatients": "Registered Patients",
+
+  "registeredPatientsDesc": "Total registered patients",
+
+  "search": "Search patient...",
+
+  "addPatient": "Add Patient"
+
+},
+
+"adminDashboard": {
+
+  "monthlyPatients": "Monthly Patients",
+
+  "monthlyPatientsDesc": "Total patients during the current month",
+
+  "waitingPatients": "Waiting Patients",
+
+  "waitingPatientsDesc": "Patients not assigned to doctors yet",
+
+  "studentRequests": "Student Requests",
+
+  "studentRequestsDesc": "New treatment requests from students",
+
+  "universityPatients": "University Patients",
+
+  "universityPatientsDesc": "Patients linked to universities",
+
+  "search": "Search student or patient...",
+
+  "addCase": "Add Case"
+
+},
   "addPatientModal": {
     "title": "Add Patient",
     "subtitle": "Create a new patient profile",
@@ -178,6 +211,7 @@
     "back": "Back",
     "proceedToPay": "Proceed to payment",
     "payNow": "Pay with Syriatel Cash",
+
     "continueToReview": "Review order",
     "review": {
       "description": "Review your subscription summary and Syriatel number before confirming payment.",
@@ -186,6 +220,7 @@
       "confirming": "Sending...",
       "back": "Back"
     },
+
     "initiating": "Creating transaction...",
     "verifying": "Verifying...",
     "confirmPayment": "Confirm payment",

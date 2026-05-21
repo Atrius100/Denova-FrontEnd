@@ -61,6 +61,7 @@ export function usePaymentFlow(
     setStep("phone")
   }, [])
 
+
   const goToReview = useCallback(() => {
     if (!selectedPlan) return
 
@@ -86,6 +87,7 @@ export function usePaymentFlow(
     createPayment.reset()
     verifyPayment.reset()
   }, [createPayment, verifyPayment])
+
 
   const applyTerminalStep = useCallback(
     (status: PaymentTransaction["status"]) => {
@@ -176,6 +178,28 @@ export function usePaymentFlow(
     verifyPayment,
   ])
 
+
+  const applyTerminalStep = useCallback(
+    (status: PaymentTransaction["status"]) => {
+      if (status === "completed") {
+        setStep("success")
+        return
+      }
+
+      if (
+        status === "failed" ||
+        status === "expired"
+      ) {
+        setStep("failed")
+        return
+      }
+
+      setStep("pending")
+    },
+    []
+  )
+
+
   useEffect(() => {
     if (!statusQuery.data || step !== "pending") {
       return
@@ -231,7 +255,9 @@ export function usePaymentFlow(
     setLocalError,
     goToSummary,
     goToPhone,
+
     goToReview,
+
     initiatePayment,
     submitVerification,
     resetFlow,
