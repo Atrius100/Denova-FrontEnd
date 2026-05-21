@@ -1,10 +1,13 @@
-import { createPayment } from "@/services/payment.service"
-import { PaymentPayload } from "@/types/payment"
+/**
+ * @deprecated Use usePaymentFlow, useCreatePayment, or useVerifyPayment
+ */
+import { useCreatePayment } from "./useCreatePayment"
 
 export const usePayment = () => {
-  const handlePayment = async (data: PaymentPayload) => {
-    return await createPayment(data)
-  }
+  const create = useCreatePayment()
 
-  return { handlePayment }
+  return {
+    handlePayment: create.mutateAsync,
+    isLoading: create.isPending,
+  }
 }

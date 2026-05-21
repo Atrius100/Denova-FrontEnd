@@ -1,7 +1,4 @@
-import React from 'react'
-
-export default function PaymentForm() {
-  return (
-    <div>PaymentForm</div>
-  )
-}
+/**
+ * @deprecated Use PaymentCheckout instead
+ */
+export { PaymentCheckout as default } from "./PaymentCheckout"

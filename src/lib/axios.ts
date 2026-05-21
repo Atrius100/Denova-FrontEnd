@@ -1,14 +1,26 @@
-import axios from "axios";
+import axios from "axios"
+import { API_BASE_URL } from "@/config/api"
+import { readAuthSession } from "@/lib/auth/session"
 
-export const axiosInstance =
-  axios.create({
-    baseURL:
-      "http://denova.somee.com",
+export const axiosInstance = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  withCredentials: false,
+})
 
-    headers: {
-      "Content-Type":
-        "application/json",
-    },
+axiosInstance.interceptors.request.use((config) => {
+  const session = readAuthSession()
+  const legacyToken =
+    typeof window !== "undefined"
+      ? localStorage.getItem("token")
+      : null
+  const token = session?.token ?? legacyToken
 
-    withCredentials: false,
-  });
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+
+  return config
+})
