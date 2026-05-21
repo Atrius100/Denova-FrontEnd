@@ -3,7 +3,7 @@ import axios from "axios";
 export const axiosInstance =
   axios.create({
     baseURL:
-      "http://denova.somee.com",
+      "git pull origin main",
 
     headers: {
       "Content-Type":

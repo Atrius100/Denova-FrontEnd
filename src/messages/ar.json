@@ -65,19 +65,39 @@
     "searchPlaceholder": "ابحث عن مريض...",
     "addPatient": "إضافة مريض"
   },
-   "dashboardStats": {
-    "pendingRequests": "الطلبات المعلقة",
-    "pendingRequestsDesc": "بانتظار المراجعة",
+  
+  "receptionDashboard": {
+  "pendingRequests": "الطلبات الجديدة",
+  "pendingRequestsDesc": "طلبات بانتظار المراجعة",
 
-    "waitingPatients": "المرضى المنتظرون",
-    "waitingPatientsDesc": "تم قبولهم ولم يبدأ العلاج",
+  "waitingPatients": "المرضى المنتظرين",
+  "waitingPatientsDesc": "مرضى بانتظار التوجيه",
 
-    "activeTreatments": "العلاجات النشطة",
-    "activeTreatmentsDesc": "حالات قيد المعالجة",
+  "activeTreatments": "العلاجات النشطة",
+  "activeTreatmentsDesc": "حالات قيد المتابعة",
 
-    "registeredPatients": "إجمالي المرضى",
-    "registeredPatientsDesc": "عدد المرضى بالنظام"
-  },
+  "registeredPatients": "إجمالي المرضى",
+  "registeredPatientsDesc": "عدد المرضى المسجلين",
+
+  "search": "ابحث عن مريض...",
+  "addPatient": "إضافة مريض"
+}
+,
+
+  "adminDashboard": {
+    "monthlyPatients": "مرضى هذا الشهر",
+    "monthlyPatientsDesc": "إجمالي المرضى خلال الشهر الحالي",
+
+    "waitingPatients": "مرضى قيد الانتظار",
+    "waitingPatientsDesc": "لم يتم ربطهم بطبيب بعد",
+
+    "studentRequests": "طلبات الطلاب",
+    "studentRequestsDesc": "طلبات الحالات الجديدة",
+
+    "universityPatients": "مرضى الجامعات",
+    "universityPatientsDesc": "عدد المرضى المرتبطين بالجامعات"
+  }
+,
   
   "addPatientModal": {
     "title": "إضافة مريض",
@@ -120,6 +140,7 @@
   "waiting": "قيد الانتظار",
   "active": "نشطة",
   "completed": "مكتملة"
+
   },
   "payment": {
     "pageTitle": "الدفع والاشتراك",
@@ -496,4 +517,5 @@
       "realtimeTestMsg": "إشعار جديد وصل عبر قناة المزامنة (محاكاة)"
     }
   }
+
 }

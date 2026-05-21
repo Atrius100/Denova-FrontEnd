@@ -3,6 +3,9 @@
 import { useState }
 from "react";
 
+import { useTranslations }
+from "next-intl";
+
 import { X }
 from "lucide-react";
 
@@ -25,29 +28,50 @@ type PatientFormModalProps = {
     defaultValues?: any;
 };
 
-const universities = [
-
-    {
-        value: "tishreen",
-        label: "جامعة تشرين",
-    },
-
-    {
-        value: "manara",
-        label: "جامعة المنارة",
-    },
-
-    {
-        value: "alsham",
-        label: "جامعة الشام",
-    },
-];
-
 export default function PatientFormModal({
     mode,
     onClose,
     defaultValues,
 }: PatientFormModalProps) {
+
+    const t =
+        useTranslations(
+            "addPatientModal"
+        );
+
+    /* ================= UNIVERSITIES ================= */
+
+    const universities = [
+
+        {
+            value: "tishreen",
+
+            label:
+                t(
+                    "universities.tishreen"
+                ),
+        },
+
+        {
+            value: "manara",
+
+            label:
+                t(
+                    "universities.manara"
+                ),
+        },
+
+        {
+            value: "alsham",
+
+            label:
+                t(
+                    "universities.alsham"
+                ),
+        },
+    ];
+
+    /* ================= FORM ================= */
 
     const [
         formData,
@@ -90,6 +114,8 @@ export default function PatientFormModal({
         );
     };
 
+    /* ================= SAVE ================= */
+
     const handleSave =
         async () => {
 
@@ -104,7 +130,7 @@ export default function PatientFormModal({
                   formData
                 );
 
-                إذا mode=request
+                if request:
                 
                 await axios.delete(
                   `/requests/${defaultValues.id}`
@@ -128,52 +154,114 @@ export default function PatientFormModal({
 
     return (
 
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4 backdrop-blur-sm">
+        <div
+            className="
+        fixed inset-0 z-50
 
-            <div className="w-full max-w-2xl rounded-[2rem] bg-white shadow-[0_25px_80px_rgba(15,23,42,0.18)]">
+        flex items-center justify-center
 
-                {/* Header */}
-                <div className="flex items-start justify-between border-b border-slate-200 px-5 py-5 sm:px-6">
+        bg-black/30
+        p-4
+
+        backdrop-blur-sm
+      "
+        >
+
+            <div
+                className="
+          w-full max-w-2xl
+
+          overflow-hidden
+
+          rounded-[2rem]
+          bg-white
+
+          shadow-[0_25px_80px_rgba(15,23,42,0.18)]
+        "
+            >
+
+                {/* ================= HEADER ================= */}
+                <div
+                    className="
+            flex items-start justify-between
+
+            border-b border-slate-200
+
+            px-5 py-5
+            sm:px-6
+          "
+                >
 
                     <div>
 
-                        <h2 className="text-xl font-bold text-slate-800 sm:text-2xl">
+                        <h2
+                            className="
+                text-xl font-bold text-slate-800
+                sm:text-2xl
+              "
+                        >
 
                             {
                                 mode ===
                                     "create"
 
-                                    ? "إضافة مريض"
+                                    ? t("title")
 
-                                    : "استكمال بيانات الطلب"
+                                    : t("requestTitle")
                             }
                         </h2>
 
-                        <p className="mt-1 text-sm text-slate-500">
+                        <p
+                            className="
+                mt-1 text-sm text-slate-500
+              "
+                        >
 
                             {
                                 mode ===
                                     "create"
 
-                                    ? "إضافة مريض جديد للسجل"
+                                    ? t("subtitle")
 
-                                    : "تعديل وتحويل الطلب إلى سجل مريض"
+                                    : t("requestSubtitle")
                             }
                         </p>
                     </div>
 
+                    {/* Close */}
                     <button
                         onClick={onClose}
-                        className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-500 transition hover:bg-slate-200"
+                        className="
+              flex h-10 w-10 items-center justify-center
+
+              rounded-xl
+
+              bg-slate-100
+              text-slate-500
+
+              transition
+              hover:bg-slate-200
+            "
                     >
 
                         <X className="h-5 w-5" />
                     </button>
                 </div>
 
-                {/* Form */}
-                <div className="grid grid-cols-1 gap-2 md:gap-4 p-2 md:p-6 md:grid-cols-2">
+                {/* ================= FORM ================= */}
+                <div
+                    className="
+            grid grid-cols-1 gap-3
 
+            p-3
+
+            md:grid-cols-2
+            md:gap-4
+            md:p-6
+          "
+                >
+
+                    {/* Patient Name */}
                     <FormInputR
                         value={
                             formData.patientName
@@ -184,9 +272,12 @@ export default function PatientFormModal({
                                 e.target.value
                             )
                         }
-                        placeholder="اسم المريض"
+                        placeholder={
+                            t("patientName")
+                        }
                     />
 
+                    {/* Age */}
                     <FormInputR
                         value={
                             formData.age
@@ -197,9 +288,12 @@ export default function PatientFormModal({
                                 e.target.value
                             )
                         }
-                        placeholder="العمر"
+                        placeholder={
+                            t("age")
+                        }
                     />
 
+                    {/* Phone */}
                     <FormInputR
                         value={
                             formData.phone
@@ -210,9 +304,12 @@ export default function PatientFormModal({
                                 e.target.value
                             )
                         }
-                        placeholder="رقم الموبايل"
+                        placeholder={
+                            t("phone")
+                        }
                     />
 
+                    {/* University */}
                     <FormSelectR
                         value={
                             formData.university
@@ -223,10 +320,13 @@ export default function PatientFormModal({
                                 value
                             )
                         }
-                        placeholder="الجامعة"
+                        placeholder={
+                            t("university")
+                        }
                         options={universities}
                     />
 
+                    {/* National ID */}
                     <FormInputR
                         value={
                             formData.nationalId
@@ -237,10 +337,13 @@ export default function PatientFormModal({
                                 e.target.value
                             )
                         }
-                        placeholder="الرقم الوطني"
+                        placeholder={
+                            t("nationalId")
+                        }
                         className="md:col-span-2"
                     />
 
+                    {/* Tooth Number */}
                     <FormInputR
                         value={
                             formData.toothNumber
@@ -251,9 +354,12 @@ export default function PatientFormModal({
                                 e.target.value
                             )
                         }
-                        placeholder="رقم السن"
+                        placeholder={
+                            t("toothNumber")
+                        }
                     />
 
+                    {/* Condition */}
                     <FormInputR
                         value={
                             formData.condition
@@ -264,27 +370,81 @@ export default function PatientFormModal({
                                 e.target.value
                             )
                         }
-                        placeholder="الحالة"
+                        placeholder={
+                            t("condition")
+                        }
                     />
                 </div>
 
-                {/* Footer */}
-                <div className="flex flex-col-reverse gap-2 md:gap-3 border-t border-slate-200 p-2 md:p-5 sm:flex-row sm:items-center sm:justify-end sm:px-6">
+                {/* ================= FOOTER ================= */}
+                <div
+                    className="
+            flex flex-col-reverse gap-2
 
+            border-t border-slate-200
+
+            p-3
+
+            sm:flex-row
+            sm:items-center
+            sm:justify-end
+
+            md:gap-3
+            md:p-5
+            md:px-6
+          "
+                >
+
+                    {/* Cancel */}
                     <button
                         onClick={onClose}
-                        className="h-10 md:h-11 rounded-xl md:rounded-2xl border border-slate-200 px-5 text-sm font-medium text-slate-600 transition hover:bg-slate-100"
+                        className="
+              h-10
+              rounded-xl
+
+              border border-slate-200
+
+              px-5
+
+              text-sm font-medium text-slate-600
+
+              transition
+              hover:bg-slate-100
+
+              md:h-11
+              md:rounded-2xl
+            "
                     >
 
-                        إلغاء
+                        {t("cancel")}
                     </button>
 
+                    {/* Save */}
                     <button
                         onClick={handleSave}
-                        className="h-10 md:h-11 rounded-xl md:rounded-2xl bg-gradient-to-r from-[#1e3a6d] to-[#3b82f6] px-6 text-sm font-medium text-white shadow-lg shadow-blue-500/20 transition hover:opacity-90"
+                        className="
+              h-10
+              rounded-xl
+
+              bg-gradient-to-r
+              from-[#1e3a6d]
+              to-[#3b82f6]
+
+              px-6
+
+              text-sm font-medium text-white
+
+              shadow-lg shadow-blue-500/20
+
+              transition
+              hover:opacity-90
+
+              md:h-11
+              md:rounded-2xl
+            "
                     >
 
-                        حفظ
+                        {t("save")}
                     </button>
                 </div>
             </div>

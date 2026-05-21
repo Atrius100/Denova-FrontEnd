@@ -39,7 +39,7 @@ export function DashboardActions({
             {/* Add Patient */}
             <button
                 onClick={onAddPatient}
-                className="flex h-10 md:h-12 rounded-xl  w-[100px] md:rounded-2xl items-center justify-center gap-2 bg-gradient-to-r from-[#1e3a6d] to-[#3b82f6] px-6 text-sm font-medium text-white shadow-lg shadow-blue-500/20 transition hover:opacity-90"
+                className="flex h-10 md:h-12 rounded-xl  w-[150px] md:rounded-2xl items-center justify-center gap-2 bg-gradient-to-r from-[#1e3a6d] to-[#3b82f6] px-6 text-sm font-medium text-white shadow-lg shadow-blue-500/20 transition hover:opacity-90"
             >
                 <Plus className="h-5 w-5" />
 
