@@ -1,4 +1,49 @@
 {
+  "studentCases": {
+    "title": "Register a new medical case",
+    "description": "Enter patient details and case category to submit via the MedicalCases API.",
+    "fields": {
+      "patientName": "Patient name",
+      "patientSecurityNumber": "National ID / patient code",
+      "patientAge": "Patient age",
+      "patientGender": "Gender",
+      "category": "Case category",
+      "subcategory": "Subcategory",
+      "clinicalNotes": "Clinical notes"
+    },
+    "placeholders": {
+      "patientName": "e.g. Ahmad M.",
+      "patientSecurityNumber": "Optional",
+      "patientAge": "Age in years",
+      "selectGender": "Select gender",
+      "selectCategory": "Select category",
+      "selectSubcategory": "Select subcategory",
+      "clinicalNotes": "Diagnosis or additional notes"
+    },
+    "gender": {
+      "male": "Male",
+      "female": "Female"
+    },
+    "submit": "Submit case",
+    "helpText": "Cases are reviewed by admins before publication.",
+    "loadingCategories": "Loading categories...",
+    "retry": "Retry",
+    "successMessage": "Medical case submitted successfully.",
+    "errors": {
+      "required": "Please fill all required fields.",
+      "submitFailed": "Could not submit the case. Check your data and retry.",
+      "loadingCategories": "Could not load case categories from the server."
+    }
+  },
+  "studentSidebar": {
+    "subtitle": "Student panel",
+    "profile": "Profile",
+    "addCase": "Add case",
+    "payment": "Payment",
+    "myCases": "My cases",
+    "footerTitle": "Student panel",
+    "footerSubtitle": "Clinical case management"
+  },
   "auth": {
     "welcomeBack": "Welcome Back",
 
@@ -166,6 +211,16 @@
     "back": "Back",
     "proceedToPay": "Proceed to payment",
     "payNow": "Pay with Syriatel Cash",
+
+    "continueToReview": "Review order",
+    "review": {
+      "description": "Review your subscription summary and Syriatel number before confirming payment.",
+      "phoneLabel": "Payment number",
+      "confirmPay": "Confirm and pay",
+      "confirming": "Sending...",
+      "back": "Back"
+    },
+
     "initiating": "Creating transaction...",
     "verifying": "Verifying...",
     "confirmPayment": "Confirm payment",

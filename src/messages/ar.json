@@ -1,4 +1,49 @@
 {
+  "studentCases": {
+    "title": "تسجيل حالة طبية جديدة",
+    "description": "أدخل بيانات المريض ونوع الحالة ليتم إرسالها عبر واجهة MedicalCases في النظام.",
+    "fields": {
+      "patientName": "اسم المريض",
+      "patientSecurityNumber": "الرقم الوطني / كود المريض",
+      "patientAge": "عمر المريض",
+      "patientGender": "جنس المريض",
+      "category": "تصنيف الحالة",
+      "subcategory": "التصنيف الفرعي",
+      "clinicalNotes": "الملاحظات السريرية"
+    },
+    "placeholders": {
+      "patientName": "مثال: أحمد م.",
+      "patientSecurityNumber": "اختياري",
+      "patientAge": "العمر بالسنوات",
+      "selectGender": "اختر الجنس",
+      "selectCategory": "اختر التصنيف",
+      "selectSubcategory": "اختر التصنيف الفرعي",
+      "clinicalNotes": "تفاصيل تشخيصية أو ملاحظات إضافية"
+    },
+    "gender": {
+      "male": "ذكر",
+      "female": "أنثى"
+    },
+    "submit": "تسجيل الحالة",
+    "helpText": "تُراجع الحالة من قبل الإدارة قبل نشرها للطلاب.",
+    "loadingCategories": "جاري تحميل التصنيفات...",
+    "retry": "إعادة المحاولة",
+    "successMessage": "تم تسجيل الحالة بنجاح.",
+    "errors": {
+      "required": "يرجى ملء جميع الحقول المطلوبة.",
+      "submitFailed": "تعذر إرسال الحالة. تحقق من البيانات وحاول مجدداً.",
+      "loadingCategories": "تعذر تحميل تصنيفات الحالات من الخادم."
+    }
+  },
+  "studentSidebar": {
+    "subtitle": "لوحة الطالب",
+    "profile": "الملف الشخصي",
+    "addCase": "إضافة حالة",
+    "payment": "الدفع",
+    "myCases": "حالاتي",
+    "footerTitle": "لوحة الطالب",
+    "footerSubtitle": "إدارة الحالات السريرية"
+  },
   "auth": {
     "welcomeBack": "مرحبًا بعودتك",
     "createAccount": "إنشاء حساب",
@@ -152,6 +197,16 @@
     "back": "رجوع",
     "proceedToPay": "المتابعة للدفع",
     "payNow": "ادفع عبر سيرياتيل كاش",
+
+    "continueToReview": "مراجعة الطلب",
+    "review": {
+      "description": "راجع ملخص الاشتراك ورقم سيرياتيل كاش قبل تأكيد الدفع.",
+      "phoneLabel": "رقم الدفع",
+      "confirmPay": "تأكيد وإرسال الدفع",
+      "confirming": "جاري الإرسال...",
+      "back": "رجوع"
+    },
+
     "initiating": "جاري إنشاء العملية...",
     "verifying": "جاري التحقق...",
     "confirmPayment": "تأكيد الدفع",
@@ -518,4 +573,3 @@
     }
   }
 
-}

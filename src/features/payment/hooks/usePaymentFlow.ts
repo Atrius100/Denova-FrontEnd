@@ -61,6 +61,23 @@ export function usePaymentFlow(
     setStep("phone")
   }, [])
 
+
+  const goToReview = useCallback(() => {
+    if (!selectedPlan) return
+
+    const normalizedPhone = phone
+      .replace(/\s/g, "")
+      .trim()
+
+    if (!SYRIATEL_PHONE_REGEX.test(normalizedPhone)) {
+      setLocalError("invalidPhone")
+      return
+    }
+
+    setLocalError(null)
+    setStep("review")
+  }, [phone, selectedPlan])
+
   const resetFlow = useCallback(() => {
     setStep("plan")
     setPhone("")
@@ -70,6 +87,27 @@ export function usePaymentFlow(
     createPayment.reset()
     verifyPayment.reset()
   }, [createPayment, verifyPayment])
+
+
+  const applyTerminalStep = useCallback(
+    (status: PaymentTransaction["status"]) => {
+      if (status === "completed") {
+        setStep("success")
+        return
+      }
+
+      if (
+        status === "failed" ||
+        status === "expired"
+      ) {
+        setStep("failed")
+        return
+      }
+
+      setStep("pending")
+    },
+    []
+  )
 
   const initiatePayment = useCallback(() => {
     if (!selectedPlan) return
@@ -140,6 +178,7 @@ export function usePaymentFlow(
     verifyPayment,
   ])
 
+
   const applyTerminalStep = useCallback(
     (status: PaymentTransaction["status"]) => {
       if (status === "completed") {
@@ -159,6 +198,7 @@ export function usePaymentFlow(
     },
     []
   )
+
 
   useEffect(() => {
     if (!statusQuery.data || step !== "pending") {
@@ -215,6 +255,9 @@ export function usePaymentFlow(
     setLocalError,
     goToSummary,
     goToPhone,
+
+    goToReview,
+
     initiatePayment,
     submitVerification,
     resetFlow,

@@ -51,11 +51,11 @@ export function JourneySection() {
                 </div>
 
                 {/* Steps */}
-                <div className="flex justify-between items-center">
+                <div className="flex flex-wrap justify-center gap-12 md:flex-nowrap md:justify-between md:gap-6 lg:gap-12">
                     {steps.map((step, index) => (
                         <div
                             key={index}
-                            className="relative text-center"
+                            className="relative min-w-[10rem] flex-1 text-center"
                         >
 
 

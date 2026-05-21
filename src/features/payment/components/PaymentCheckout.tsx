@@ -14,6 +14,9 @@ import { OrderSummary } from "./OrderSummary"
 import { SyriatelCashBadge } from "./SyriatelCashBadge"
 import { SyriatelInstructions } from "./SyriatelInstructions"
 import { PaymentStatusPanel } from "./PaymentStatusPanel"
+
+import { PaymentReviewStep } from "./PaymentReviewStep"
+
 import type { SubscriptionPlanId } from "@/types/payment"
 
 export function PaymentCheckout() {
@@ -41,6 +44,9 @@ export function PaymentCheckout() {
     localError,
     goToSummary,
     goToPhone,
+
+    goToReview,
+
     initiatePayment,
     submitVerification,
     retryPayment,
@@ -51,6 +57,9 @@ export function PaymentCheckout() {
 
   const isTerminal =
     step === "success" || step === "failed"
+
+
+  const normalizedPhone = phone.replace(/\s/g, "").trim()
 
   const showStatusPanel = [
     "initiating",
@@ -183,6 +192,12 @@ export function PaymentCheckout() {
                     </Button>
                     <Button
                       type="button"
+
+                      onClick={goToReview}
+                      className="bg-gradient-to-br from-[#2563eb] to-[#1e3a6d]"
+                    >
+                      {t("continueToReview")}
+
                       onClick={initiatePayment}
                       isLoading={
                         createPayment.isPending
@@ -193,12 +208,32 @@ export function PaymentCheckout() {
                       className="bg-gradient-to-br from-[#2563eb] to-[#1e3a6d]"
                     >
                       {t("payNow")}
+
                     </Button>
                   </div>
                 </>
               )}
 
               {!isTerminal &&
+
+                step === "review" &&
+                selectedPlan && (
+                  <PaymentReviewStep
+                    plan={selectedPlan}
+                    phone={normalizedPhone}
+                    isLoading={createPayment.isPending}
+                    errorMessage={
+                      localError
+                        ? tErrors(localError)
+                        : null
+                    }
+                    onBack={() => flow.setStep("phone")}
+                    onConfirm={initiatePayment}
+                  />
+                )}
+
+              {!isTerminal &&
+
                 (step === "pending" ||
                   step === "initiating") &&
                 selectedPlan &&
