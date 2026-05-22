@@ -10,6 +10,9 @@ export const landingMessages = {
       login: "تسجيل الدخول",
       register: "ابدأ الآن",
       brandTagline: "Dental Platform",
+      reception: "الاستقبال",
+      student: "الطالب",
+      admin: "الأدمن",
     },
     hero: {
       title1: "منصتك الذكية لإدارة الحالات",
@@ -17,7 +20,7 @@ export const landingMessages = {
       subtitle:
         "نظم، تابع، واعثر على الحالات التعليمية المطلوبة بسهولة.",
       ctaPrimary: "إنشاء الآن",
-      ctaSecondary: "ابحث عن حالات",
+      ctaSecondary: "اشترك",
       statUnis: "جامعات",
       statStudents: "طالب",
       statCases: "حالة مسجَّلة",
@@ -135,6 +138,9 @@ export const landingMessages = {
       login: "Log in",
       register: "Get started",
       brandTagline: "Dental Platform",
+      reception: "Reception",
+      student: "Student",
+      admin: "Admin",
     },
     hero: {
       title1: "Your smart platform for clinical cases",
@@ -142,7 +148,7 @@ export const landingMessages = {
       subtitle:
         "Organize, follow up, and find the educational cases you need—with ease.",
       ctaPrimary: "Create account",
-      ctaSecondary: "Browse cases",
+      ctaSecondary: "Subscribe",
       statUnis: "Universities",
       statStudents: "Students",
       statCases: "Cases",

@@ -25,6 +25,9 @@ export function Navbar() {
       { label: landing.nav.cases, href: "/#cases" },
       { label: landing.nav.universities, href: "/#universities" },
       { label: landing.nav.about, href: "/#about" },
+      { label: landing.nav.reception, href: "/dashboard" },
+      { label: landing.nav.student, href: "/profile" },
+      { label: landing.nav.admin, href: "/dashboardA" },
     ],
     [landing.nav],
   );

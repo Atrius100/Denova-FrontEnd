@@ -41,14 +41,14 @@ export function HeroSection() {
 
           <div className="mb-20 flex w-full flex-col items-stretch justify-center gap-5 sm:flex-row sm:items-center">
             <Link
-              href="/register"
+              href="/signup"
               className="inline-flex justify-center rounded-xl bg-gradient-to-r from-dnv-navy to-dnv-blue px-10 py-[1.05rem] text-lg font-semibold text-white shadow-lg shadow-dnv-accent/25 transition hover:opacity-[0.95] hover:shadow-xl"
             >
               {landing.hero.ctaPrimary}
             </Link>
 
             <Link
-              href="/cases"
+              href="/payment"
               className="inline-flex justify-center rounded-xl border border-dnv-border bg-background px-10 py-[1.05rem] text-lg font-semibold text-dnv-heading shadow-sm backdrop-blur-sm transition hover:border-dnv-navy hover:bg-background dark:border-neutral-700 dark:bg-slate-900/90 dark:text-neutral-100"
             >
               {landing.hero.ctaSecondary}

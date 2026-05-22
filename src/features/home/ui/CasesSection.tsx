@@ -27,7 +27,7 @@ export function CasesSection() {
   }, [cases, query]);
 
   return (
-    <section className="border-y border-dnv-border bg-background px-5 py-14 md:px-10 md:py-16 lg:p-[60px]">
+    <section id="cases" className="border-y border-dnv-border bg-background px-5 py-14 md:px-10 md:py-16 lg:p-[60px]">
       <div className="mb-10 mx-auto max-w-[58rem] text-center">
         <TitleSectionCommon
           title={landing.cases.title}
