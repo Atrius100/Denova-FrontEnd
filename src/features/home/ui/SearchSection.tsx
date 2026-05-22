@@ -1,60 +1,36 @@
-import Link from "next/link";
-import { Lock, Search } from "lucide-react";
-import { TitleSectionCommon } from "../../../components/ui/TitleSectionCommon";
+"use client";
+import { TitleSectionCommon } from "@/components/ui/TitleSectionCommon";
+import { usePreferences } from "@/providers/PreferencesProvider";
 
 export function SearchSection() {
-    return (
-        <section className="bg-[#f8f9fb] opacity-60  p-5 md:p-10 lg:p-[60px]">
+  const { landing } = usePreferences();
+  return (
+    <section className="bg-white  p-5 md:p-10 lg:p-[60px]">
+      <div className="">
+        {/* Title */}
+        <div className="mb-16 text-center">
+          <TitleSectionCommon title={landing.cases.title}
+            subtitle={landing.cases.subtitle}
+          />
 
-            {/* Title */}
-            <div className="mb-8 text-center">
-                <TitleSectionCommon
-                    title={" ابحث في قاعدة بيانات الحالات"}
-                    subtitle={` استكشف الحالات التعليمية المتاحة بسهولة`}
-                />
+        </div>
 
+        {/* Grid */}
+        <div className="grid gap-6 md:grid-cols-4">
+          {landing.cases.items.map((item, index) => (
+            <div
+              key={index}
+              className="group rounded-2xl border border-gray-300 bg-gradient-to-b from-white to-[#f8fafc] py-6 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#1e3a6d]/20 hover:shadow-xl"
+            >
+              <h3 className="text-xl font-semibold text-[#1e293b9f] transition group-hover:text-[#1e3a6d]">
+                {item}
+              </h3>
+
+              <div className="mx-auto mt-4 h-1 w-10 rounded-full bg-gradient-to-r from-[#1e3a6d] to-[#3b82f6]" />
             </div>
-
-            {/* Search Input */}
-            <div className="mx-auto mb-8 max-w-3xl">
-                <div className="flex h-16  items-center gap-3 rounded-full bg-white px-6 shadow-lg">
-                    <Search className="h-5 w-5 text-gray-400" />
-
-                    <input
-                        type="text"
-                        placeholder="ابحث بواسطة اسم الحالة أو التصنيف..."
-                        className="w-full bg-transparent text-[#1e293b] outline-none placeholder:text-gray-400"
-                    />
-                </div>
-            </div>
-
-            {/* Locked Card */}
-            <div className="rounded-[2rem] border  border-gray-200 bg-white px-8 py-10 text-center shadow-sm">
-                {/* Icon */}
-                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#eef3fb]">
-                    <Lock className="h-8 w-8 text-[#1e3a6d]" />
-                </div>
-
-                {/* Title */}
-                <h3 className="mb-4 text-3xl font-bold text-[#1e293b]">
-                    هذا القسم متاح للمشتركين فقط
-                </h3>
-
-                {/* Desc */}
-                <p className="mx-auto mb-6 max-w-2xl leading-8 text-[#1e293b9f]">
-                    قم ب الأشتراك للوصول الكامل إلى قاعدة
-                    بيانات الحالات التعليمية.
-                </p>
-
-                {/* Button */}
-                <Link
-                    href="/payment?plan=semester"
-                    className="inline-block rounded-full bg-gradient-to-r from-[#1e3a6d] to-[#2563eb] px-10 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:scale-[1.02] hover:from-[#244684] hover:to-[#2a6eff]"
-                >
-                    اشترك الآن
-                </Link>
-            </div>
-
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
