@@ -1,160 +1,137 @@
-"use client"
+"use client";
 
-import { FormEvent, useState } from "react"
-import { useLocale, useTranslations } from "next-intl"
-import { useAuthSession } from "@/hooks/useAuthSession"
-import { useCaseCategoriesFull } from "@/features/cases/hooks/useCaseCategoriesFull"
-import { useCreateMedicalCase } from "@/features/cases/hooks/useCreateMedicalCase"
-import { InputField } from "@/features/auth/components/InputFailed"
-import Button from "@/features/auth/components/ButtonAuth"
-import {
-  mapGenderToApi,
-  toCaseCategoryLabel,
-} from "@/lib/api/normalize"
+import { FormEvent, useState } from "react";
+import { useTranslations } from "next-intl";
+
+import { useAuthSession } from "@/hooks/useAuthSession";
+import { useCaseCategoriesFull } from "@/features/cases/hooks/useCaseCategoriesFull";
+import { useCreateMedicalCase } from "@/features/cases/hooks/useCreateMedicalCase";
+import { InputField } from "@/features/auth/components/InputFailed";
+import Button from "@/features/auth/components/ButtonAuth";
+import { usePreferences } from "@/providers/PreferencesProvider";
+import { toCaseCategoryCard } from "@/lib/api/normalize";
 
 const genderOptions = [
-  { value: "male", labelKey: "male" as const },
-  { value: "female", labelKey: "female" as const },
-]
+  { value: "male", label: "ذكر" },
+  { value: "female", label: "أنثى" },
+];
 
-export default function CasesStudentPage() {
-  const t = useTranslations("studentCases")
-  const locale = useLocale() as "ar" | "en"
-  const { session, ready } = useAuthSession()
-  const categoriesQuery = useCaseCategoriesFull()
-  const createCase = useCreateMedicalCase()
+export default function CasesPage() {
+  const t = useTranslations("studentCases");
+  const { session, ready } = useAuthSession();
+  const categoriesFullQuery = useCaseCategoriesFull();
+  const { locale } = usePreferences();
+  const createCase = useCreateMedicalCase();
 
   const [form, setForm] = useState({
-    patientName: "",
-    patientSecurityNumber: "",
+    patientCode: "",
     patientAge: "",
     patientGender: "",
     categoryId: "",
     subcategoryId: "",
     clinicalNotes: "",
-  })
-  const [errorMessage, setErrorMessage] = useState<string | null>(
-    null
-  )
-  const [successMessage, setSuccessMessage] = useState("")
+  });
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string>("");
 
   function updateField(field: string, value: string) {
-    setForm((current) => ({ ...current, [field]: value }))
-    setErrorMessage(null)
-    setSuccessMessage("")
+    setForm((current) => ({
+      ...current,
+      [field]: value,
+    }));
+
+    setErrorMessage(null);
+    setSuccessMessage("");
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
 
     if (
-      !form.patientName.trim() ||
+      !form.patientCode ||
       !form.patientAge ||
       !form.patientGender ||
       !form.categoryId
     ) {
-      setErrorMessage(t("errors.required"))
-      return
+      setErrorMessage(t("errors.required"));
+      return;
     }
 
     createCase.mutate(
       {
-        patientName: form.patientName.trim(),
-        patientSecurityNumber:
-          form.patientSecurityNumber.trim() || undefined,
+        patientCode: form.patientCode,
         patientAge: Number(form.patientAge),
-        patientGender: mapGenderToApi(form.patientGender),
+        patientGender: form.patientGender,
         categoryId: Number(form.categoryId),
-        subcategoryId: form.subcategoryId
-          ? Number(form.subcategoryId)
-          : undefined,
-        clinicalNotes: form.clinicalNotes.trim(),
+        subcategoryId: form.subcategoryId ? Number(form.subcategoryId) : undefined,
+        clinicalNotes: form.clinicalNotes,
+        studentId: session?.studentId,
         universityId: session?.universityId,
       },
       {
         onSuccess() {
-          setSuccessMessage(t("successMessage"))
+          setSuccessMessage(t("successMessage"));
           setForm({
-            patientName: "",
-            patientSecurityNumber: "",
+            patientCode: "",
             patientAge: "",
             patientGender: "",
             categoryId: "",
             subcategoryId: "",
             clinicalNotes: "",
-          })
+          });
         },
         onError(error) {
           setErrorMessage(
-            (error as Error)?.message ||
-              t("errors.submitFailed")
-          )
+            (error as Error)?.message || t("errors.submitFailed"),
+          );
         },
-      }
-    )
+      },
+    );
   }
 
-  const selectedCategory = categoriesQuery.data?.find(
-    (c) => String(c.id) === String(form.categoryId)
-  )
+  const isSubmitting = createCase.isPending;
 
   return (
-    <div className="mx-auto max-w-6xl">
-      <div className="mb-8 rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-        <h1 className="text-2xl font-bold text-[#1e3a6d] md:text-3xl">
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+      <div className="mb-8 rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-xl shadow-slate-200/40">
+        <h1 className="text-3xl font-semibold text-slate-900">
           {t("title")}
         </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-500">
+        <p className="mt-3 max-w-2xl text-slate-600">
           {t("description")}
         </p>
       </div>
 
       <form
         onSubmit={handleSubmit}
-        className="grid gap-6 rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+        className="grid gap-6 rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-xl shadow-slate-200/40"
       >
-        {categoriesQuery.isError ? (
+        {categoriesFullQuery.isError ? (
           <div className="rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-700">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <span>{t("errors.loadingCategories")}</span>
+            <div className="flex items-center justify-between">
+              <div>{t("errors.loadingCategories")}</div>
               <button
                 type="button"
-                onClick={() => categoriesQuery.refetch()}
-                className="rounded-xl border border-red-100 bg-white px-4 py-2 text-sm font-medium text-[#1e3a6d]"
+                onClick={() => categoriesFullQuery.refetch()}
+                className="ml-4 rounded-md bg-white/80 px-3 py-1 text-sm text-[var(--denova-primary)]"
               >
                 {t("retry")}
               </button>
             </div>
           </div>
         ) : null}
-
         <div className="grid gap-6 lg:grid-cols-2">
           <InputField
-            id="patientName"
-            label={t("fields.patientName")}
-            placeholder={t("placeholders.patientName")}
-            value={form.patientName}
-            onChange={(e) =>
-              updateField("patientName", e.target.value)
+            id="patientCode"
+            label={t("fields.patientCode")}
+            placeholder={t("placeholders.patientCode")}
+            value={form.patientCode}
+            onChange={(event) =>
+              updateField("patientCode", event.target.value)
             }
             required
           />
-          <InputField
-            id="patientSecurityNumber"
-            label={t("fields.patientSecurityNumber")}
-            placeholder={t("placeholders.patientSecurityNumber")}
-            value={form.patientSecurityNumber}
-            onChange={(e) =>
-              updateField(
-                "patientSecurityNumber",
-                e.target.value
-              )
-            }
-            dir="ltr"
-          />
-        </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
           <InputField
             id="patientAge"
             label={t("fields.patientAge")}
@@ -162,12 +139,15 @@ export default function CasesStudentPage() {
             min={0}
             placeholder={t("placeholders.patientAge")}
             value={form.patientAge}
-            onChange={(e) =>
-              updateField("patientAge", e.target.value)
+            onChange={(event) =>
+              updateField("patientAge", event.target.value)
             }
             required
           />
-          <div className="space-y-1.5">
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="space-y-1 lg:space-y-1.5">
             <label
               htmlFor="patientGender"
               className="block text-sm font-medium text-[var(--denova-primary)]"
@@ -177,26 +157,22 @@ export default function CasesStudentPage() {
             <select
               id="patientGender"
               value={form.patientGender}
-              onChange={(e) =>
-                updateField("patientGender", e.target.value)
+              onChange={(event) =>
+                updateField("patientGender", event.target.value)
               }
               className="h-11 w-full rounded-xl border border-blue-100 bg-white/55 px-4 text-sm text-slate-700 outline-none transition focus:border-primary/40 focus:ring-4 focus:ring-primary/10"
               required
             >
-              <option value="">
-                {t("placeholders.selectGender")}
-              </option>
-              {genderOptions.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {t(`gender.${opt.labelKey}`)}
+              <option value="">{t("placeholders.selectGender")}</option>
+              {genderOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
                 </option>
               ))}
             </select>
           </div>
-        </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          <div className="space-y-1.5">
+          <div className="space-y-1 lg:space-y-1.5">
             <label
               htmlFor="categoryId"
               className="block text-sm font-medium text-[var(--denova-primary)]"
@@ -206,59 +182,71 @@ export default function CasesStudentPage() {
             <select
               id="categoryId"
               value={form.categoryId}
-              onChange={(e) => {
-                updateField("categoryId", e.target.value)
-                updateField("subcategoryId", "")
-              }}
+              onChange={(event) =>
+                updateField("categoryId", event.target.value)
+              }
               className="h-11 w-full rounded-xl border border-blue-100 bg-white/55 px-4 text-sm text-slate-700 outline-none transition focus:border-primary/40 focus:ring-4 focus:ring-primary/10"
               required
-              disabled={categoriesQuery.isLoading}
             >
-              <option value="">
-                {categoriesQuery.isLoading
-                  ? t("loadingCategories")
-                  : t("placeholders.selectCategory")}
-              </option>
-              {categoriesQuery.data?.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {toCaseCategoryLabel(category, locale)}
-                </option>
-              ))}
+              <option value="">{t("placeholders.selectCategory")}</option>
+              {categoriesFullQuery.isLoading ? (
+                <option value="">{t("loadingCategories")}</option>
+              ) : null}
+              {categoriesFullQuery.data?.map((category) => {
+                // label localized via toCaseCategoryCard
+                const label = toCaseCategoryCard(category, locale).label;
+                return (
+                  <option key={category.id} value={category.id}>
+                    {label}
+                  </option>
+                );
+              })}
             </select>
           </div>
-
-          {selectedCategory?.subcategories?.length ? (
-            <div className="space-y-1.5">
-              <label
-                htmlFor="subcategoryId"
-                className="block text-sm font-medium text-[var(--denova-primary)]"
-              >
-                {t("fields.subcategory")}
-              </label>
-              <select
-                id="subcategoryId"
-                value={form.subcategoryId}
-                onChange={(e) =>
-                  updateField("subcategoryId", e.target.value)
-                }
-                className="h-11 w-full rounded-xl border border-blue-100 bg-white/55 px-4 text-sm text-slate-700 outline-none transition focus:border-primary/40 focus:ring-4 focus:ring-primary/10"
-              >
-                <option value="">
-                  {t("placeholders.selectSubcategory")}
-                </option>
-                {selectedCategory.subcategories.map((sc) => (
-                  <option key={sc.id} value={sc.id}>
-                    {locale === "ar"
-                      ? sc.nameAr || sc.name || sc.title
-                      : sc.nameEn || sc.name || sc.title}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ) : null}
         </div>
+        {/** Subcategory select (if available) */}
+        {(() => {
+          const selectedCat = categoriesFullQuery.data?.find(
+            (c) => String(c.id) === String(form.categoryId),
+          );
 
-        <div className="space-y-1.5">
+          if (!selectedCat || !selectedCat.subcategories?.length) return null;
+
+          function subLabel(sc: any) {
+            if (locale === "ar") {
+              return sc.nameAr || sc.name || sc.title || sc.nameEn || `#${sc.id}`;
+            }
+            return sc.nameEn || sc.name || sc.title || sc.nameAr || `#${sc.id}`;
+          }
+
+          return (
+            <div className="grid gap-6 lg:grid-cols-2">
+              <div className="space-y-1 lg:space-y-1.5">
+                <label
+                  htmlFor="subcategoryId"
+                  className="block text-sm font-medium text-[var(--denova-primary)]"
+                >
+                  {t("fields.subcategory")}
+                </label>
+
+                <select
+                  id="subcategoryId"
+                  value={form.subcategoryId}
+                  onChange={(e) => updateField("subcategoryId", e.target.value)}
+                  className="h-11 w-full rounded-xl border border-blue-100 bg-white/55 px-4 text-sm text-slate-700 outline-none transition focus:border-primary/40 focus:ring-4 focus:ring-primary/10"
+                >
+                  <option value="">{t("placeholders.selectSubcategory")}</option>
+                  {selectedCat.subcategories.map((sc) => (
+                    <option key={sc.id} value={sc.id}>
+                      {subLabel(sc)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          );
+        })()}
+        <div className="space-y-1 lg:space-y-1.5">
           <label
             htmlFor="clinicalNotes"
             className="block text-sm font-medium text-[var(--denova-primary)]"
@@ -269,11 +257,11 @@ export default function CasesStudentPage() {
             id="clinicalNotes"
             rows={5}
             value={form.clinicalNotes}
-            onChange={(e) =>
-              updateField("clinicalNotes", e.target.value)
+            onChange={(event) =>
+              updateField("clinicalNotes", event.target.value)
             }
             placeholder={t("placeholders.clinicalNotes")}
-            className="w-full rounded-2xl border border-blue-100 bg-white/55 px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-primary/40 focus:ring-4 focus:ring-primary/10"
+            className="w-full rounded-3xl border border-blue-100 bg-white/55 px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-primary/40 focus:ring-4 focus:ring-primary/10"
           />
         </div>
 
@@ -289,23 +277,21 @@ export default function CasesStudentPage() {
           </p>
         ) : null}
 
-        <div className="flex flex-col gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-slate-500">{t("helpText")}</p>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="text-sm text-slate-500">
+            {t("helpText")}
+          </div>
+
           <Button
             type="submit"
-            isLoading={createCase.isPending}
-            disabled={
-              !ready ||
-              createCase.isPending ||
-              categoriesQuery.isLoading ||
-              categoriesQuery.isError
-            }
-            className="max-w-xs bg-gradient-to-br from-[#2563eb] to-[#1e3a6d]"
+            isLoading={isSubmitting}
+            disabled={isSubmitting || !ready || categoriesFullQuery.isError || categoriesFullQuery.isLoading}
+            className="max-w-xs"
           >
             {t("submit")}
           </Button>
         </div>
       </form>
     </div>
-  )
+  );
 }

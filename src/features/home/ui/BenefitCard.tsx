@@ -1,63 +1,51 @@
+"use client";
 
-import {
-  Search,
-  GraduationCap,
-  CheckCircle,
-} from "lucide-react";
-import { TitleSectionCommon } from "../../../components/ui/TitleSectionCommon";
+import { CheckCircle, GraduationCap, Search } from "lucide-react";
 
-const benefits = [
-  {
-    icon: <Search className="h-7 w-7" />,
-    title: "البحث المنظم للحالات",
-  },
-
-  {
-    icon: <GraduationCap className="h-7 w-7" />,
-    title: "انتشار شامل وتعليم كامل",
-  },
-
-  {
-    icon: <CheckCircle className="h-7 w-7" />,
-    title: "الوصول لحالات موثوقة",
-  },
-];
+import { TitleSectionCommon } from "@/components/ui/TitleSectionCommon";
+import { usePreferences } from "@/providers/PreferencesProvider";
 
 export default function BenefitCard() {
-  return (
-    <section className="bg-[#f4f6f9] p-5 md:p-10 lg:p-[60px]">
-      <div className="">
-        {/* Title */}
-        <div className="mb-16 text-center">
-          <TitleSectionCommon title={"ماذا يحصل عليه الطالب"}
-            subtitle={`تجربة احترافية حديثة لإدارة الحالات التعليمية`}
-          />
+  const { landing } = usePreferences();
+  const icons = [
+    Search,
+    GraduationCap,
+    CheckCircle,
+  ] as const;
 
+  return (
+    <section className="bg-dnv-soft px-5 py-14 md:px-10 md:py-16 lg:p-[60px] dark:bg-slate-950">
+      <div>
+        <div className="mb-16 max-w-[58rem] mx-auto text-center lg:mx-auto">
+          <TitleSectionCommon
+            title={landing.benefits.title}
+            subtitle={landing.benefits.subtitle}
+          />
         </div>
 
-        {/* Cards */}
         <div className="grid gap-8 md:grid-cols-3">
-          {benefits.map((item, index) => (
-            <div
-              key={index}
-              className="group rounded-3xl border border-gray-300 bg-gradient-to-b from-white to-[#f8fafc] p-10 text-center shadow-md transition duration-300 hover:-translate-y-2 hover:border-[#1e3a6d]/20 hover:shadow-2xl"
-            >
-              {/* Icon */}
-              <div className="mb-6 flex justify-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#eef3fb] text-[#1e3a6d] transition group-hover:bg-[#1e3a6d] group-hover:text-white">
-                  {item.icon}
+          {landing.benefits.cards.map((title, index) => {
+            const Icon = icons[index];
+
+            return (
+              <div
+                key={`${title}-${index}`}
+                className="group rounded-3xl border border-dnv-border bg-gradient-to-b from-background to-dnv-soft/60 p-10 text-center shadow-md transition duration-300 hover:-translate-y-2 hover:border-dnv-navy/20 hover:shadow-2xl dark:border-white/10 dark:from-slate-950 dark:to-slate-950/85"
+              >
+                <div className="mb-6 flex justify-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-dnv-accent/15 text-dnv-navy transition group-hover:bg-dnv-navy group-hover:text-white dark:bg-blue-950/75 dark:text-sky-200">
+                    <Icon className="h-7 w-7" aria-hidden />
+                  </div>
                 </div>
+
+                <h3 className="text-2xl font-semibold leading-snug text-dnv-heading">
+                  {title}
+                </h3>
+
+                <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-gradient-to-r from-dnv-navy to-dnv-accent" />
               </div>
-
-              {/* Title */}
-              <h3 className="text-2xl font-semibold text-[#1e293b9f]">
-                {item.title}
-              </h3>
-
-              {/* Small line */}
-              <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-gradient-to-r from-[#1e3a6d] to-[#3b82f6]" />
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

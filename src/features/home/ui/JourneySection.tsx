@@ -1,36 +1,12 @@
-import { TitleSectionCommon } from "../../../components/ui/TitleSectionCommon";
-import { ToothPattern } from "../../../components/ui/ToothBattren";
-
-
-
-const steps = [
-    {
-        number: "1",
-        title: "سجّل الآن",
-        desc: "أنشئ حسابك وابدأ رحلتك التعليمية",
-    },
-
-    {
-        number: "2",
-        title: "أرسل حالتك",
-        desc: "أضف الحالة الطبية المطلوبة",
-    },
-
-    {
-        number: "3",
-        title: "ابدأ البحث",
-        desc: "ابحث عن الحالات المناسبة",
-    },
-
-    {
-        number: "4",
-        title: "تقدّم",
-        desc: "تابع تطورك خطوة بخطوة",
-    },
-];
+"use client";
+import { TitleSectionCommon } from "@/components/ui/TitleSectionCommon";
+import { ToothPattern } from "@/components/ui/ToothBattren";
+import { usePreferences } from "@/providers/PreferencesProvider";
 
 export function JourneySection() {
-    return (
+  const { landing } = usePreferences();
+
+  return (
         <section className="relative overflow-hidden bg-[#041b4a] py-20">
             {/* Tooth Pattern */}
             <div className="">
@@ -41,45 +17,35 @@ export function JourneySection() {
                 />
             </div>
 
-            <div className=" relative z-10 px-5 md:px-10 lg:px-[60px]">
-                {/* Title */}
-                <div className="mb-20 text-center">
-                    <TitleSectionCommon
-                        classh="text-white" className2="text-white/80" title={"ماذا يحصل عليه الطالب"}
-                        subtitle={`تجربة احترافية حديثة لإدارة الحالات التعليمية`}
-                    />
-                </div>
+      <div className="relative z-10 px-5 md:px-10 lg:px-[60px]">
+        <div className="mb-20 mx-auto max-w-[58rem] text-center">
+          <TitleSectionCommon
+            title={landing.journey.title}
+            subtitle={landing.journey.subtitle}
+            classh="text-white text-dnv-navy text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.65rem]"
+            className2="text-lg w-full text-center text-blue-50/95 md:text-xl "
+          />
+        </div>
 
-                {/* Steps */}
-                <div className="flex flex-wrap justify-center gap-12 md:flex-nowrap md:justify-between md:gap-6 lg:gap-12">
-                    {steps.map((step, index) => (
-                        <div
-                            key={index}
-                            className="relative min-w-[10rem] flex-1 text-center"
-                        >
+        <div className="flex flex-wrap justify-between gap-16 md:flex-nowrap md:gap-6 lg:gap-12">
+          {landing.journey.steps.map((step, index) => (
+            <div key={`${step.title}-${index}`} className="min-w-[10rem] flex-1 text-center">
+              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border-4 border-dnv-accent bg-dnv-deep-mid text-2xl font-bold text-white shadow-xl">
+                {index + 1}
+              </div>
 
-
-
-
-                            {/* Circle */}
-                            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border-4 border-[#3b82f6] bg-[#0c2458] text-2xl font-bold text-white shadow-lg">
-                                {step.number}
-                            </div>
-
-                            {/* Content */}
-                            <div className="mt-6">
-                                <h3 className="mb-3 text-2xl font-semibold text-white">
-                                    {step.title}
-                                </h3>
-
-                                <p className="leading-7 text-blue-100">
-                                    {step.desc}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+              <div className="mt-6 px-3">
+                <h3 className="mb-3 text-xl font-semibold text-white lg:text-2xl">
+                  {step.title}
+                </h3>
+                <p className="text-[15px] leading-7 text-blue-50/92 md:text-base">
+                  {step.desc}
+                </p>
+              </div>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -1,61 +1,67 @@
-import { TitleSectionCommon } from "../../../components/ui/TitleSectionCommon";
+"use client";
+
+import { TitleSectionCommon } from "@/components/ui/TitleSectionCommon";
+import { usePreferences } from "@/providers/PreferencesProvider";
 
 export function SubmitCaseSection() {
-  return (
-    <section className="bg-[#f8f9fb] py-24">
-      <div className="container mx-auto px-6">
-        {/* Title */}
-        <div className="mb-14 text-center">
-          <TitleSectionCommon
-            title={"إرسال الحالة"}
-            subtitle={`قم ب إدخال تفاصيل الحالة و إرفاق معلومات المريض`}
-          />
+  const { landing } = usePreferences();
 
+  return (
+    <section className="border-b border-dnv-border bg-dnv-soft px-5 py-20 md:px-10 dark:bg-slate-950 dark:border-white/10">
+      <div className="container mx-auto px-4">
+        <div className="mb-14 mx-auto max-w-[58rem] text-center">
+          <TitleSectionCommon
+            title={landing.submit.title}
+            subtitle={landing.submit.subtitle}
+          />
         </div>
 
-        {/* Form */}
-        <div className="mx-auto max-w-4xl rounded-3xl border border-gray-200 bg-white p-10 shadow-sm">
-          <form className="space-y-6">
-            {/* Inputs */}
+        <div className="mx-auto max-w-4xl rounded-3xl border border-dnv-border bg-background p-8 shadow-lg shadow-dnv-border/30 dark:border-white/15 dark:bg-slate-900 md:p-11">
+          <form className="space-y-6" aria-label={landing.submit.title}>
             <div className="grid gap-5 md:grid-cols-2">
               <input
                 type="text"
-                placeholder="اسم المريض"
-                className="h-14 rounded-xl border border-gray-200 bg-[#fafafa] px-5 text-[#1e293b] placeholder:text-gray-400 outline-none transition focus:border-[#1e3a6d] focus:ring-4 focus:ring-[#1e3a6d]/10"
+                placeholder={landing.submit.patientName}
+                name="patient"
+                autoComplete="name"
+                className="h-14 rounded-xl border border-dnv-border bg-dnv-soft px-5 text-dnv-heading placeholder:text-dnv-muted outline-none transition focus:border-dnv-accent focus:ring-4 focus:ring-dnv-accent/25 dark:bg-slate-950 dark:border-white/15 dark:text-neutral-100"
               />
 
               <input
                 type="text"
-                placeholder="العمر"
-                className="h-14 rounded-xl border border-gray-200 bg-[#fafafa] px-5 text-[#1e293b] placeholder:text-gray-400 outline-none transition focus:border-[#1e3a6d] focus:ring-4 focus:ring-[#1e3a6d]/10"
+                inputMode="numeric"
+                placeholder={landing.submit.age}
+                name="age"
+                className="h-14 rounded-xl border border-dnv-border bg-dnv-soft px-5 text-dnv-heading placeholder:text-dnv-muted outline-none transition focus:border-dnv-accent focus:ring-4 focus:ring-dnv-accent/25 dark:bg-slate-950 dark:border-white/15 dark:text-neutral-100"
               />
 
               <input
                 type="text"
-                placeholder="نوع الحالة"
-                className="h-14 rounded-xl border border-gray-200 bg-[#fafafa] px-5 text-[#1e293b] placeholder:text-gray-400 outline-none transition focus:border-[#1e3a6d] focus:ring-4 focus:ring-[#1e3a6d]/10"
+                placeholder={landing.submit.caseType}
+                name="caseType"
+                className="h-14 rounded-xl border border-dnv-border bg-dnv-soft px-5 text-dnv-heading placeholder:text-dnv-muted outline-none transition focus:border-dnv-accent focus:ring-4 focus:ring-dnv-accent/25 dark:bg-slate-950 dark:border-white/15 dark:text-neutral-100"
               />
 
               <input
                 type="text"
-                placeholder="رقم السن"
-                className="h-14 rounded-xl border border-gray-200 bg-[#fafafa] px-5 text-[#1e293b] placeholder:text-gray-400 outline-none transition focus:border-[#1e3a6d] focus:ring-4 focus:ring-[#1e3a6d]/10"
+                placeholder={landing.submit.toothNumber}
+                name="tooth"
+                className="h-14 rounded-xl border border-dnv-border bg-dnv-soft px-5 text-dnv-heading placeholder:text-dnv-muted outline-none transition focus:border-dnv-accent focus:ring-4 focus:ring-dnv-accent/25 dark:bg-slate-950 dark:border-white/15 dark:text-neutral-100"
               />
             </div>
 
-            {/* Textarea */}
             <textarea
               rows={5}
-              placeholder="ملاحظات إضافية"
-              className="w-full rounded-xl border border-gray-200 bg-[#fafafa] p-5 text-[#1e293b] placeholder:text-gray-400 outline-none transition focus:border-[#1e3a6d] focus:ring-4 focus:ring-[#1e3a6d]/10"
+              placeholder={landing.submit.notes}
+              name="notes"
+              className="w-full rounded-xl border border-dnv-border bg-dnv-soft p-5 text-dnv-heading placeholder:text-dnv-muted outline-none transition focus:border-dnv-accent focus:ring-4 focus:ring-dnv-accent/25 dark:bg-slate-950 dark:border-white/15 dark:text-neutral-100"
             />
 
-            {/* Button */}
             <button
               type="submit"
-              className="h-14 w-full rounded-xl bg-gradient-to-r from-[#1e3a6d] to-[#3b82f6] text-lg font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:scale-[1.01] hover:opacity-95"
+              className="h-14 w-full rounded-xl bg-gradient-to-r from-dnv-navy to-dnv-accent text-lg font-semibold text-white shadow-lg shadow-dnv-accent/35 transition hover:scale-[1.01]"
             >
-              إرسال الحالة
+              {landing.submit.submit}
             </button>
           </form>
         </div>

@@ -16,10 +16,9 @@ export default function HomePage() {
       <SubmitCaseSection />
       <AboutSection />
       <BenefitCard />
-      <CaseCategoriesSection />
+      <CasesSection />
       <SearchSection />
       <JourneySection />
-      <CasesSection />
       <UniversitiesSection />
       <HomeCtaSection />
     </main>

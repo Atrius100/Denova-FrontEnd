@@ -587,5 +587,45 @@
       "realtimeTest": "Test notification",
       "realtimeTestMsg": "New alert received via sync channel (simulated)"
     }
+  },
+  "studentProfile": {
+    "title": "Student Profile",
+    "description": "From here you can manage your student profile and add a new medical case.",
+    "infoHeading": "Profile information",
+    "infoText": "Complete your student profile and keep your academic data up to date.",
+    "newCaseHeading": "Add a new medical case",
+    "newCaseText": "Submit a patient's case directly from your student dashboard.",
+    "addCaseButton": "Add case"
+  },
+  "studentCases": {
+    "title": "Register a new medical case",
+    "description": "Enter patient details and case information to save the case in the student workflow.",
+    "fields": {
+      "patientCode": "Patient code",
+      "patientAge": "Patient age",
+      "patientGender": "Patient gender",
+      "category": "Case category",
+      "subcategory": "Case subcategory",
+      "clinicalNotes": "Clinical notes"
+    },
+    "placeholders": {
+      "patientCode": "Example: 12345 or ABC-001",
+      "patientAge": "Age in years",
+      "selectGender": "Select gender",
+      "selectCategory": "Select case category",
+      "selectSubcategory": "Select subcategory",
+      "clinicalNotes": "Enter diagnosis or case details"
+    },
+    "submit": "Register case",
+    "helpText": "You can review your submitted cases later in your personal cases section.",
+    "loadingCategories": "Loading categories...",
+    "errors": {
+      "required": "Please fill in all required fields.",
+      "submitFailed": "Unable to submit the case. Please try again.",
+      "loadingCategories": "Unable to load case categories from the server.",
+      "loadingCategoriesDetail": "The categories service returned an error. Retry or contact support."
+    },
+    "retry": "Retry",
+    "successMessage": "Medical case registered successfully."
   }
 }
