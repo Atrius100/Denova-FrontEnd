@@ -50,9 +50,9 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body
-        suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
-      >
+  suppressHydrationWarning
+  className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--background)] text-[var(--foreground)]`}
+>
         {/* Theme bootstrap script is moved to head.tsx to run before rendering */}
 
         <NextIntlClientProvider

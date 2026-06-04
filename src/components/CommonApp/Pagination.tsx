@@ -65,7 +65,7 @@ export default function Pagination({
         "
             >
 
-                <ChevronLeft className="h-4 w-4" />
+                <ChevronRight className="h-4 w-4" />
             </button>
 
             {/* Current Page */}
@@ -131,7 +131,7 @@ export default function Pagination({
         "
             >
 
-                <ChevronRight className="h-4 w-4" />
+                <ChevronLeft className="h-4 w-4" />
             </button>
         </div>
     );

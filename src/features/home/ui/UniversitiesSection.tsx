@@ -8,7 +8,7 @@ export function UniversitiesSection() {
   const { landing } = usePreferences();
 
   return (
-    <section className="bg-dnv-soft px-5 py-14 md:px-10 lg:p-[60px] dark:bg-slate-950">
+    <section className="bg-dnv-soft px-5 py-14 md:px-10 lg:p-[60px]">
       <div className="space-y-3 text-center mx-auto max-w-[58rem] mb-14">
         <TitleSectionCommon
           title={landing.universities.title}
@@ -20,7 +20,7 @@ export function UniversitiesSection() {
         {landing.universities.branches.map((uni) => (
           <div
             key={uni.email}
-            className="group space-y-5 rounded-3xl border border-dnv-border bg-gradient-to-b from-background to-dnv-soft/50 p-6 shadow-md transition duration-300 hover:-translate-y-2 hover:border-dnv-accent/35 hover:shadow-2xl dark:border-white/10 dark:from-slate-950 dark:to-slate-950/80"
+            className="group space-y-5 rounded-3xl border border-dnv-border bg-gradient-to-b from-background to-dnv-soft/50 p-6 shadow-md transition duration-300 hover:-translate-y-2 hover:border-dnv-accent/35 hover:shadow-2xl "
           >
             <h3 className="text-xl font-bold text-dnv-heading transition group-hover:text-dnv-navy">
               {uni.name}

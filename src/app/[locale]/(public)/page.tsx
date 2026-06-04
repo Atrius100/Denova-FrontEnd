@@ -1,6 +1,5 @@
 import { AboutSection } from "../../../features/home/ui/AboutSection";
 import BenefitCard from "../../../features/home/ui/BenefitCard";
-import { CaseCategoriesSection } from "../../../features/home/ui/CaseCategoriesSection";
 import { CasesSection } from "../../../features/home/ui/CasesSection";
 import { HeroSection } from "../../../features/home/ui/Hero";
 import { HomeCtaSection } from "../../../features/home/ui/HomeCtaSection";

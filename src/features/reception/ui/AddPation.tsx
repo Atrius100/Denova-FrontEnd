@@ -19,9 +19,7 @@ import {
 
 type PatientFormModalProps = {
 
-    mode:
-    | "create"
-    | "request";
+    mode: "create" | "edit" | "request";
 
     onClose: () => void;
 

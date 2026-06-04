@@ -131,19 +131,47 @@
 }
 ,
 
-  "adminDashboard": {
-    "monthlyPatients": "مرضى هذا الشهر",
-    "monthlyPatientsDesc": "إجمالي المرضى خلال الشهر الحالي",
+"adminDashboard": {
+  "title": "لوحة تحكم الإدارة",
+  "subtitle": "إدارة المنصة والطلاب والإعدادات",
 
-    "waitingPatients": "مرضى قيد الانتظار",
-    "waitingPatientsDesc": "لم يتم ربطهم بطبيب بعد",
+  "monthlyPatients": "مرضى هذا الشهر",
+  "monthlyPatientsDesc": "إجمالي عدد المرضى خلال الشهر الحالي",
 
-    "studentRequests": "طلبات الطلاب",
-    "studentRequestsDesc": "طلبات الحالات الجديدة",
+  "waitingPatients": "المرضى قيد الانتظار",
+  "waitingPatientsDesc": "المرضى الذين لم يتم تعيينهم بعد",
 
-    "universityPatients": "مرضى الجامعات",
-    "universityPatientsDesc": "عدد المرضى المرتبطين بالجامعات"
+  "studentRequests": "طلبات الطلاب",
+  "studentRequestsDesc": "طلبات العلاج الجديدة المقدمة من الطلاب",
+
+  "universityPatients": "مرضى الجامعات",
+  "universityPatientsDesc": "المرضى المرتبطون بالجامعات",
+
+  "search": "ابحث عن طالب أو مريض...",
+  "addCase": "إضافة حالة",
+
+  "links": {
+    "students": {
+      "title": "إدارة الطلاب",
+      "desc": "عرض وتنظيم حسابات الطلاب"
+    },
+
+    "cases": {
+      "title": "إدارة الحالات",
+      "desc": "مراجعة الحالات التعليمية والطبية"
+    },
+
+    "notifications": {
+      "title": "مركز الإشعارات",
+      "desc": "متابعة نشاط النظام والدفع والأمان"
+    },
+
+    "settings": {
+      "title": "إعدادات المنصة",
+      "desc": "التحكم الكامل بإعدادات النظام"
+    }
   }
+}
 ,
   
   "addPatientModal": {
@@ -307,28 +335,7 @@
     "footerTitle": "إدارة المنصة",
     "footerSubtitle": "DENOVA Admin"
   },
-  "adminDashboard": {
-    "title": "لوحة تحكم الإدارة",
-    "subtitle": "إدارة المنصة والطلاب والإعدادات",
-    "links": {
-      "students": {
-        "title": "إدارة الطلاب",
-        "desc": "عرض وتنظيم حسابات الطلاب"
-      },
-      "cases": {
-        "title": "إدارة الحالات",
-        "desc": "مراجعة الحالات التعليمية"
-      },
-      "notifications": {
-        "title": "مركز الإشعارات",
-        "desc": "متابعة نشاط النظام والدفع والأمان"
-      },
-      "settings": {
-        "title": "إعدادات المنصة",
-        "desc": "التحكم الكامل بإعدادات النظام"
-      }
-    }
-  },
+
   "adminNavbar": {
     "dashboard": "لوحة الإدارة",
     "arabic": "العربية",

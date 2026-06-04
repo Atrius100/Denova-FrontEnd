@@ -7,7 +7,7 @@ export function JourneySection() {
   const { landing } = usePreferences();
 
   return (
-        <section className="relative overflow-hidden bg-[#041b4a] py-20">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#1e3a6d] to-[#0f2540] py-20">
             {/* Tooth Pattern */}
             <div className="">
                 <ToothPattern
@@ -30,7 +30,7 @@ export function JourneySection() {
         <div className="flex flex-wrap justify-between gap-16 md:flex-nowrap md:gap-6 lg:gap-12">
           {landing.journey.steps.map((step, index) => (
             <div key={`${step.title}-${index}`} className="min-w-[10rem] flex-1 text-center">
-              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border-4 border-dnv-accent bg-dnv-deep-mid text-2xl font-bold text-white shadow-xl">
+              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border-4 border-dnv-accent bg-gradient-to-br from-[#1e3a6d] to-[#0f2540] text-2xl font-bold text-white shadow-xl">
                 {index + 1}
               </div>
 

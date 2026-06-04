@@ -19,7 +19,7 @@ export function SupportItem({
       </p>
 
       {/* Phone */}
-      <div className="flex items-center gap-3 text-sm text-[#1e293b9f]">
+      <div className="flex items-center gap-3 text-sm">
         <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#dbe8fb]">
           <Phone className="h-4 w-4 text-[#1e3a6d]" />
         </div>
@@ -28,7 +28,7 @@ export function SupportItem({
       </div>
 
       {/* Email */}
-      <div className="flex items-center gap-3 text-sm text-[#1e293b9f]">
+      <div className="flex items-center gap-3 text-sm">
         <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#dbe8fb]">
           <Mail className="h-4 w-4 text-[#1e3a6d]" />
         </div>

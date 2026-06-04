@@ -9,9 +9,9 @@ export function LandingCasesLock() {
   const { landing } = usePreferences();
 
   return (
-    <div className="rounded-[2rem] border border-dnv-border bg-background px-8 py-12 text-center shadow-md dark:border-white/15 dark:bg-slate-900">
-      <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-dnv-accent/15 dark:bg-blue-950/85">
-        <Lock className="h-10 w-10 text-dnv-navy dark:text-blue-300" aria-hidden />
+    <div className="rounded-[2rem] border border-dnv-border bg-background px-8 py-12 text-center shadow-md">
+      <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-dnv-accent/15">
+        <Lock className="h-10 w-10 text-dnv-navy" aria-hidden />
       </div>
       <h3 className="mx-auto mb-4 max-w-2xl text-2xl font-bold text-dnv-heading md:text-3xl">
         {landing.cases.lockTitle}

@@ -139,27 +139,45 @@
 },
 
 "adminDashboard": {
+  "title": "Admin Dashboard",
+  "subtitle": "Manage platform, students, and settings",
 
   "monthlyPatients": "Monthly Patients",
-
   "monthlyPatientsDesc": "Total patients during the current month",
 
   "waitingPatients": "Waiting Patients",
-
   "waitingPatientsDesc": "Patients not assigned to doctors yet",
 
   "studentRequests": "Student Requests",
-
   "studentRequestsDesc": "New treatment requests from students",
 
   "universityPatients": "University Patients",
-
   "universityPatientsDesc": "Patients linked to universities",
 
   "search": "Search student or patient...",
+  "addCase": "Add Case",
 
-  "addCase": "Add Case"
+  "links": {
+    "students": {
+      "title": "Manage Students",
+      "desc": "View and organize student accounts"
+    },
 
+    "cases": {
+      "title": "Manage Cases",
+      "desc": "Review educational clinical cases"
+    },
+
+    "notifications": {
+      "title": "Notification Center",
+      "desc": "Track system, payment, and security activity"
+    },
+
+    "settings": {
+      "title": "Platform Settings",
+      "desc": "Full control over system configuration"
+    }
+  }
 },
   "addPatientModal": {
     "title": "Add Patient",
@@ -321,28 +339,7 @@
     "footerTitle": "Platform Admin",
     "footerSubtitle": "DENOVA Admin"
   },
-  "adminDashboard": {
-    "title": "Admin Dashboard",
-    "subtitle": "Manage platform, students, and settings",
-    "links": {
-      "students": {
-        "title": "Manage Students",
-        "desc": "View and organize student accounts"
-      },
-      "cases": {
-        "title": "Manage Cases",
-        "desc": "Review educational clinical cases"
-      },
-      "notifications": {
-        "title": "Notification Center",
-        "desc": "Track system, payment, and security activity"
-      },
-      "settings": {
-        "title": "Platform Settings",
-        "desc": "Full control over system configuration"
-      }
-    }
-  },
+ 
   "adminNavbar": {
     "dashboard": "Admin Dashboard",
     "arabic": "العربية",

@@ -44,7 +44,7 @@ export function CasesSection() {
       ) : (
         <>
           <div className="mx-auto mb-10 max-w-3xl">
-            <div className="flex h-14 items-center gap-3 rounded-full border border-dnv-border bg-dnv-soft px-6 dark:bg-slate-900">
+            <div className="flex h-14 items-center gap-3 rounded-full border border-dnv-border px-6">
               <Search className="h-5 w-5 shrink-0 text-dnv-muted" aria-hidden />
               <label className="sr-only" htmlFor="cases-section-search">
                 {landing.cases.searchPlaceholder}
@@ -76,7 +76,7 @@ export function CasesSection() {
               {filtered.map((item) => (
                 <article
                   key={item.id}
-                  className="rounded-2xl border border-dnv-border bg-gradient-to-b from-background to-dnv-soft/40 p-5 shadow-sm transition hover:border-dnv-accent/40 hover:shadow-lg dark:border-white/10"
+                  className="rounded-2xl border border-dnv-border p-5 shadow-sm transition hover:border-dnv-accent/40 hover:shadow-lg "
                 >
                   <h3 className="text-lg font-semibold text-dnv-navy">{item.title}</h3>
                   {item.subtitle ? (

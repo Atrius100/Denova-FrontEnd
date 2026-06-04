@@ -19,7 +19,7 @@ export const adminSidebarLinks = [
   },
   {
     key: "cases",
-    href: "/casesAdmin",
+    href: "/patientsA",
     icon: FolderOpen,
   },
   {
