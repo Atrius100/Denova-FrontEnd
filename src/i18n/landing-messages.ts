@@ -25,20 +25,26 @@ export const landingMessages = {
       statStudents: "طالب",
       statCases: "حالة مسجَّلة",
     },
-    about: {
-      title:
-        "بنيت بواسطة الطالب، من أجل الطالب",
-      p1:
-        "من ضمن التحديات التي يواجهها طلاب طب الأسنان خلال سنوات التدريب؛ من ضياع سجلات المرضى إلى صعوبة تتبّع الحالات المرضية.",
-      p2:
-        "لذلك صمَّمنا بنيةً رقميةً متكاملة تجمع الدقة الطبية وسهولة الاستخدام التقني.",
-      imageAlt: "يد تحمل أدوات طب الأسنان",
-    },
+   about: {
+  title:
+    "نحو تجربة تعليمية وسريرية أكثر كفاءة",
+
+  p1:
+    "صُممت DENOVA لتقريب المسافة بين الطلاب والمرضى عبر تجربة رقمية منظمة تدعم التعلم العملي وتسهّل متابعة الحالات السنية.",
+
+  p2:
+    "وقد تم بناء المنصة بواسطة شركة Atrius كحل رقمي يهدف إلى دعم التعليم السريري وتقديم تجربة أكثر مرونة وكفاءة في إدارة الحالات السنية.",
+
+  imageAlt: "يد تحمل أدوات طب الأسنان",
+},
     benefits: {
       title: "ماذا يحصل على الطالب؟",
       subtitle: "تجربة احترافية حديثة لإدارة الحالات التعليمية",
-      cards: ["البحث المنظم للحالات", "انتشار شامل وتعليم كامل", "الوصول لحالات موثوقة"],
-    },
+cards: [
+  "الوصول إلى الحالات السريرية",
+  "حجز الحالة السريرية المناسبة",
+  "ملف شخصي وسجل سريري"
+]    },
     cases: {
       title: "معاينة الحالات المتاحة",
       subtitle: "استعرض الحالات التعليمية والطبية المتوفرة بسهولة",
@@ -67,11 +73,26 @@ export const landingMessages = {
       title: "رحلتك مع المنصّة",
       subtitle: "خطوات بسيطة من التسجيل حتى متابعة تقدّمك",
       steps: [
-        { title: "سجّل الآن", desc: "أنشئ حسابك وابدأ رحلتك التعليمية" },
-        { title: "أرسل حالتك", desc: "أضف الحالة الطبية المطلوبة" },
-        { title: "ابدأ البحث", desc: "ابحث عن الحالات المناسبة" },
-        { title: "تقدَّم", desc: "تابع تطورك خطوة بخطوة" },
-      ],
+  {
+    title: "أنشئ حسابك",
+    desc: "ابدأ رحلتك التعليمية من خلال إنشاء حسابك الشخصي."
+  },
+
+  {
+    title: "فعّل اشتراكك",
+    desc: "اشترك للوصول إلى الحالات السريرية المتاحة."
+  },
+
+  {
+    title: "استعرض واحجز الحالة المناسبة",
+    desc: "ابحث بين الحالات المتوفرة واحجز الحالة التي تناسب متطلباتك."
+  },
+
+  {
+    title: "ابدأ رحلتك السريرية",
+    desc: "بعد موافقة الإدارة يتم ربطك بالمريض ومتابعة الحالة من ملفك الشخصي."
+  }
+]
     },
     search: {
       title: "ابحث في قاعدة بيانات الحالات",
@@ -88,15 +109,26 @@ export const landingMessages = {
       error: "تعذّر تحميل الحالات. حاول مرة أخرى لاحقًا.",
     },
     submit: {
-      title: "إرسال الحالة",
-      subtitle: "قم بإدخال تفاصيل الحالة وإرفاق معلومات المريض",
-      patientName: "اسم المريض",
-      age: "العمر",
-      caseType: "نوع الحالة",
-      toothNumber: "رقم السن",
-      notes: "ملاحظات إضافية",
-      submit: "إرسال الحالة",
-    },
+  title: "قدّم حالتك الآن",
+  subtitle: "املأ البيانات وسيتم التواصل معك",
+
+  patientName: "اسم المريض",
+  age: "العمر",
+  phone: "رقم الهاتف",
+  nationalId: "الرقم الوطني",
+
+  selectUniversity: "اختر الجامعة",
+
+  notes: "ملاحظات إضافية",
+
+  submit: "إرسال الطلب",
+
+  universities: {
+    tishreen: "جامعة تشرين",
+    manara: "جامعة المنارة",
+    sham: "جامعة الشام الخاصة",
+  },
+},
     universities: {
       title: "فرق الدعم",
       subtitle: "تواصل مباشر مع فرق الدعم والجامعات التعليمية",
@@ -124,7 +156,13 @@ export const landingMessages = {
           email: "atrius@denova.com",
         },
       ]
-    },
+    },  
+homeCta: {
+  title: "ابدأ رحلتك الآن",
+  description:
+    "انضم إلى مجتمع DENOVA وفعّل اشتراكك للوصول الكامل إلى قاعدة الحالات التعليمية.",
+  button: "اشترك الآن",
+},
     footer: {
       rights: "جميع الحقوق محفوظة",
     },
@@ -153,23 +191,27 @@ export const landingMessages = {
       statStudents: "Students",
       statCases: "Cases",
     },
-    about: {
-      title:
-        "Built by students, for students",
-      p1:
-        "Dentistry students face real challenges during training—from lost patient records to difficulty tracking clinical cases.",
-      p2:
-        "So we designed a seamless digital layer that pairs medical rigor with a simple, modern experience.",
-      imageAlt: "Hand holding dental tools",
-    },
+   about: {
+  title:
+    "Towards a More Efficient Educational and Clinical Experience",
+
+  p1:
+    "DENOVA was designed to bridge the gap between students and patients through an organized digital experience that supports practical learning and simplifies the management of dental cases.",
+
+  p2:
+    "The platform was developed by Atrius as a digital solution aimed at supporting clinical education and providing a more flexible and efficient experience for managing dental cases.",
+
+  imageAlt:
+    "Hand holding dental instruments",
+},
     benefits: {
       title: "What students get",
       subtitle: "A professional, modern way to manage educational cases",
       cards: [
-        "Structured case search",
-        "Broader reach & complete learning",
-        "Access to trusted cases",
-      ],
+  "Access Clinical Cases",
+  "Reserve Suitable Cases",
+  "Personal Profile & Clinical Record"
+]
     },
     cases: {
       title: "Preview available cases",
@@ -199,11 +241,26 @@ export const landingMessages = {
       title: "Your journey on the platform",
       subtitle: "Simple steps from signup to progress tracking",
       steps: [
-        { title: "Sign up", desc: "Create your account and start learning" },
-        { title: "Submit a case", desc: "Add the clinical case you need" },
-        { title: "Start searching", desc: "Find the right cases for you" },
-        { title: "Move forward", desc: "Track your progress step by step" },
-      ],
+  {
+    title: "Create Your Account",
+    desc: "Start your educational journey by creating your personal account."
+  },
+
+  {
+    title: "Activate Your Subscription",
+    desc: "Subscribe to gain access to available clinical cases."
+  },
+
+  {
+    title: "Browse and Reserve a Case",
+    desc: "Explore available cases and reserve the one that matches your requirements."
+  },
+
+  {
+    title: "Start Your Clinical Journey",
+    desc: "Once approved by the administration, you will be connected with the patient and manage the case through your personal profile."
+  }
+]
     },
     search: {
       title: "Search the case database",
@@ -219,16 +276,27 @@ export const landingMessages = {
       empty: "No cases match your search.",
       error: "Could not load cases. Please try again later.",
     },
-    submit: {
-      title: "Submit a case",
-      subtitle: "Enter case details and attach patient information",
-      patientName: "Patient name",
-      age: "Age",
-      caseType: "Case type",
-      toothNumber: "Tooth number",
-      notes: "Additional notes",
-      submit: "Submit case",
-    },
+   submit: {
+  title: "Submit Your Case",
+  subtitle: "Fill in your information and we will contact you",
+
+  patientName: "Patient Name",
+  age: "Age",
+  phone: "Phone Number",
+  nationalId: "National ID",
+
+  selectUniversity: "Select University",
+
+  notes: "Additional Notes",
+
+  submit: "Submit Request",
+
+  universities: {
+    tishreen: "Tishreen University",
+    manara: "Al Manara University",
+    sham: "Al Sham Private University",
+  },
+},
     universities: {
       title: "Support teams",
       subtitle: "Reach support staff and partner universities directly",
@@ -257,9 +325,16 @@ export const landingMessages = {
         },
       ]
     },
+homeCta: {
+  title: "Start Your Journey Today",
+  description:
+    "Join the DENOVA community and activate your subscription for full access to the educational cases database.",
+  button: "Subscribe Now",
+},
     footer: {
       rights: "All rights reserved",
     },
+
   },
 } as const;
 

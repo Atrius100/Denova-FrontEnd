@@ -11,6 +11,7 @@ import {
 import DataTable from "@/features/reception/ui/DataTable";
 import PatientFormModal from "@/features/reception/ui/AddPation";
 import DeleteConfirmModal from "@/features/admin/ui/DeleteModel";
+import FilterTabs from "@/components/CommonApp/FilterTabs";
 
 
 const filters = [
@@ -67,7 +68,8 @@ export default function PatientsAPage() {
 
   const [showDeleteModal, setShowDeleteModal] =
     useState(false);
-
+const [showViewModal, setShowViewModal] =
+  useState(false);
   const filteredPatients = useMemo(() => {
     switch (selectedFilter) {
       case "مرضى جامعة تشرين":
@@ -110,38 +112,11 @@ export default function PatientsAPage() {
 
         {/* FILTERS */}
 
-        <div className="flex flex-wrap gap-3">
-
-          {filters.map((item) => (
-            <button
-              key={item}
-              onClick={() =>
-                setSelectedFilter(item)
-              }
-              className={`rounded-xl px-5 py-3 text-sm font-semibold transition
-
-              ${
-                selectedFilter === item
-                  ? `
-                    bg-gradient-to-r
-                    from-[#1e3a6d]
-                    to-[#3b82f6]
-                    text-white
-                    shadow-lg
-                    shadow-blue-500/20
-                  `
-                  : `
-                    border border-slate-200
-                    bg-white
-                    text-slate-600
-                  `
-              }`}
-            >
-              {item}
-            </button>
-          ))}
-
-        </div>
+       <FilterTabs
+  items={filters}
+  selected={selectedFilter}
+  onChange={setSelectedFilter}
+/>
 
         {/* TABLE */}
 
@@ -201,23 +176,16 @@ export default function PatientsAPage() {
 
                   {/* VIEW */}
 
-                  <button
-                    className="rounded-full p-2 text-blue-600 hover:bg-blue-50"
-                    onClick={() => {
-                      console.log(
-                        "go patient details",
-                        row.id
-                      );
-
-                      /*
-                      router.push(
-                        `/patientsA/${row.id}`
-                      )
-                      */
-                    }}
-                  >
-                    <Eye className="h-5 w-5" />
-                  </button>
+                  {/* VIEW */}
+<button
+  className="rounded-full p-2 text-blue-600 hover:bg-blue-50"
+  onClick={() => {
+    setSelectedPatient(row);
+    setShowViewModal(true);
+  }}
+>
+  <Eye className="h-5 w-5" />
+</button>
 
                   {/* EDIT */}
 
@@ -237,7 +205,18 @@ export default function PatientsAPage() {
                   </button>
 
                   {/* DELETE */}
+{/* VIEW */}
 
+{showViewModal && (
+  <PatientFormModal
+    mode="view"
+    defaultValues={selectedPatient}
+    onClose={() => {
+      setShowViewModal(false);
+      setSelectedPatient(null);
+    }}
+  />
+)}
                   <button
                     className="rounded-full p-2 text-red-600 hover:bg-red-50"
                     onClick={() => {
@@ -263,14 +242,15 @@ export default function PatientsAPage() {
       {/* EDIT */}
 
       {showEditModal && (
-        <PatientFormModal
-          mode="create"
-          defaultValues={selectedPatient}
-          onClose={() =>
-            setShowEditModal(false)
-          }
-        />
-      )}
+  <PatientFormModal
+    mode="edit"
+    defaultValues={selectedPatient}
+    onClose={() => {
+      setShowEditModal(false);
+      setSelectedPatient(null);
+    }}
+  />
+)}
 
       {/* DELETE */}
 

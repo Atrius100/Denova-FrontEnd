@@ -1,16 +1,7 @@
-import { redirect } from "next/navigation"
-import { DEFAULT_SETTINGS_SECTION } from "@/features/admin/settings/registry"
 
-type SettingsIndexProps = {
-  params: Promise<{ locale: string }>
-}
+import ChangePass from "@/features/admin/settings/components/ui/changePass";
 
-export default async function SettingsIndexPage({
-  params,
-}: SettingsIndexProps) {
-  const { locale } = await params
+export default function page() {
 
-  redirect(
-    `/${locale}/settings/${DEFAULT_SETTINGS_SECTION}`
-  )
+  return <ChangePass />
 }

@@ -24,9 +24,8 @@ const [form, setForm] = useState({
   confirmPassword: "",
   university: "",
   academicYear: 1,
-
   phoneNumber: "",
-  nationalNumber: "",
+    nationalId: "",
 });
   function updateField(
     field: string,
@@ -45,29 +44,21 @@ const [form, setForm] = useState({
   ) {
     event.preventDefault();
 
-    if (
-      form.password !==
-      form.confirmPassword
-    ) {
-      setLocalError(
-        "Passwords do not match."
-      );
 
-      return;
-    }
+if (form.password !== form.confirmPassword) {
+  setLocalError("Passwords do not match.");
+  return;
+}
 
-    const {
-      confirmPassword,
-      ...payload
-    } = form;
+const { confirmPassword, ...payload } = form;
 
-    console.log(payload);
-
-    signup.mutate(payload, {
-      onSuccess: () => {
-        router.push("/verify");
-      },
-    });
+signup.mutate(payload, {
+  onSuccess: () => {
+    router.push(
+  `/verify?email=${encodeURIComponent(form.email)}`
+);
+  },
+});
   }
 
   return (

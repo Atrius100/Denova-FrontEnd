@@ -42,8 +42,6 @@ export default function LoginPage() {
   ) {
     event.preventDefault();
 
-    console.log(form);
-
     login.mutate(form, {
       onSuccess: (data) => {
         const token =
@@ -62,7 +60,7 @@ export default function LoginPage() {
             ?.universityId,
         })
 
-        router.push("/");
+        router.replace("/");
       },
     });
   }

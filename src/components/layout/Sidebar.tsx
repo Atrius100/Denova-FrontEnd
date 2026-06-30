@@ -1,38 +1,49 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { sidebarLinks } from "../../app/[locale]/(reception)/dataLink/data";
+import { adminSidebarLinks } from "@/config/admin-navigation";
+import { studentSidebarLinks } from "@/config/student-navigation";
 
-import { usePathname }
-  from "next/navigation";
 
-import { useTranslations }
-  from "next-intl";
+interface SidebarProps {
+  role?: "admin" | "reception" | "student";
+}
+export function Sidebar({
+  role = "reception",
+}: SidebarProps) {
+ const links =
+  role === "admin"
+    ? adminSidebarLinks
+    : role === "student"
+    ? studentSidebarLinks
+    : sidebarLinks;
+  const router = useRouter();
+  const pathname = usePathname();
+const t = useTranslations(
+  role === "admin"
+    ? "adminSidebar"
+    : role === "student"
+    ? "studentSidebar"
+    : "receptionSidebar"
+);  // استخراج الـ locale من الـ pathname
+  const locale = pathname.split("/")[1];
 
-import Image
-  from "next/image";
-
-import { sidebarLinks }
-  from "../../app/[locale]/(reception)/dataLink/data";
-
-export function Sidebar() {
-
-  const pathname =
-    usePathname();
-
-  const t =
-    useTranslations(
-      "receptionSidebar"
-    );
+  const handleLogoClick = () => {
+    router.push(`/${locale}`);
+  };
+  
 
   return (
-
     <>
       {/* ================= MOBILE / TABLET ================= */}
       {/* تحت 1024 */}
       <aside
         className="
           sticy left-0 top-0 z-50
-          flex h-screen w-20 flex-col items-center
+          flex h-auto lg:h-screen w-20 flex-col items-center
 
           bg-gradient-to-b
           from-[#0f2d5c]
@@ -43,14 +54,13 @@ export function Sidebar() {
           lg:hidden
         "
       >
-
         {/* Logo */}
-        <div
+        <button
+          onClick={handleLogoClick}
           className="
-            mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-white
+            mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-white hover:shadow-lg transition-shadow cursor-pointer border-0
           "
         >
-
           <Image
             src="/logo.png"
             alt="DENOVA Logo"
@@ -59,39 +69,30 @@ export function Sidebar() {
             className="object-contain"
             priority
           />
-        </div>
+        </button>
 
         {/* Icons */}
         <nav className="flex flex-1 flex-col gap-3">
-
-          {sidebarLinks.map((item) => {
-
-            const Icon =
-              item.icon;
-
-            const isActive =
-              pathname.includes(
-                item.href
-              );
+          {links.map((item) => {
+            const Icon = item.icon;
+            const isActive = pathname.includes(item.href);
 
             return (
-
-              <Link
+              <button
                 key={item.key}
-                href={item.href}
+                onClick={() => router.push(item.href)}
                 className={`
-                  flex h-12 w-12 items-center justify-center rounded-2xl transition-all
+                  flex h-12 w-12 items-center justify-center rounded-2xl transition-all border-0 cursor-pointer
 
-                  ${isActive
-                    ? "bg-white text-[#1e3a6d] shadow-lg"
-
-                    : "text-white/80 hover:bg-white/10 hover:text-white"
+                  ${
+                    isActive
+                      ? "bg-white text-[#1e3a6d] shadow-lg"
+                      : "text-white/80 hover:bg-white/10 hover:text-white"
                   }
                 `}
               >
-
                 <Icon className="h-5 w-5" />
-              </Link>
+              </button>
             );
           })}
         </nav>
@@ -104,7 +105,7 @@ export function Sidebar() {
           hidden lg:flex
           w-60 xl:w-72
           flex-col
-shrink-0
+          shrink-0
           bg-gradient-to-b
           from-[#0f2d5c]
           to-[#17406f]
@@ -112,18 +113,19 @@ shrink-0
           text-white
         "
       >
-
         {/* Header */}
-        <div
+        <button
+          onClick={handleLogoClick}
           className="
             flex items-center gap-3
             border-b border-white/10
 
             px-4 py-5
             xl:px-6 xl:py-6
+
+            hover:bg-white/5 transition-colors border-0 cursor-pointer w-full
           "
         >
-
           <div
             className="
               flex h-15 w-15 items-center justify-center rounded-2xl border border-[#e2e8f0] bg-white shadow-sm
@@ -131,7 +133,6 @@ shrink-0
               xl:h-16 xl:w-16
             "
           >
-
             <Image
               src="/logo.png"
               alt="DENOVA Logo"
@@ -143,14 +144,12 @@ shrink-0
           </div>
 
           <div>
-
             <h1
               className="
                 text-xl font-bold tracking-wide
                 xl:text-3xl
               "
             >
-
               DENOVA
             </h1>
 
@@ -160,11 +159,10 @@ shrink-0
                 xl:text-sm
               "
             >
-
               {t("subtitle")}
             </p>
           </div>
-        </div>
+        </button>
 
         {/* Navigation */}
         <nav
@@ -175,36 +173,27 @@ shrink-0
             xl:px-4 xl:py-6
           "
         >
-
-          {sidebarLinks.map((item) => {
-
-            const Icon =
-              item.icon;
-
-            const isActive =
-              pathname.includes(
-                item.href
-              );
+          {links.map((item) => {
+            const Icon = item.icon;
+            const isActive = pathname.includes(item.href);
 
             return (
-
-              <Link
+              <button
                 key={item.key}
-                href={item.href}
+                onClick={() => router.push(item.href)}
                 className={`
-                  group flex items-center gap-3 rounded-xl transition-all duration-200
+                  group flex items-center gap-3 rounded-xl transition-all duration-200 w-full border-0 cursor-pointer
 
                   ps-3 py-2.5
                   xl:px-4 xl:py-3
 
-                  ${isActive
-                    ? "bg-white/15 text-white shadow-lg"
-
-                    : "text-blue-100/80 hover:bg-white/10 hover:text-white"
+                  ${
+                    isActive
+                      ? "bg-white/15 text-white shadow-lg"
+                      : "text-blue-100/80 hover:bg-white/10 hover:text-white"
                   }
                 `}
               >
-
                 <Icon className="h-5 w-5 shrink-0" />
 
                 <span
@@ -213,10 +202,9 @@ shrink-0
                       xl:text-sm
                     "
                 >
-
                   {t(item.key)}
                 </span>
-              </Link>
+              </button>
             );
           })}
         </nav>
@@ -230,7 +218,6 @@ shrink-0
             xl:p-5
           "
         >
-
           <div
             className="
               rounded-2xl bg-white/10 p-3 backdrop-blur-sm
@@ -238,14 +225,12 @@ shrink-0
               xl:p-4
             "
           >
-
             <p
               className="
                 text-xs font-medium
                 xl:text-sm
               "
             >
-
               {t("footerTitle")}
             </p>
 
@@ -255,7 +240,6 @@ shrink-0
                 xl:text-xs
               "
             >
-
               {t("footerSubtitle")}
             </p>
           </div>

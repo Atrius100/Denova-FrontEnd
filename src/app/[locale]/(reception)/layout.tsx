@@ -16,7 +16,7 @@ export default function ReceptionLayout({
         <div className="flex min-h-screen bg-[#f5f7fb]">
 
             {/* Sidebar */}
-            <Sidebar />
+            <Sidebar role="reception" />
 
             {/* Main */}
             <div className="flex flex-1 flex-col">

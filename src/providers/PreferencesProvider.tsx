@@ -9,117 +9,74 @@ import {
   useState,
 } from "react";
 
-import {
-  type LandingCopy,
-  type Locale,
-  landingMessages,
-} from "@/i18n/landing-messages";
-
 type Theme = "light" | "dark";
 
 const THEME_KEY = "denova-theme";
-const LOCALE_KEY = "denova-locale";
 
 type PreferencesContextValue = {
   theme: Theme;
-  locale: Locale;
-  setTheme: (t: Theme) => void;
+  setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
-  setLocale: (l: Locale) => void;
-  toggleLocale: () => void;
-  landing: LandingCopy;
 };
 
-const PreferencesContext = createContext<PreferencesContextValue | null>(
-  null,
-);
+const PreferencesContext =
+  createContext<PreferencesContextValue | null>(null);
 
-function applyDomTheme(theme: Theme) {
-  document.documentElement.classList.toggle("dark", theme === "dark");
+function applyTheme(theme: Theme) {
+  document.documentElement.classList.toggle(
+    "dark",
+    theme === "dark"
+  );
 }
 
-/**
- * Landing-only locale (localStorage). Does not override <html lang/dir> —
- * those follow the URL via next-intl on [locale] routes.
- */
 export function PreferencesProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setThemeState] = useState<Theme>("light");
-  const [locale, setLocaleState] = useState<Locale>("ar");
+  const [theme, setThemeState] =
+    useState<Theme>("light");
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem(THEME_KEY) as Theme | null;
-    const storedLocale = localStorage.getItem(LOCALE_KEY) as Locale | null;
+    const storedTheme =
+      localStorage.getItem(THEME_KEY) as Theme | null;
 
-    const initialTheme: Theme =
+    const initialTheme =
       storedTheme === "dark" || storedTheme === "light"
         ? storedTheme
-        : window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-
-    const initialLocale: Locale =
-      storedLocale === "en" || storedLocale === "ar"
-        ? storedLocale
-        : "ar";
+        : "light";
 
     setThemeState(initialTheme);
-    setLocaleState(initialLocale);
-    applyDomTheme(initialTheme);
+    applyTheme(initialTheme);
   }, []);
 
-  const setTheme = useCallback((t: Theme) => {
-    setThemeState(t);
-    localStorage.setItem(THEME_KEY, t);
-    applyDomTheme(t);
+  const setTheme = useCallback((theme: Theme) => {
+    setThemeState(theme);
+    localStorage.setItem(THEME_KEY, theme);
+    applyTheme(theme);
   }, []);
 
   const toggleTheme = useCallback(() => {
     setThemeState((prev) => {
-      const next = prev === "dark" ? "light" : "dark";
+      const next =
+        prev === "dark"
+          ? "light"
+          : "dark";
+
       localStorage.setItem(THEME_KEY, next);
-      applyDomTheme(next);
+      applyTheme(next);
+
       return next;
     });
   }, []);
-
-  const setLocale = useCallback((l: Locale) => {
-    setLocaleState(l);
-    localStorage.setItem(LOCALE_KEY, l);
-  }, []);
-
-  const toggleLocale = useCallback(() => {
-    setLocaleState((prev) => {
-      const next = prev === "ar" ? "en" : "ar";
-      localStorage.setItem(LOCALE_KEY, next);
-      return next;
-    });
-  }, []);
-
-  const landing = landingMessages[locale];
 
   const value = useMemo(
     () => ({
       theme,
-      locale,
       setTheme,
       toggleTheme,
-      setLocale,
-      toggleLocale,
-      landing,
     }),
-    [
-      theme,
-      locale,
-      setTheme,
-      toggleTheme,
-      setLocale,
-      toggleLocale,
-      landing,
-    ],
+    [theme, setTheme, toggleTheme]
   );
 
   return (
@@ -130,9 +87,13 @@ export function PreferencesProvider({
 }
 
 export function usePreferences() {
-  const ctx = useContext(PreferencesContext);
-  if (!ctx) {
-    throw new Error("usePreferences must be used within PreferencesProvider");
+  const context = useContext(PreferencesContext);
+
+  if (!context) {
+    throw new Error(
+      "usePreferences must be used within PreferencesProvider"
+    );
   }
-  return ctx;
+
+  return context;
 }

@@ -10,7 +10,7 @@ export async function loginApi(
 ) {
   const response =
     await axiosInstance.post(
-      "/api/Auth/login",
+      "/Auth/login",
       data
     );
 

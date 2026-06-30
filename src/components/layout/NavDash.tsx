@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter }
-from "next/navigation";
+    from "next/navigation";
 
 import {
     useLocale,
@@ -14,10 +14,8 @@ import {
 } from "lucide-react";
 
 type NavDashProps = {
-
     fullName: string;
-
-    role: "admin" | "employee";
+    role: "admin" | "employee" | "student";
 };
 
 export default function NavDash({
@@ -162,16 +160,12 @@ export default function NavDash({
 
                             {fullName}
                         </p>
-
-                        <p
-                            className="
-                  text-xs text-slate-500
-                "
-                        >
-
+                        <p className="text-xs text-slate-500">
                             {role === "admin"
                                 ? t("admin")
-                                : t("employee")}
+                                : role === "student"
+                                    ? t("student")
+                                    : t("employee")}
                         </p>
                     </div>
 

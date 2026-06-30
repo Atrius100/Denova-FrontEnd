@@ -9,7 +9,9 @@ import {
 } from "lucide-react";
 
 import DataTable from "@/features/reception/ui/DataTable";
-
+import PatientFormModal from "@/features/reception/ui/AddPation";
+import DeleteConfirmModal from "@/features/admin/ui/DeleteModel";
+import FilterTabs from "@/components/CommonApp/FilterTabs";
 const universities = [
   "الكل",
   "جامعة تشرين",
@@ -129,11 +131,10 @@ const renderStatus = (
       inline-flex rounded-full
       px-3 py-1 text-xs font-medium
 
-      ${
-        status === "pending"
-          ? "bg-amber-100 text-amber-700"
+      ${status === "pending"
+        ? "bg-amber-100 text-amber-700"
 
-          : status === "active"
+        : status === "active"
           ? "bg-blue-100 text-blue-700"
 
           : "bg-emerald-100 text-emerald-700"
@@ -158,6 +159,17 @@ const renderCase = (
 );
 
 export default function AdminStudentsPage() {
+  const [selectedStudent, setSelectedStudent] =
+  useState<any>(null);
+
+const [showViewModal, setShowViewModal] =
+  useState(false);
+
+const [showEditModal, setShowEditModal] =
+  useState(false);
+
+const [showDeleteModal, setShowDeleteModal] =
+  useState(false);
   const [
     selectedUniversity,
     setSelectedUniversity,
@@ -167,56 +179,22 @@ export default function AdminStudentsPage() {
     selectedUniversity === "الكل"
       ? students
       : students.filter(
-          (student) =>
-            student.university ===
-            selectedUniversity
-        );
+        (student) =>
+          student.university ===
+          selectedUniversity
+      );
 
   return (
+    <>
     <div className="space-y-6">
 
       {/* Filters */}
 
-      <div className="flex flex-wrap gap-3">
-
-        {universities.map(
-          (university) => (
-            <button
-              key={university}
-              onClick={() =>
-                setSelectedUniversity(
-                  university
-                )
-              }
-              className={`
-                rounded-xl px-5 py-3
-                text-sm font-semibold
-                transition
-
-                ${
-                  selectedUniversity ===
-                  university
-                    ? `
-                    bg-gradient-to-r
-                    from-[#1e3a6d]
-                    to-[#3b82f6]
-                    text-white
-                    shadow-lg
-                    shadow-blue-500/20
-                  `
-                    : `
-                    border border-slate-200
-                    bg-white
-                    text-slate-600
-                  `
-                }
-              `}
-            >
-              {university}
-            </button>
-          )
-        )}
-      </div>
+      <FilterTabs
+  items={universities}
+  selected={selectedUniversity}
+  onChange={setSelectedUniversity}
+/>
 
       <DataTable
         title="الطلاب"
@@ -295,35 +273,38 @@ export default function AdminStudentsPage() {
             className:
               "text-center",
 
-            cell: () => (
+            cell: (row) => (
               <div className="flex items-center justify-center gap-2">
 
+                {/* VIEW */}
                 <button
-                  className="
-                    rounded-full p-2
-                    text-blue-600
-                    hover:bg-blue-50
-                  "
+                  className="rounded-full p-2 text-blue-600 hover:bg-blue-50"
+                  onClick={() => {
+                    setSelectedStudent(row);
+                    setShowViewModal(true);
+                  }}
                 >
                   <Eye className="h-5 w-5" />
                 </button>
 
+                {/* EDIT */}
                 <button
-                  className="
-                    rounded-full p-2
-                    text-amber-600
-                    hover:bg-amber-50
-                  "
+                  className="rounded-full p-2 text-amber-600 hover:bg-amber-50"
+                  onClick={() => {
+                    setSelectedStudent(row);
+                    setShowEditModal(true);
+                  }}
                 >
                   <Pencil className="h-5 w-5" />
                 </button>
 
+                {/* DELETE */}
                 <button
-                  className="
-                    rounded-full p-2
-                    text-red-600
-                    hover:bg-red-50
-                  "
+                  className="rounded-full p-2 text-red-600 hover:bg-red-50"
+                  onClick={() => {
+                    setSelectedStudent(row);
+                    setShowDeleteModal(true);
+                  }}
                 >
                   <Trash2 className="h-5 w-5" />
                 </button>
@@ -333,6 +314,49 @@ export default function AdminStudentsPage() {
           },
         ]}
       />
-    </div>
+      
+        </div>
+
+    {showViewModal && (
+      <PatientFormModal
+        mode="view"
+        defaultValues={{
+          name: selectedStudent?.student,
+          university: selectedStudent?.university,
+        }}
+        onClose={() => {
+          setShowViewModal(false);
+          setSelectedStudent(null);
+        }}
+      />
+    )}
+
+    {showEditModal && (
+      <PatientFormModal
+        mode="edit"
+        defaultValues={{
+          name: selectedStudent?.student,
+          university: selectedStudent?.university,
+        }}
+        onClose={() => {
+          setShowEditModal(false);
+          setSelectedStudent(null);
+        }}
+      />
+    )}
+
+    {showDeleteModal && (
+      <DeleteConfirmModal
+        onClose={() => {
+          setShowDeleteModal(false);
+          setSelectedStudent(null);
+        }}
+        onConfirm={() => {
+          setShowDeleteModal(false);
+          setSelectedStudent(null);
+        }}
+      />
+    )}
+  </>
   );
-}
+} 

@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
-import AdminNavDash from "@/components/layout/AdminNavDash"
-import { AdminSidebar } from "@/components/layout/AdminSidebar"
 import { AdminNotificationProvider } from "@/features/admin/notifications/providers/AdminNotificationProvider"
+import { Sidebar } from "@/components/layout/Sidebar"
+import NavDash from "@/components/layout/NavDash"
 
 export default function AdminLayout({
   children,
@@ -11,10 +11,9 @@ export default function AdminLayout({
   return (
     <AdminNotificationProvider>
       <div className="flex min-h-screen bg-[#f5f7fb]">
-        <AdminSidebar />
-
+        <Sidebar role="admin" />
         <div className="flex min-w-0 flex-1 flex-col">
-          <AdminNavDash
+          <NavDash
             fullName="Admin User"
             role="admin"
           />

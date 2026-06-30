@@ -9,7 +9,7 @@ import { useNotificationMutations } from "../hooks/useNotificationMutations"
 import { useNotificationStore } from "../store/notification.store"
 import { NotificationItem } from "./NotificationItem"
 import { NotificationEmptyState } from "./NotificationEmptyState"
-import { NotificationSkeleton } from "./NotificationSkeleton"
+import { NotificationSkeleton } from "./RequestSkeleton"
 
 export function NotificationDropdown() {
   const t = useTranslations("adminNotifications")

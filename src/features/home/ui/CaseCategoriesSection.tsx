@@ -8,10 +8,11 @@ import { Spinner } from "@/components/ui/Spinner";
 import { LandingCasesLock } from "@/features/home/ui/LandingCasesLock";
 import { useLandingMedicalCases } from "@/features/home/ui/hook/useLandingMedicalCases";
 import { useAuthSession } from "@/hooks/useAuthSession";
-import { usePreferences } from "@/providers/PreferencesProvider";
+import { useTranslations } from "next-intl";
 
 export function CasesSection() {
-  const { landing } = usePreferences();
+  const t = useTranslations("cases");
+  
   const { ready, isLoggedIn } = useAuthSession();
   const [query, setQuery] = useState("");
   const { data: cases = [], isLoading, isError } = useLandingMedicalCases();
@@ -30,8 +31,8 @@ export function CasesSection() {
     <section className="border-y border-dnv-border bg-background px-5 py-14 md:px-10 md:py-16 lg:p-[60px]">
       <div className="mb-10 mx-auto max-w-[58rem] text-center">
         <TitleSectionCommon
-          title={landing.cases.title}
-          subtitle={landing.cases.subtitle}
+          title={t("title")}
+          subtitle={t("subtitle")}
         />
       </div>
 
@@ -47,14 +48,14 @@ export function CasesSection() {
             <div className="flex h-14 items-center gap-3 rounded-full border border-dnv-border bg-dnv-soft px-6 dark:bg-slate-900">
               <Search className="h-5 w-5 shrink-0 text-dnv-muted" aria-hidden />
               <label className="sr-only" htmlFor="cases-section-search">
-                {landing.cases.searchPlaceholder}
+                {t("searchPlaceholder")}
               </label>
               <input
                 id="cases-section-search"
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder={landing.cases.searchPlaceholder}
+                placeholder={t("searchPlaceholder")}
                 className="w-full bg-transparent text-dnv-heading outline-none placeholder:text-dnv-muted"
               />
             </div>
@@ -63,14 +64,14 @@ export function CasesSection() {
           {isLoading ? (
             <div className="flex flex-col items-center gap-4 py-12">
               <Spinner />
-              <p className="text-dnv-muted">{landing.cases.loading}</p>
+              <p className="text-dnv-muted">{t("loading")}</p>
             </div>
           ) : isError ? (
             <p className="py-8 text-center text-red-600 dark:text-red-400">
-              {landing.cases.error}
+              {t("error")}
             </p>
           ) : filtered.length === 0 ? (
-            <p className="py-8 text-center text-dnv-muted">{landing.cases.empty}</p>
+            <p className="py-8 text-center text-dnv-muted">{t("empty")}</p>
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filtered.map((item) => (

@@ -222,6 +222,8 @@ export default function ReceptionDashboard() {
                 openModal && (
 
                     <PatientFormModal
+                    mode="create"
+ 
                         onClose={() =>
                             setOpenModal(false)
                         }

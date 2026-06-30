@@ -8,6 +8,7 @@
   --denova-primary: #1e3a6d;
   --denova-secondary: #5f8fbf;
   --denova-background: #f3f9ff;
+  --hero-overlay: rgba(255,255,255,0.68);
 
   --dnv-navy: #1e3a6d;
   --dnv-blue: #2563eb;
@@ -23,6 +24,7 @@
 .dark {
   --background: #0b1220;
   --foreground: #e8ecf4;
+  --hero-overlay: rgba(2,6,23,0.82);
 
   --denova-primary: #93c5fd;
   --denova-secondary: #60a5fa;
@@ -41,6 +43,7 @@
 
 /* Tailwind 4 semantic utilities */
 @theme inline {
+    --color-hero-overlay: var(--hero-overlay);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-dnv-navy: var(--dnv-navy);

@@ -9,57 +9,76 @@ import {
   Sun,
   X,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { usePreferences } from "@/providers/PreferencesProvider";
+import { useTranslations, useLocale } from "next-intl";
+import { useRouter, usePathname } from "next/navigation";
 
 export function Navbar() {
   const {
-    landing,
     theme,
     toggleTheme,
-    toggleLocale,
-    locale,
   } = usePreferences();
+  
+  const t = useTranslations("nav");
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
+  function toggleLocale() {
+    const nextLocale =
+      locale === "ar"
+        ? "en"
+        : "ar";
+
+    const newPath = pathname.replace(
+      /^\/(ar|en)/,
+      `/${nextLocale}`
+    );
+
+    router.push(newPath);
+  }
   const [menuOpen, setMenuOpen] =
     useState(false);
 
   const [scrolled, setScrolled] =
     useState(false);
 
+  const menuRef = useRef<HTMLDivElement>(null);
+
   const navLinks = useMemo(
     () => [
       {
-        label: landing.nav.home,
+        label: t("home"),
         href: "/#home",
       },
       {
-        label: landing.nav.cases,
+        label: t("cases"),
         href: "/#cases",
       },
       {
-        label: landing.nav.universities,
+        label: t("universities"),
         href: "/#universities",
       },
       {
-        label: landing.nav.about,
+        label: t("about"),
         href: "/#about",
       },
       {
-        label: landing.nav.reception,
+        label: t("reception"),
         href: "/dashboard",
       },
       {
-        label: landing.nav.student,
+        label: t("student"),
         href: "/profile",
       },
       {
-        label: landing.nav.admin,
+        label: t("admin"),
         href: "/dashboardA",
       },
     ],
-    [landing.nav]
+    [t]
   );
 
   useEffect(() => {
@@ -99,6 +118,32 @@ export function Navbar() {
     };
   }, []);
 
+  // إغلاق السايد بار عند الضغط خارجه
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node)
+      ) {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen) {
+      document.addEventListener(
+        "mousedown",
+        handleClickOutside
+      );
+    }
+
+    return () => {
+      document.removeEventListener(
+        "mousedown",
+        handleClickOutside
+      );
+    };
+  }, [menuOpen]);
+
   const solidBar =
     scrolled || menuOpen;
 
@@ -110,7 +155,7 @@ export function Navbar() {
     "flex h-11 w-11 items-center justify-center rounded-xl border border-dnv-border bg-background text-dnv-muted transition hover:border-dnv-accent/35 hover:text-dnv-navy";
 
   const linkMuted =
-    "text-[15px] font-medium text-dnv-muted transition duration-200 hover:text-dnv-navy";
+    "text-[14px] xl:text-base  font-medium text-dnv-muted transition duration-200 hover:text-dnv-navy";
 
   return (
     <header
@@ -138,12 +183,12 @@ export function Navbar() {
             </span>
 
             <span className="text-[11px] font-medium text-dnv-muted">
-              {landing.nav.brandTagline}
+              {t("brandTagline")}
             </span>
           </div>
         </Link>
 
-        <div className="hidden items-center gap-5 lg:flex">
+        <div className="hidden items-center gap-3 xl:gap-5 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -155,7 +200,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-1.5 xl:gap-3 lg:flex">
           <button
             type="button"
             aria-label={
@@ -198,14 +243,14 @@ export function Navbar() {
             href="/login"
             className="text-sm font-semibold text-dnv-heading transition duration-200"
           >
-            {landing.nav.login}
+            {t("login")}
           </Link>
 
           <Link
-            href="/register"
-            className="rounded-xl bg-gradient-to-r from-dnv-navy to-dnv-blue px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-dnv-accent/25 transition duration-200 hover:scale-[1.03]"
+           href="/payment?plan=semester"
+            className="rounded-xl bg-gradient-to-r from-dnv-navy to-dnv-blue p-3 xl:p-4 text-sm font-semibold text-white shadow-lg shadow-dnv-accent/25 transition duration-200 hover:scale-[1.03]"
           >
-            {landing.nav.register}
+            {t("register")}
           </Link>
         </div>
 
@@ -230,7 +275,10 @@ export function Navbar() {
       </nav>
 
       {menuOpen && (
-        <div className="border-t border-dnv-border bg-background lg:hidden">
+        <div
+          ref={menuRef}
+          className="border-t border-dnv-border bg-background lg:hidden"
+        >
           <div className="space-y-1 px-5 py-5 md:px-10 lg:px-[60px]">
             {navLinks.map((link) => (
               <Link
@@ -276,14 +324,14 @@ export function Navbar() {
                 href="/login"
                 className="min-w-[8rem] flex-1 rounded-xl border border-dnv-border py-3 text-center text-sm font-semibold text-dnv-heading"
               >
-                {landing.nav.login}
+                {t("login")}
               </Link>
 
               <Link
                 href="/register"
                 className="min-w-[8rem] flex-1 rounded-xl bg-gradient-to-r from-dnv-navy to-dnv-blue py-3 text-center text-sm font-semibold text-white"
               >
-                {landing.nav.register}
+                {t("register")}
               </Link>
             </div>
           </div>

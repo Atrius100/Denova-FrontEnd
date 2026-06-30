@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+
 
 import {
   useRouter,
@@ -8,92 +8,128 @@ import {
 } from "next/navigation";
 
 import { AuthCard } from "@/features/auth/components/AuthCard";
-
-import { Spinner } from "@/components/ui/Spinner";
+import { FormEvent, useState } from "react";
+import { InputField } from "@/features/auth/components/InputFailed";
+import { useResendVerification } from "@/features/auth/hooks/useResendVerification";
 import { useVerify } from "@/features/auth/hooks/useverify";
 
 
-
 export default function VerifyPage() {
+
+
+const verify = useVerify();
+  const searchParams = useSearchParams();
+const resend = useResendVerification();
+const [form, setForm] = useState({
+  email: searchParams.get("email") ?? "",
+  code: "",
+});
+  
   const router = useRouter();
 
-  const searchParams =
-    useSearchParams();
 
-  const verify = useVerify();
+function handleSubmit(
+  event: FormEvent<HTMLFormElement>
+) {
+  event.preventDefault();
 
-  useEffect(() => {
-    const email =
-      searchParams.get("email");
 
-    const code =
-      searchParams.get("code");
+  verify.mutate(form, {
+    onSuccess: (data) => {
+      console.log("VERIFY SUCCESS", data);
+      router.replace("/login");
+    },
+    onError: (error) => {
+      console.log("VERIFY ERROR", error);
+    },
+  });
+}
 
-    if (!email || !code) return;
+function handleResend() {
+  console.log("Resend:", form.email);
 
-    verify.mutate(
-      {
-        email,
-        code,
+  resend.mutate(
+    { email: form.email },
+    {
+      onSuccess: (data) => {
+        console.log("RESEND SUCCESS", data);
       },
-      {
-        onSuccess: () => {
-          setTimeout(() => {
-            router.push("/login");
-          }, 1500);
-        },
-      }
-    );
-  }, []);
-
+      onError: (error) => {
+        console.log("RESEND ERROR", error);
+      },
+    }
+  );
+}
   return (
-    <AuthCard title="" minimal>
-      <div className="flex min-h-[220px] flex-col items-center justify-center text-center">
-        {verify.isSuccess ? (
-          <>
-            <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-50 text-3xl text-emerald-600">
-              ✓
-            </div>
+   <AuthCard title="Verify Account" minimal>
+  <form
+  onSubmit={handleSubmit}
+  className="mt-3 md:mt-6 flex w-full flex-col gap-3 md:gap-5"
+>
+    <InputField
+  id="email"
+  label="Email"
+  type="email"
+  value={form.email}
+  onChange={(e) =>
+    setForm({
+      ...form,
+      email: e.target.value,
+    })
+  }
+/>
 
-            <h1 className="mb-2 text-2xl font-bold text-[var(--denova-primary)]">
-              Verified
-            </h1>
+<InputField
+  id="code"
+  label="Verification Code"
+  value={form.code}
+  onChange={(e) =>
+    setForm({
+      ...form,
+      code: e.target.value,
+    })
+  }
+/>
+{verify.isError && (
+      <p className="text-sm text-red-600">
+        {verify.error?.message}
+      </p>
+    )}
 
-            <p className="max-w-64 text-sm leading-6 text-slate-500">
-              Your account has been verified.
-              Redirecting to login...
-            </p>
-          </>
-        ) : verify.isError ? (
-          <>
-            <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-red-50 text-3xl text-red-600">
-              ✕
-            </div>
+    <button
+  type="submit"
+  disabled={verify.isPending}
+  className="
+    h-11
+    rounded-xl
+    bg-gradient-to-br
+    from-[#2563eb]
+    to-[#1e3a6d]
+    text-white
+    shadow-lg
+    shadow-blue-500/20
+    transition
+    hover:opacity-90
+    disabled:cursor-not-allowed
+    disabled:opacity-70
+  "
+>
+  {verify.isPending
+    ? "Verifying..."
+    : "Verify Account"}
+</button>
+<p className="text-center text-sm text-slate-500">
+  Didn't receive the code?{" "}
 
-            <h1 className="mb-2 text-2xl font-bold text-red-600">
-              Verification Failed
-            </h1>
-
-            <p className="max-w-64 text-sm leading-6 text-slate-500">
-              Invalid or expired verification
-              link.
-            </p>
-          </>
-        ) : (
-          <>
-            <Spinner />
-
-            <h1 className="mt-8 text-xl font-semibold text-[var(--denova-primary)]">
-              ... Verifying your account
-            </h1>
-
-            <p className="mt-3 max-w-64 text-sm leading-6 text-slate-500">
-              Please wait while we verify
-              your email securely.
-            </p>
-          </>
-        )}
-      </div>
-    </AuthCard>
+  <button
+    type="button"
+    onClick={handleResend}
+    className="font-semibold text-primary hover:underline"
+  >
+    Resend Code
+  </button>
+</p>
+  </form>
+</AuthCard>
   );
 }

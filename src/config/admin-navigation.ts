@@ -4,6 +4,7 @@ import {
   FolderOpen,
   Settings,
   Bell,
+  ClipboardList,
 } from "lucide-react"
 
 export const adminSidebarLinks = [
@@ -28,8 +29,13 @@ export const adminSidebarLinks = [
     icon: Bell,
   },
   {
+    key: "requests",
+    href: "/requestsA",
+    icon: ClipboardList,
+  },
+  {
     key: "settings",
-    href: "/settings/general",
+    href: "/settings",
     icon: Settings,
   },
 ]

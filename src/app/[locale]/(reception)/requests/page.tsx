@@ -169,6 +169,10 @@ export default function RequestsPage() {
     ] = useState<any>(
         null
     );
+const [
+    viewRequest,
+    setViewRequest,
+] = useState<any>(null);
 
     return (
 
@@ -250,10 +254,14 @@ export default function RequestsPage() {
 
                             <div className="flex items-center justify-center gap-3">
 
-                                <button className="rounded-full p-2 text-slate-400 hover:bg-slate-100 hover:text-blue-600">
-
-                                    <Eye className="h-5 w-5" />
-                                </button>
+                                <button
+    onClick={() =>
+        setViewRequest(row)
+    }
+    className="rounded-full p-2 text-slate-400 hover:bg-slate-100 hover:text-blue-600"
+>
+    <Eye className="h-5 w-5" />
+</button>
 
                                 <button
                                     onClick={() =>
@@ -289,6 +297,18 @@ export default function RequestsPage() {
                     />
                 )
             }
+            {
+    viewRequest && (
+
+        <PatientFormModal
+            mode="view"
+            defaultValues={viewRequest}
+            onClose={() =>
+                setViewRequest(null)
+            }
+        />
+    )
+}
         </>
     );
 }

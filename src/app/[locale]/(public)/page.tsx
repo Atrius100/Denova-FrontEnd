@@ -12,7 +12,8 @@ export default function HomePage() {
   return (
     <main>
       <HeroSection />
-      <SubmitCaseSection />
+      <SubmitCaseSection role="guest" /> 
+<SubmitCaseSection role="student" /> 
       <AboutSection />
       <BenefitCard />
       <CasesSection />

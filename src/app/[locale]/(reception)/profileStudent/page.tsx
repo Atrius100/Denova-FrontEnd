@@ -7,7 +7,7 @@ import {
 } from "react";
 
 import { Eye } from "lucide-react";
-
+import PatientFormModal from "@/features/reception/ui/AddPation";
 import Pagination from "@/components/CommonApp/Pagination";
 import DataTable from "@/features/reception/ui/DataTable";
 
@@ -178,10 +178,9 @@ const renderStatus = (
       px-3 py-1
       text-xs font-medium
 
-      ${
-        status === "pending"
-          ? "bg-amber-100 text-amber-700"
-          : status === "active"
+      ${status === "pending"
+        ? "bg-amber-100 text-amber-700"
+        : status === "active"
           ? "bg-blue-100 text-blue-700"
           : "bg-emerald-100 text-emerald-700"
       }
@@ -205,6 +204,7 @@ const renderCase = (
 );
 
 export default function Page() {
+
   const [
     itemsPerPage,
     setItemsPerPage,
@@ -237,7 +237,11 @@ export default function Page() {
     currentPage,
     setCurrentPage,
   ] = useState(1);
+  const [selectedStudent, setSelectedStudent] =
+    useState<any>(null);
 
+  const [showViewModal, setShowViewModal] =
+    useState(false);
   const paginatedStudents =
     useMemo(() => {
       const start =
@@ -259,21 +263,28 @@ export default function Page() {
 
   const totalPages = Math.ceil(
     students.length /
-      itemsPerPage
+    itemsPerPage
   );
 
   return (
+  <>
     <DataTable
+
       title="الطلاب"
+
       subtitle="إدارة حالات الطلاب"
+
       data={paginatedStudents}
+
       pagination={
+
         <Pagination
+
           currentPage={currentPage}
+
           totalPages={totalPages}
-          onPageChange={
-            setCurrentPage
-          }
+
+          onPageChange={setCurrentPage}
         />
       }
       columns={[
@@ -344,9 +355,20 @@ export default function Page() {
         {
           title: "الإجراءات",
 
-          cell: () => (
+          cell: (row) => (
             <div className="flex items-center justify-center">
-              <button className="rounded-full p-2 text-slate-400 hover:bg-slate-100 hover:text-blue-600">
+              <button
+                onClick={() => {
+                  setSelectedStudent(row);
+                  setShowViewModal(true);
+                }}
+                className="
+    rounded-full p-2
+    text-slate-400
+    hover:bg-slate-100
+    hover:text-blue-600
+  "
+              >
                 <Eye className="h-5 w-5" />
               </button>
             </div>
@@ -354,5 +376,41 @@ export default function Page() {
         },
       ]}
     />
+        {showViewModal && (
+
+      <PatientFormModal
+
+        mode="view"
+
+        defaultValues={{
+
+          name: selectedStudent?.student,
+
+          age: "",
+
+          phone: "",
+
+          nationalId: "",
+
+          university: "",
+
+          toothNumber: "",
+
+          condition: selectedStudent?.case1?.title,
+
+        }}
+
+        onClose={() => {
+
+          setShowViewModal(false);
+
+          setSelectedStudent(null);
+
+        }}
+
+      />
+)}
+  
+    </>
   );
 }

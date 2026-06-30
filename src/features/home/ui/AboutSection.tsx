@@ -1,35 +1,85 @@
 "use client";
 
 import Image from "next/image";
-
 import { TitleSectionCommon } from "@/components/ui/TitleSectionCommon";
-import { usePreferences } from "@/providers/PreferencesProvider";
+import { useTranslations } from "next-intl";
 
 export function AboutSection() {
-  const { landing } = usePreferences();
+  const t = useTranslations("about");
 
   return (
-    <section className="border-b border-dnv-border bg-background px-5 py-12 md:px-10 md:py-14 lg:p-[60px]">
-      <div className="flex flex-col items-center gap-14 lg:flex-row lg:justify-between lg:gap-12">
-        <div className="w-full lg:w-[50%]">
+    <section className="
+      border-b border-dnv-border
+      bg-background
+      px-5 py-12
+      md:px-10 md:py-16
+      lg:px-[60px] lg:py-[80px]
+    ">
+      <div
+        className="
+          mx-auto
+          flex
+          max-w-7xl
+          flex-col
+          items-center
+          gap-10
+
+          lg:flex-row
+          lg:items-center
+          lg:justify-between
+          lg:gap-16
+        "
+      >
+        {/* Text */}
+        <div className="w-full lg:flex-1">
           <TitleSectionCommon
-            title={landing.about.title}
-            subtitle={landing.about.p1}
+            title={t("title")}
+            subtitle={t("p1")}
+            className2="
+              text-dnv-muted
+              text-[clamp(0.95rem,3vw,1.15rem)]
+              leading-8
+            "
           />
 
-          <div className="mt-12">
-            <TitleSectionCommon subtitle={landing.about.p2} />
+          <div className=" mt-2 md:mt-8">
+            <TitleSectionCommon
+              subtitle={t("p2")}
+              className2="
+                text-dnv-muted
+                text-[clamp(0.95rem,3vw,1.15rem)]
+                leading-8
+              "
+            />
           </div>
         </div>
 
-        <div className="flex w-full max-w-xl justify-center lg:max-w-none lg:w-auto">
+        {/* Image */}
+        <div
+          className="
+            w-full
+            max-w-[320px]
+
+            sm:max-w-[380px]
+            md:max-w-[450px]
+            lg:max-w-[500px]
+          "
+        >
           <Image
             src="/abouthand.png"
-            alt={landing.about.imageAlt}
+            alt={t("imageAlt")}
             width={500}
             height={500}
-            className="h-auto rounded-3xl border border-dnv-border/60 object-contain shadow-sm dark:border-white/15"
             priority
+            className="
+              h-auto
+              w-full
+              rounded-3xl
+              border border-dnv-border/60
+              object-contain
+              shadow-sm
+              dark:border-white/15
+            "
           />
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+
 import {
     Mail,
     User,
@@ -12,20 +13,21 @@ import {
     IdCard,
 } from "lucide-react";
 
-import { useTranslations }
-from "next-intl";
+import { useLocale, useTranslations }
+    from "next-intl";
 
 import { InputField }
-from "./InputFailed";
+    from "./InputFailed";
 
 import { PasswordField }
-from "./PassworedFailed";
+    from "./PassworedFailed";
 
 import Button
-from "./ButtonAuth";
+    from "./ButtonAuth";
 
 import { AuthCard }
-from "./AuthCard";
+    from "./AuthCard";
+import { useUniversities } from "../hooks/useUniversity";
 
 type AuthFormProps = {
 
@@ -49,7 +51,7 @@ type AuthFormProps = {
 
         phoneNumber?: string;
 
-        nationalNumber?: string;
+        nationalId?: string;
     };
 
     onChange: (
@@ -85,17 +87,10 @@ export function AuthForm({
     const isSignup =
         type === "signup";
 
-    const universities = [
 
-        t("universities.damascus"),
 
-        t("universities.tishreen"),
-
-        t("universities.aleppo"),
-
-        t("universities.baath"),
-    ];
-
+    const { data: universities = [] } = useUniversities();
+    const locale = useLocale();
     return (
 
         <AuthCard
@@ -175,38 +170,23 @@ export function AuthForm({
                                         <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
 
                                         <select
-                                            value={
-                                                form.university || ""
+                                            value={form.university}
+                                            onChange={(e) =>
+                                                onChange("university", e.target.value)
                                             }
-                                            onChange={(event) =>
-                                                onChange(
-                                                    "university",
-                                                    event.target.value
-                                                )
-                                            }
-                                            className="h-10 w-full appearance-none rounded-xl border border-blue-100 bg-white/55 pl-10 pr-10 text-sm text-slate-700 outline-none transition focus:border-primary/40 focus:ring-4 focus:ring-primary/10"
-                                            required
                                         >
-
                                             <option value="">
-
                                                 {t("selectUniversity")}
                                             </option>
 
-                                            {
-                                                universities.map(
-                                                    (uni) => (
-
-                                                        <option
-                                                            key={uni}
-                                                            value={uni}
-                                                        >
-
-                                                            {uni}
-                                                        </option>
-                                                    )
-                                                )
-                                            }
+                                            {universities.map((uni) => (
+                                                <option
+                                                    key={uni.id}
+                                                    value={String(uni.id)}
+                                                >
+                                                    {locale === "ar" ? uni.nameAr : uni.name}
+                                                </option>
+                                            ))}
                                         </select>
                                     </div>
                                 </div>
@@ -287,15 +267,12 @@ export function AuthForm({
                                 />
 
                                 <InputField
-                                    id="nationalNumber"
+                                    id="nationalId"
                                     label={t("nationalNumber")}
                                     placeholder="00000000000"
-                                    value={form.nationalNumber}
+                                    value={form.nationalId}
                                     onChange={(event) =>
-                                        onChange(
-                                            "nationalNumber",
-                                            event.target.value
-                                        )
+                                        onChange("nationalId", event.target.value)
                                     }
                                     icon={
                                         <IdCard className="h-4 w-4" />
@@ -331,8 +308,8 @@ export function AuthForm({
                 {/* Passwords */}
                 <div
                     className={`${isSignup
-                            ? "grid grid-cols-2 gap-2 lg:gap-3"
-                            : ""
+                        ? "grid grid-cols-2 gap-2 lg:gap-3"
+                        : ""
                         }`}
                 >
 
@@ -428,6 +405,17 @@ export function AuthForm({
                     }
                 </Link>
             </p>
+            {isSignup && (
+  <p className="mt-1 text-center text-xs lg:text-sm text-slate-500">
+    Already registered but not verified?{" "}
+    <Link
+      href="/verify"
+      className="font-semibold text-primary hover:underline"
+    >
+      Verify your account
+    </Link>
+  </p>
+)}
         </AuthCard>
     );
 }

@@ -29,7 +29,7 @@ export default function Pagination({
         flex items-center justify-center gap-2
 
         border-t border-slate-100
-        bg-white
+    
 
         px-4 py-5
       "

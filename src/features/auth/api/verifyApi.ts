@@ -8,11 +8,10 @@ export type VerifyPayload = {
 export async function verifyApi(
   data: VerifyPayload
 ) {
-  const response =
-    await axiosInstance.post(
-      "/api/Auth/verify-email",
-      data
-    );
+  const response = await axiosInstance.post(
+    "/Auth/verify-email",
+    data
+  );
 
   return response.data;
 }

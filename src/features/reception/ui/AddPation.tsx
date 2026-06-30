@@ -19,7 +19,7 @@ import {
 
 type PatientFormModalProps = {
 
-    mode: "create" | "edit" | "request";
+    mode: "create" | "edit" | "request" | "view"
 
     onClose: () => void;
 
@@ -36,7 +36,7 @@ export default function PatientFormModal({
         useTranslations(
             "addPatientModal"
         );
-
+const isView = mode === "view";
     /* ================= UNIVERSITIES ================= */
 
     const universities = [
@@ -71,33 +71,84 @@ export default function PatientFormModal({
 
     /* ================= FORM ================= */
 
-    const [
-        formData,
-        setFormData,
-    ] = useState({
+   const [
+  formData,
+  setFormData,
+] = useState({
 
-        patientName:
-            defaultValues?.name || "",
+  patientName:
+    defaultValues?.patientName ||
+    defaultValues?.patient ||
+    defaultValues?.name ||
+    defaultValues?.student ||
+    "",
 
-        age:
-            defaultValues?.age || "",
+  age:
+    defaultValues?.age || "",
 
-        phone:
-            defaultValues?.phone || "",
+  phone:
+    defaultValues?.phone || "",
 
-        nationalId:
-            defaultValues?.nationalId || "",
+  nationalId:
+    defaultValues?.nationalId || "",
 
-        university:
-            defaultValues?.university || "",
+  university:
+    defaultValues?.university ||
+    defaultValues?.studentUniversity ||
+    "",
 
-        toothNumber:
-            defaultValues?.toothNumber || "",
+  toothNumber:
+    defaultValues?.toothNumber || "",
 
-        condition:
-            defaultValues?.condition || "",
-    });
+  condition:
+    defaultValues?.condition ||
+    defaultValues?.caseName ||
+    defaultValues?.case1?.title ||
+    "",
 
+});
+const [cases, setCases] = useState([
+  {
+    toothNumber:
+      defaultValues?.toothNumber || "",
+    condition:
+      defaultValues?.condition || "",
+  },
+]);
+const addCase = () => {
+  setCases((prev) => {
+
+    const updatedCases = [
+      ...prev,
+      {
+        toothNumber: "",
+        condition: "",
+      },
+    ];
+
+    setPage(
+      Math.floor(
+        (updatedCases.length - 1) / casesPerPage
+      )
+    );
+
+    return updatedCases;
+  });
+};
+
+const updateCase = (
+  index: number,
+  key: string,
+  value: string
+) => {
+  setCases((prev) =>
+    prev.map((item, i) =>
+      i === index
+        ? { ...item, [key]: value }
+        : item
+    )
+  );
+};
     const handleChange = (
         key: string,
         value: string
@@ -117,39 +168,32 @@ export default function PatientFormModal({
     const handleSave =
         async () => {
 
-            try {
+          try {
 
-                /*
-                
-                create patient
-                
-                await axios.post(
-                  "/patients",
-                  formData
-                );
+    console.log({
+        ...formData,
+        cases,
+    });
 
-                if request:
-                
-                await axios.delete(
-                  `/requests/${defaultValues.id}`
-                );
-                
-                */
+    onClose();
 
-                console.log(
-                    formData
-                );
+} catch (error) {
 
-                onClose();
+    console.log(error);
 
-            } catch (error) {
-
-                console.log(
-                    error
-                );
-            }
+}
         };
+        
+const [page, setPage] = useState(0);
 
+const casesPerPage = 3;
+
+const startIndex = page * casesPerPage;
+
+const visibleCases = cases.slice(
+  startIndex,
+  startIndex + casesPerPage
+);
     return (
 
         <div
@@ -165,18 +209,17 @@ export default function PatientFormModal({
       "
         >
 
-            <div
-                className="
-          w-full max-w-2xl
+        <div
+  className="
+    w-full max-w-2xl
+    rounded-[2rem]
+    bg-white
+    shadow-[0_25px_80px_rgba(15,23,42,0.18)]
 
-          overflow-hidden
-
-          rounded-[2rem]
-          bg-white
-
-          shadow-[0_25px_80px_rgba(15,23,42,0.18)]
-        "
-            >
+    max-h-[90vh]
+    overflow-y-auto
+  "
+>
 
                 {/* ================= HEADER ================= */}
                 <div
@@ -200,13 +243,14 @@ export default function PatientFormModal({
                         >
 
                             {
-                                mode ===
-                                    "create"
-
-                                    ? t("title")
-
-                                    : t("requestTitle")
-                            }
+  mode === "create"
+    ? t("title")
+    : mode === "edit"
+    ? "تعديل البيانات"
+    : mode === "view"
+    ? "عرض البيانات"
+    : t("requestTitle")
+}
                         </h2>
 
                         <p
@@ -216,13 +260,14 @@ export default function PatientFormModal({
                         >
 
                             {
-                                mode ===
-                                    "create"
-
-                                    ? t("subtitle")
-
-                                    : t("requestSubtitle")
-                            }
+  mode === "create"
+    ? t("subtitle")
+    : mode === "edit"
+    ? "تعديل بيانات المريض"
+    : mode === "view"
+    ? "عرض بيانات المريض"
+    : t("requestSubtitle")
+}
                         </p>
                     </div>
 
@@ -264,6 +309,7 @@ export default function PatientFormModal({
                         value={
                             formData.patientName
                         }
+                        disabled={isView}
                         onChange={(e) =>
                             handleChange(
                                 "patientName",
@@ -280,6 +326,7 @@ export default function PatientFormModal({
                         value={
                             formData.age
                         }
+                        disabled={isView}
                         onChange={(e) =>
                             handleChange(
                                 "age",
@@ -296,6 +343,7 @@ export default function PatientFormModal({
                         value={
                             formData.phone
                         }
+                        disabled={isView}
                         onChange={(e) =>
                             handleChange(
                                 "phone",
@@ -312,6 +360,7 @@ export default function PatientFormModal({
                         value={
                             formData.university
                         }
+                        disabled={isView}
                         onChange={(value) =>
                             handleChange(
                                 "university",
@@ -329,6 +378,7 @@ export default function PatientFormModal({
                         value={
                             formData.nationalId
                         }
+                        disabled={isView}
                         onChange={(e) =>
                             handleChange(
                                 "nationalId",
@@ -342,109 +392,178 @@ export default function PatientFormModal({
                     />
 
                     {/* Tooth Number */}
-                    <FormInputR
-                        value={
-                            formData.toothNumber
-                        }
-                        onChange={(e) =>
-                            handleChange(
-                                "toothNumber",
-                                e.target.value
-                            )
-                        }
-                        placeholder={
-                            t("toothNumber")
-                        }
-                    />
+{/* الحالات */}
+{/* الحالات */}
+<div className="md:col-span-2">
 
-                    {/* Condition */}
-                    <FormInputR
-                        value={
-                            formData.condition
-                        }
-                        onChange={(e) =>
-                            handleChange(
-                                "condition",
-                                e.target.value
-                            )
-                        }
-                        placeholder={
-                            t("condition")
-                        }
-                    />
+  <div
+    className="
+      h-[220px]
+      overflow-y-auto
+      rounded-2xl
+      border border-slate-100
+      p-2
+    "
+  >
+
+    <div className="space-y-3">
+
+{visibleCases.map((item, index) => {
+
+  const realIndex = startIndex + index;
+
+  return (
+    <div
+      key={realIndex}
+      className="grid grid-cols-1 md:grid-cols-2 gap-3"
+    >
+      <FormInputR
+        value={item.toothNumber}
+        disabled={isView}
+        onChange={(e) =>
+          updateCase(
+            realIndex,
+            "toothNumber",
+            e.target.value
+          )
+        }
+        placeholder={`رقم السن ${realIndex + 1}`}
+      />
+
+      <FormInputR
+        value={item.condition}
+        disabled={isView}
+        onChange={(e) =>
+          updateCase(
+            realIndex,
+            "condition",
+            e.target.value
+          )
+        }
+        placeholder={`الحالة ${realIndex + 1}`}
+      />
+    </div>
+  );
+
+})}
+<div className="md:col-span-2 flex justify-between mt-3">
+
+  <button
+    type="button"
+    disabled={page === 0}
+    onClick={() => setPage(page - 1)}
+    className="text-blue-600 disabled:text-gray-300"
+  >
+    السابق
+  </button>
+
+  <button
+    type="button"
+    disabled={(page + 1) * casesPerPage >= cases.length}
+    onClick={() => setPage(page + 1)}
+    className="text-blue-600 disabled:text-gray-300"
+  >
+    التالي
+  </button>
+
+</div>
+    </div>
+
+  </div>
+
+</div>
+
+{/* زر إضافة حالة */}
+{!isView && (
+  <button
+    type="button"
+    onClick={addCase}
+    className="
+      md:col-span-2
+      rounded-2xl
+      border border-dashed border-blue-300
+      py-3
+      text-blue-600
+      hover:bg-blue-50
+    "
+  >
+    + إضافة حالة جديدة
+  </button>
+)}
+
                 </div>
 
                 {/* ================= FOOTER ================= */}
-                <div
-                    className="
-            flex flex-col-reverse gap-2
+                {/* ================= FOOTER ================= */}
+<div
+  className="
+    flex flex-col-reverse gap-2
 
-            border-t border-slate-200
+    border-t border-slate-200
 
-            p-3
+    p-3
 
-            sm:flex-row
-            sm:items-center
-            sm:justify-end
+    sm:flex-row
+    sm:items-center
+    sm:justify-end
 
-            md:gap-3
-            md:p-5
-            md:px-6
-          "
-                >
+    md:gap-3
+    md:p-5
+    md:px-6
+  "
+>
+  {/* Cancel */}
+  <button
+    onClick={onClose}
+    className="
+      h-10
+      rounded-xl
 
-                    {/* Cancel */}
-                    <button
-                        onClick={onClose}
-                        className="
-              h-10
-              rounded-xl
+      border border-slate-200
 
-              border border-slate-200
+      px-5
 
-              px-5
+      text-sm font-medium text-slate-600
 
-              text-sm font-medium text-slate-600
+      transition
+      hover:bg-slate-100
 
-              transition
-              hover:bg-slate-100
+      md:h-11
+      md:rounded-2xl
+    "
+  >
+    {t("cancel")}
+  </button>
 
-              md:h-11
-              md:rounded-2xl
-            "
-                    >
+  {/* Save */}
+  {!isView && (
+    <button
+      onClick={handleSave}
+      className="
+        h-10
+        rounded-xl
 
-                        {t("cancel")}
-                    </button>
+        bg-gradient-to-r
+        from-[#1e3a6d]
+        to-[#3b82f6]
 
-                    {/* Save */}
-                    <button
-                        onClick={handleSave}
-                        className="
-              h-10
-              rounded-xl
+        px-6
 
-              bg-gradient-to-r
-              from-[#1e3a6d]
-              to-[#3b82f6]
+        text-sm font-medium text-white
 
-              px-6
+        shadow-lg shadow-blue-500/20
 
-              text-sm font-medium text-white
+        transition
+        hover:opacity-90
 
-              shadow-lg shadow-blue-500/20
-
-              transition
-              hover:opacity-90
-
-              md:h-11
-              md:rounded-2xl
-            "
-                    >
-
-                        {t("save")}
-                    </button>
-                </div>
+        md:h-11
+        md:rounded-2xl
+      "
+    >
+      {t("save")}
+    </button>
+  )}
+</div>
             </div>
         </div>
     );

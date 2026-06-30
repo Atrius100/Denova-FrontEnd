@@ -2,28 +2,66 @@
 
 import Link from "next/link";
 import { Lock } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-import { usePreferences } from "@/providers/PreferencesProvider";
 
 export function LandingCasesLock() {
-  const { landing } = usePreferences();
-
+  const t = useTranslations("cases");
   return (
-    <div className="rounded-[2rem] border border-dnv-border bg-background px-8 py-12 text-center shadow-md">
-      <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-dnv-accent/15">
-        <Lock className="h-10 w-10 text-dnv-navy" aria-hidden />
+    <div
+      className="
+    rounded-[2rem]
+    border border-dnv-border
+
+    bg-background
+    py-4 md:py-8
+
+    px-5
+    md:px-8
+
+    text-center
+    shadow-md
+  "
+    >
+      <div
+        className="
+    mx-auto mb-5
+
+    flex size-16 md:size-20
+    items-center justify-center
+
+    rounded-full
+
+    bg-dnv-accent/10
+  "
+      >        <Lock className="size-7 md:size-10 text-dnv-navy" aria-hidden />
       </div>
-      <h3 className="mx-auto mb-4 max-w-2xl text-2xl font-bold text-dnv-heading md:text-3xl">
-        {landing.cases.lockTitle}
+      <h3 className="mx-auto mb-4 max-w-2xl  font-bold text-dnv-heading text-[clamp(1.4rem,4vw,2rem)]">
+        {t("lockTitle")}
       </h3>
-      <p className="mx-auto mb-10 max-w-2xl text-lg leading-8 text-dnv-muted md:text-xl">
-        {landing.cases.lockDesc}
+      <p className="mx-auto mb-4 md:mb-10 max-w-2xl text-dnv-muted text-[clamp(.95rem,2.8vw,1.1rem)]">
+        {t("lockDesc")}
       </p>
       <Link
         href="/login"
-        className="inline-flex rounded-full bg-gradient-to-r from-dnv-navy to-dnv-blue px-12 py-[1.125rem] text-lg font-semibold text-white shadow-lg shadow-dnv-accent/35 transition hover:scale-[1.02]"
-      >
-        {landing.cases.login}
+        className="
+  inline-flex
+  rounded-full
+
+  bg-gradient-to-br from-[#2563eb] to-[#1e3a6d]
+
+  px-10 py-4
+
+  text-base
+  font-semibold
+  text-white
+
+  shadow-lg
+
+  transition
+  hover:scale-[1.02]
+"      >
+        {t("login")}
       </Link>
     </div>
   );

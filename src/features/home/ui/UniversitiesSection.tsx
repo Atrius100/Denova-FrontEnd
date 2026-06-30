@@ -2,43 +2,96 @@
 
 import { TitleSectionCommon } from "@/components/ui/TitleSectionCommon";
 import { SupportItem } from "@/features/home/ui/SuportItem";
-import { usePreferences } from "@/providers/PreferencesProvider";
+import { useTranslations } from "next-intl";
 
 export function UniversitiesSection() {
-  const { landing } = usePreferences();
+  const t = useTranslations("universities");
 
   return (
-    <section className="bg-dnv-soft px-5 py-14 md:px-10 lg:p-[60px]">
-      <div className="space-y-3 text-center mx-auto max-w-[58rem] mb-14">
+    <section className="bg-dnv-soft p-5 md:p-10 lg:p-[60px]">
+      <div className="mx-auto mb-5 max-w-[58rem] text-center md:mb-10">
         <TitleSectionCommon
-          title={landing.universities.title}
-          subtitle={landing.universities.subtitle}
+          title={t("title")}
+          subtitle={t("subtitle")}
         />
       </div>
 
-      <div className="mt-6 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {landing.universities.branches.map((uni) => (
-          <div
-            key={uni.email}
-            className="group space-y-5 rounded-3xl border border-dnv-border bg-gradient-to-b from-background to-dnv-soft/50 p-6 shadow-md transition duration-300 hover:-translate-y-2 hover:border-dnv-accent/35 hover:shadow-2xl "
-          >
-            <h3 className="text-xl font-bold text-dnv-heading transition group-hover:text-dnv-navy">
-              {uni.name}
-            </h3>
+<div
+  className="
+    mt-6
 
-            <div className="space-y-3">
-              <SupportItem
-                title={
-                  uni.name === "Atrius"
-                    ? landing.universities.support
-                    : landing.universities.medicalSupport
-                }
-                phone={uni.phone}
-                email={uni.email}
-              />
+    flex
+    flex-wrap
+    justify-between
+
+    gap-4
+
+    lg:grid
+    lg:grid-cols-4
+    
+  "
+>
+        {t.raw("branches").map(
+          (
+            uni: {
+              name: string;
+              phone: string;
+              email: string;
+            }
+          ) => (
+            <div
+              key={uni.email}
+className="
+  group
+   w-full
+  sm:w-[320px]
+  md:w-[360px]
+  lg:w-auto
+
+  rounded-3xl
+  border border-dnv-border
+
+  bg-gradient-to-b
+  from-background
+  to-dnv-soft/50
+
+  p-3 md:p-6
+  lg:p-3
+
+  shadow-md
+  transition-all
+  duration-300
+
+  hover:-translate-y-2
+  hover:border-dnv-accent/35
+  hover:shadow-2xl
+">
+<h3
+  className="
+    font-bold
+    text-dnv-heading
+    transition
+
+    text-[clamp(1.05rem,3vw,1.25rem)]
+
+    group-hover:text-dnv-navy
+  "
+>                {uni.name}
+              </h3>
+
+              <div className="space-y-1.5 md:space-y-3">
+                <SupportItem
+                  title={
+                    uni.name === "Atrius"
+                      ? t("support")
+                      : t("medicalSupport")
+                  }
+                  phone={uni.phone}
+                  email={uni.email}
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </section>
   );

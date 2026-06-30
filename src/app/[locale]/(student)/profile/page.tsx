@@ -1,34 +1,40 @@
-import Link from "next/link";
-import { useTranslations, useLocale } from "next-intl";
+import { TitleSectionCommon } from "@/components/ui/TitleSectionCommon";
+import StudentCases from "@/features/profile/components/StudentCases";
+import StudentInfo from "@/features/profile/components/StudentInfo";
 
-export default function page() {
-  const locale = useLocale();
-  const t = useTranslations("studentProfile");
+import { mockCases, mockStudent } from "@/types/mock";
 
+
+export default function StudentProfilePage() {
   return (
-    <div className="mx-auto max-w-4xl space-y-6">
-      <section className="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-xl shadow-slate-200/40">
-        <h1 className="text-3xl font-semibold text-slate-900">{t("title")}</h1>
-        <p className="mt-3 text-slate-600">{t("description")}</p>
+   <div className="flex h-full flex-col">
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-3xl border border-blue-100/80 bg-blue-50/80 p-6">
-            <h2 className="text-lg font-semibold text-slate-900">{t("infoHeading")}</h2>
-            <p className="mt-2 text-sm text-slate-600">{t("infoText")}</p>
-          </div>
+  <TitleSectionCommon
+    title="الملف الشخصي"
+    subtitle="اطلع على بياناتك الشخصية والحالات العلاجية الخاصة بك."
+  
+  />
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-6">
-            <h2 className="text-lg font-semibold text-slate-900">{t("newCaseHeading")}</h2>
-            <p className="mt-2 text-sm text-slate-600">{t("newCaseText")}</p>
-            <Link
-              href={`/${locale}/casesStudent`}
-              className="mt-6 inline-flex rounded-full bg-[linear-gradient(135deg,var(--denova-primary),#0f2540)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-95"
-            >
-              {t("addCaseButton")}
-            </Link>
-          </div>
-        </div>
-      </section>
+  <div
+    className="
+      grid
+      flex-1
+      grid-cols-1
+      gap-3 lg:gap-6
+      mt-5
+
+      lg:grid-cols-5
+    "
+  >
+    <div className="lg:col-span-2 min-w-0">
+      <StudentInfo student={mockStudent} />
     </div>
+
+    <div className="lg:col-span-3 min-w-0">
+      <StudentCases cases={mockCases} />
+    </div>
+  </div>
+
+</div>
   );
 }

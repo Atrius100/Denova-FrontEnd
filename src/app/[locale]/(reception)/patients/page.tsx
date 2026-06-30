@@ -15,6 +15,8 @@ from "@/features/reception/ui/AddPation";
 import PatientsTable
 from "@/features/reception/ui/PatientsTable";
 
+import FilterTabs from "@/components/CommonApp/FilterTabs";
+
 const patients = [
 
     {
@@ -79,7 +81,31 @@ const patients = [
 ];
 
 export default function PatientsPage() {
+    
+const filters = [
+  "كل المرضى",
+  "تم علاجهم",
+  "بانتظار طبيب",
+];
 
+const [selectedFilter, setSelectedFilter] =
+  useState("كل المرضى");
+  const filteredPatients = useMemo(() => {
+  switch (selectedFilter) {
+    case "تم علاجهم":
+      return patients.filter(
+        (patient) => patient.status === "completed"
+      );
+
+    case "بانتظار طبيب":
+      return patients.filter(
+        (patient) => patient.status === "pending"
+      );
+
+    default:
+      return patients;
+  }
+}, [selectedFilter]);
     /* ================= ITEMS PER PAGE ================= */
     const [
     itemsPerPage,
@@ -132,28 +158,29 @@ useEffect(() => {
                 start +
                 itemsPerPage;
 
-            return patients.slice(
-                start,
-                end
-            );
+            return filteredPatients.slice(start, end);
 
         }, [
-            currentPage,
-            itemsPerPage,
-        ]);
+  currentPage,
+  itemsPerPage,
+  filteredPatients,
+]);
 
     const totalPages =
-        Math.ceil(
-            patients.length
-            / itemsPerPage
-        );
+  Math.ceil(
+    filteredPatients.length /
+      itemsPerPage
+  );
 
     /* ================= MODAL ================= */
     const [
         openModal,
         setOpenModal,
     ] = useState(false);
-
+const [
+  viewModal,
+  setViewModal,
+] = useState(false);
     const [
         selectedPatient,
         setSelectedPatient,
@@ -195,7 +222,13 @@ useEffect(() => {
                     إضافة مريض
                 </button>
             </div>
-
+<div className="mb-5">
+    <FilterTabs
+  items={filters}
+  selected={selectedFilter}
+  onChange={setSelectedFilter}
+/>
+</div>
             {/* Table */}
             <PatientsTable
                 data={paginatedPatients}
@@ -209,15 +242,14 @@ useEffect(() => {
                 }
 
                 onEdit={(patient) => {
+  setSelectedPatient(patient);
+  setOpenModal(true);
+}}
 
-                    setSelectedPatient(
-                        patient
-                    );
-
-                    setOpenModal(
-                        true
-                    );
-                }}
+onView={(patient) => {
+  setSelectedPatient(patient);
+  setViewModal(true);
+}}
             />
 
             {/* Modal */}
@@ -226,10 +258,10 @@ useEffect(() => {
 
                     <PatientFormModal
                         mode={
-                            selectedPatient
-                                ? "request"
-                                : "create"
-                        }
+  selectedPatient
+    ? "edit"
+    : "create"
+}
                         defaultValues={
                             selectedPatient
                         }
@@ -241,6 +273,19 @@ useEffect(() => {
                     />
                 )
             }
+            {/* View Modal */}
+{
+  viewModal && (
+    <PatientFormModal
+      mode="view"
+      defaultValues={selectedPatient}
+      onClose={() => {
+        setViewModal(false);
+        setSelectedPatient(null);
+      }}
+    />
+  )
+}
         </>
     );
 }

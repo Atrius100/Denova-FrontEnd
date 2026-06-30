@@ -22,8 +22,8 @@ export const studentSidebarLinks = [
     icon: CreditCard,
   },
   {
-    key: "myCases",
-    href: "/my-cases",
+    key: "sequerty",
+    href: "/sequerty",
     icon: FolderOpen,
   },
 ]

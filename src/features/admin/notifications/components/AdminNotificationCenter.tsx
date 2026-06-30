@@ -11,7 +11,7 @@ import { useNotificationStore } from "../store/notification.store"
 import { NotificationFilters } from "./NotificationFilters"
 import { NotificationItem } from "./NotificationItem"
 import { NotificationEmptyState } from "./NotificationEmptyState"
-import { NotificationSkeleton } from "./NotificationSkeleton"
+import { NotificationSkeleton } from "./RequestSkeleton"
 
 const PAGE_SIZE = 8
 

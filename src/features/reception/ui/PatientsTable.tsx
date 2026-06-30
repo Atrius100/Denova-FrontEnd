@@ -10,14 +10,10 @@ import DataTable from "./DataTable";
 
 
 type Props = {
-
-    data: any[];
-
-    pagination: React.ReactNode;
-
-    onEdit: (
-        patient: any
-    ) => void;
+  data: any[];
+  pagination: React.ReactNode;
+  onEdit: (patient: any) => void;
+  onView: (patient: any) => void;
 };
 
 const renderStatus = (
@@ -44,9 +40,10 @@ const renderStatus = (
 );
 
 export default function PatientsTable({
-    data,
-    pagination,
-    onEdit,
+  data,
+  pagination,
+  onEdit,
+  onView,
 }: Props) {
 
     return (
@@ -129,10 +126,12 @@ export default function PatientsTable({
                 "
                             >
 
-                                <Eye className="h-5 w-5" />
+                                <Eye 
+                                onClick={() => onView(row)} className="h-5 w-5" />
                             </button>
 
                             <button
+                            
                                 onClick={() =>
                                     onEdit(
                                         row

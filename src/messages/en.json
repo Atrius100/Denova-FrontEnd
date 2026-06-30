@@ -1,4 +1,148 @@
 {
+  "nav": {
+    "home": "Home",
+    "cases": "Cases",
+    "universities": "Universities",
+    "about": "About",
+    "login": "Log in",
+    "register": "Get started",
+    "brandTagline": "Dental Platform",
+    "reception": "Reception",
+    "student": "Student",
+    "admin": "Admin"
+  },
+  "hero": {
+    "title1": "Your smart platform for clinical cases",
+    "title2": "Built for dentistry students",
+    "subtitle": "Organize, follow up, and find the educational cases you need—with ease.",
+    "ctaPrimary": "Create account",
+    "ctaSecondary": "Subscribe",
+    "statUnis": "Universities",
+    "statStudents": "Students",
+    "statCases": "Cases",
+    "brandTagline": "Dental Platform"
+  },
+  "about": {
+    "title": "Towards a More Efficient Educational and Clinical Experience",
+    "p1": "DENOVA was designed to bridge the gap between students and patients through an organized digital experience that supports practical learning and simplifies the management of dental cases.",
+    "p2": "The platform was developed by Atrius as a digital solution aimed at supporting clinical education and providing a more flexible and efficient experience for managing dental cases.",
+    "imageAlt": "Hand holding dental instruments"
+  },
+  "benefits": {
+    "title": "What students get",
+    "subtitle": "A professional, modern way to manage educational cases",
+    "cards": [
+      "Access Clinical Cases",
+      "Reserve Suitable Cases",
+      "Personal Profile & Clinical Record"
+    ]
+  },
+  "cases": {
+    "title": "Preview available cases",
+    "subtitle": "Browse educational and clinical cases at a glance",
+    "lockTitle": "Log in to view cases",
+    "lockDesc": "This section shows live cases from the platform. Sign in to continue.",
+    "login": "Log in",
+    "searchPlaceholder": "Search cases…",
+    "loading": "Loading cases…",
+    "empty": "No matching cases.",
+    "error": "Could not load cases. Check your connection and try again.",
+    "fallbackNotice": "Could not load categories from the server — showing temporary defaults.",
+    "items": [
+      "Endodontics",
+      "Extraction",
+      "Implant",
+      "Orthodontics",
+      "Restoration",
+      "Esthetic",
+      "Cleaning",
+      "Radiology"
+    ]
+  },
+  "journey": {
+    "title": "Your journey on the platform",
+    "subtitle": "Simple steps from signup to progress tracking",
+    "steps": [
+      {
+        "title": "Create Your Account",
+        "desc": "Start your educational journey by creating your personal account."
+      },
+      {
+        "title": "Activate Your Subscription",
+        "desc": "Subscribe to gain access to available clinical cases."
+      },
+      {
+        "title": "Browse and Reserve a Case",
+        "desc": "Explore available cases and reserve the one that matches your requirements."
+      },
+      {
+        "title": "Start Your Clinical Journey",
+        "desc": "Once approved by the administration, you will be connected with the patient and manage the case through your personal profile."
+      }
+    ]
+  },
+  "search": {
+    "title": "Search the case database",
+    "subtitle": "Explore available educational cases easily",
+    "placeholder": "Search by case name or category…",
+    "lockTitle": "Subscribers only",
+    "lockDesc": "Create an account and complete your subscription to access the case database.",
+    "subscribe": "Subscribe",
+    "login": "Log in",
+    "resultsTitle": "Cases available to you",
+    "loading": "Loading cases…",
+    "empty": "No cases match your search.",
+    "error": "Could not load cases. Please try again later."
+  },
+  "submit": {
+    "title": "Submit Your Case",
+    "subtitle": "Fill in your information and we will contact you",
+    "patientName": "Patient Name",
+    "age": "Age",
+    "phone": "Phone Number",
+    "nationalId": "National ID",
+    "selectUniversity": "Select University",
+    "notes": "Additional Notes",
+    "submit": "Submit Request",
+    "universities": {
+      "tishreen": "Tishreen University",
+      "manara": "Al-Manara University",
+      "sham": "Al-Sham University"
+    }
+  },
+  "universities": {
+    "title": "Support teams",
+    "subtitle": "Reach support staff and partner universities directly",
+    "support": "Technical support",
+    "medicalSupport": "Medical support",
+    "branches": [
+      {
+        "name": "Latakia University",
+        "phone": "0911111111",
+        "email": "Lattakia@denova.com"
+      },
+      {
+        "name": "Al-Manra University",
+        "phone": "0933333333",
+        "email": "Al-manara@denova.com"
+      },
+      {
+        "name": "Al-Sham Private University",
+        "phone": "0922222222",
+        "email": "al-shamprivate@denova.com"
+      },
+      {
+        "name": "Atrius",
+        "phone": "0922222222",
+        "email": "atrius@denova.com"
+      }
+    ]
+  },
+  "homeCta": {
+    "title": "Start Your Journey Today",
+    "description": "Join the DENOVA community and activate your subscription for full access to the educational cases database.",
+    "button": "Subscribe Now"
+  },
   "studentCases": {
     "title": "Register a new medical case",
     "description": "Enter patient details and case category to submit via the MedicalCases API.",
@@ -40,57 +184,35 @@
     "profile": "Profile",
     "addCase": "Add case",
     "payment": "Payment",
-    "myCases": "My cases",
+    "sequerty": "sequerty",
     "footerTitle": "Student panel",
     "footerSubtitle": "Clinical case management"
   },
   "auth": {
     "welcomeBack": "Welcome Back",
-
     "createAccount": "Create your account",
-
     "firstName": "First Name",
-
     "lastName": "Last Name",
     "phoneNumber": "Phone Number",
-"nationalNumber": "National Number",
-
+    "nationalNumber": "National Number",
     "email": "Email",
-
     "password": "Password",
-
     "confirmPassword": "Confirm Password",
-
     "university": "University",
-
     "academicYear": "Academic Year",
-
     "selectUniversity": "Select university",
-
     "selectYear": "Select year",
-
     "year": "Year",
-
     "signup": "Create Account",
-
     "login": "Login",
-
     "alreadyHaveAccount": "Already have an account?",
-
     "dontHaveAccount": "Don't have an account?",
-
     "creating": "Creating account...",
-
     "signingIn": "Signing in...",
-
     "universities": {
-      "damascus": "Damascus University",
-
       "tishreen": "Tishreen University",
-
-      "aleppo": "Aleppo University",
-
-      "baath": "Al-Baath University"
+      "manara": "Al-Manara University",
+      "sham": "Al-Sham University"
     }
   },
   "receptionSidebar": {
@@ -101,8 +223,8 @@
     "subtitle": "Reception Dashboard",
     "footerTitle": "Reception Panel",
     "footerSubtitle": "DENOVA Platform"
-},
- "receptionNavbar": {
+  },
+  "receptionNavbar": {
     "dashboard": "Dashboard",
     "arabic": "العربية",
     "english": "English",
@@ -115,74 +237,67 @@
     "addPatient": "Add Patient"
   },
   "receptionDashboard": {
-
-  "pendingRequests": "New Requests",
-
-  "pendingRequestsDesc": "Requests waiting for review",
-
-  "waitingPatients": "Waiting Patients",
-
-  "waitingPatientsDesc": "Patients waiting for assignment",
-
-  "activeTreatments": "Active Treatments",
-
-  "activeTreatmentsDesc": "Cases under follow-up",
-
-  "registeredPatients": "Registered Patients",
-
-  "registeredPatientsDesc": "Total registered patients",
-
-  "search": "Search patient...",
-
-  "addPatient": "Add Patient"
-
-},
-
-"adminDashboard": {
-  "title": "Admin Dashboard",
-  "subtitle": "Manage platform, students, and settings",
-
-  "monthlyPatients": "Monthly Patients",
-  "monthlyPatientsDesc": "Total patients during the current month",
-
-  "waitingPatients": "Waiting Patients",
-  "waitingPatientsDesc": "Patients not assigned to doctors yet",
-
-  "studentRequests": "Student Requests",
-  "studentRequestsDesc": "New treatment requests from students",
-
-  "universityPatients": "University Patients",
-  "universityPatientsDesc": "Patients linked to universities",
-
-  "search": "Search student or patient...",
-  "addCase": "Add Case",
-
-  "links": {
-    "students": {
-      "title": "Manage Students",
-      "desc": "View and organize student accounts"
-    },
-
-    "cases": {
-      "title": "Manage Cases",
-      "desc": "Review educational clinical cases"
-    },
-
-    "notifications": {
-      "title": "Notification Center",
-      "desc": "Track system, payment, and security activity"
-    },
-
-    "settings": {
-      "title": "Platform Settings",
-      "desc": "Full control over system configuration"
+    "pendingRequests": "New Requests",
+    "pendingRequestsDesc": "Requests waiting for review",
+    "waitingPatients": "Waiting Patients",
+    "waitingPatientsDesc": "Patients waiting for assignment",
+    "activeTreatments": "Active Treatments",
+    "activeTreatmentsDesc": "Cases under follow-up",
+    "registeredPatients": "Registered Patients",
+    "registeredPatientsDesc": "Total registered patients",
+    "search": "Search patient...",
+    "addPatient": "Add Patient"
+  },
+  "adminSidebar": {
+    "dashboard": "Dashboard",
+    "students": "Students",
+    "cases": "Cases",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "requests": "requests",
+    "subtitle": "Admin Panel",
+    "footerTitle": "Platform Management",
+    "footerSubtitle": "DENOVA Admin"
+  },
+  "admiNotFiction": {
+    "title": "مركز الإشعارات",
+    "p1": "إشعارات الإدارة فقط — نشاط النظام"
+  },
+  "adminDashboard": {
+    "title": "Admin Dashboard",
+    "subtitle": "Manage platform, students, and settings",
+    "monthlyPatients": "Monthly Patients",
+    "monthlyPatientsDesc": "Total patients during the current month",
+    "waitingPatients": "Waiting Patients",
+    "waitingPatientsDesc": "Patients not assigned to doctors yet",
+    "studentRequests": "Student Requests",
+    "studentRequestsDesc": "New treatment requests from students",
+    "universityPatients": "University Patients",
+    "universityPatientsDesc": "Patients linked to universities",
+    "search": "Search student or patient...",
+    "addCase": "Add Case",
+    "links": {
+      "students": {
+        "title": "Manage Students",
+        "desc": "View and organize student accounts"
+      },
+      "cases": {
+        "title": "Manage Cases",
+        "desc": "Review educational clinical cases"
+      },
+      "notifications": {
+        "title": "Notification Center",
+        "desc": "Track system, payment, and security activity"
+      },
+      "settings": {
+        "title": "Platform Settings",
+        "desc": "Full control over system configuration"
+      }
     }
-  }
-},
+  },
   "addPatientModal": {
     "title": "Add Patient",
     "subtitle": "Create a new patient profile",
-
     "patientName": "Patient Name",
     "age": "Age",
     "phone": "Phone Number",
@@ -190,10 +305,8 @@
     "nationalId": "National ID",
     "toothNumber": "Tooth Number",
     "condition": "Condition",
-
     "cancel": "Cancel",
     "save": "Save Patient",
-
     "universities": {
       "tishreen": "Tishreen University",
       "manara": "Manara University",
@@ -205,21 +318,19 @@
     "pending": "Pending Treatments",
     "previous": "Previous Treatments"
   },
- "patientsTable": {
-  "title": "Patients",
-  "subtitle": "Manage all registered patients",
-
-  "patient": "Patient",
-  "university": "University",
-  "tooth": "Tooth",
-  "condition": "Condition",
-  "status": "Status",
-  "date": "Date",
-  "actions": "Actions",
-
-  "waiting": "Waiting",
-  "active": "Active",
-  "completed": "Completed"
+  "patientsTable": {
+    "title": "Patients",
+    "subtitle": "Manage all registered patients",
+    "patient": "Patient",
+    "university": "University",
+    "tooth": "Tooth",
+    "condition": "Condition",
+    "status": "Status",
+    "date": "Date",
+    "actions": "Actions",
+    "waiting": "Waiting",
+    "active": "Active",
+    "completed": "Completed"
   },
   "payment": {
     "pageTitle": "Payment & Subscription",
@@ -231,7 +342,6 @@
     "back": "Back",
     "proceedToPay": "Proceed to payment",
     "payNow": "Pay with Syriatel Cash",
-
     "continueToReview": "Review order",
     "review": {
       "description": "Review your subscription summary and Syriatel number before confirming payment.",
@@ -240,7 +350,6 @@
       "confirming": "Sending...",
       "back": "Back"
     },
-
     "initiating": "Creating transaction...",
     "verifying": "Verifying...",
     "confirmPayment": "Confirm payment",
@@ -327,302 +436,317 @@
       "statusFailed": "Could not check payment status. Please retry.",
       "paymentDeclined": "Syriatel Cash declined the transaction or it expired.",
       "invalidConfirmationCode": "Invalid confirmation code."
-    }
-  },
-  "adminSidebar": {
-    "dashboard": "Dashboard",
-    "students": "Students",
-    "cases": "Cases",
-    "notifications": "Notifications",
-    "settings": "Settings",
-    "subtitle": "Admin Panel",
-    "footerTitle": "Platform Admin",
-    "footerSubtitle": "DENOVA Admin"
-  },
- 
-  "adminNavbar": {
-    "dashboard": "Admin Dashboard",
-    "arabic": "العربية",
-    "english": "English",
-    "logout": "Logout",
-    "admin": "Admin",
-    "employee": "Employee"
-  },
-  "adminSettings": {
-    "pageTitle": "Platform Settings",
-    "pageSubtitle": "Manage all DENOVA configuration in one place",
-    "navTitle": "Settings sections",
-    "loading": "Loading settings...",
-    "loadErrorTitle": "Could not load settings",
-    "loadErrorDesc": "Check your connection and try again",
-    "retry": "Retry",
-    "sections": {
-      "general": {
-        "title": "General Settings",
-        "description": "Name, support, maintenance mode, registration"
-      },
-      "platform": {
-        "title": "Platform Information",
-        "description": "Company details and legal links"
-      },
-      "branding": {
-        "title": "Branding",
-        "description": "Logo, colors, and brand identity"
-      },
-      "appearance": {
-        "title": "Appearance",
-        "description": "Theme, UI, and layout"
-      },
-      "users": {
-        "title": "Users & Permissions",
-        "description": "Roles, signup, and verification"
-      },
-      "payment": {
-        "title": "Payment Settings",
-        "description": "Syriatel Cash and webhooks"
-      },
-      "notifications": {
-        "title": "Notifications",
-        "description": "Email, SMS, and system alerts"
-      },
-      "security": {
-        "title": "Security",
-        "description": "Sessions, passwords, and protection"
-      },
-      "integrations": {
-        "title": "API & Integrations",
-        "description": "API keys and audit logging"
-      },
-      "subscription": {
-        "title": "Subscriptions",
-        "description": "Pricing, trial, and grace period"
-      },
-      "localization": {
-        "title": "Localization",
-        "description": "Default language, RTL, and date format"
+    },
+    "adminSidebar": {
+      "dashboard": "Dashboard",
+      "students": "Students",
+      "cases": "Cases",
+      "notifications": "Notifications",
+      "settings": "Settings",
+      "subtitle": "Admin Panel",
+      "footerTitle": "Platform Admin",
+      "footerSubtitle": "DENOVA Admin"
+    },
+    "adminNavbar": {
+      "dashboard": "Admin Dashboard",
+      "arabic": "العربية",
+      "english": "English",
+      "logout": "Logout",
+      "admin": "Admin",
+      "employee": "Employee"
+    },
+    "submit": {
+      "title": "Submit Your Case",
+      "subtitle": "Fill in your information and we will contact you",
+      "patientName": "Patient Name",
+      "age": "Age",
+      "phone": "Phone Number",
+      "nationalId": "National ID",
+      "selectUniversity": "Select University",
+      "notes": "Additional Notes",
+      "submit": "Submit Request",
+      "universities": {
+        "tishreen": "Tishreen University",
+        "manara": "Al Manara University",
+        "sham": "Al Sham Private University"
       }
     },
-    "actions": {
-      "save": "Save changes",
-      "cancel": "Cancel",
-      "saving": "Saving...",
-      "saved": "Saved successfully",
-      "saveFailed": "Save failed",
-      "unsavedChanges": "You have unsaved changes",
-      "noChanges": "No changes",
-      "resetDefaults": "Reset to defaults"
-    },
-    "errors": {
-      "required": "This field is required",
-      "invalidEmail": "Invalid email address",
-      "invalidPhone": "Invalid mobile number",
-      "invalidColor": "Invalid color (e.g. #1e3a6d)",
-      "invalidUrl": "Invalid URL",
-      "minAmount": "Minimum amount is 1000 SYP",
-      "minSession": "Minimum 5 minutes",
-      "minAttempts": "At least 1 attempt",
-      "minPrice": "Invalid price",
-      "minZero": "Cannot be negative"
-    },
-    "options": {
-      "themeLight": "Light",
-      "themeDark": "Dark",
-      "themeSystem": "System",
-      "radiusMd": "Medium",
-      "radiusLg": "Large",
-      "radiusXl": "Extra large",
-      "localeAr": "Arabic",
-      "localeEn": "English",
-      "dateDmy": "DD/MM/YYYY",
-      "dateYmd": "YYYY-MM-DD",
-      "roles": {
-        "student": "Student",
-        "reception": "Reception",
-        "admin": "Admin",
-        "super_admin": "Super Admin"
+    "adminSettings": {
+      "pageTitle": "Platform Settings",
+      "pageSubtitle": "Manage all DENOVA configuration in one place",
+      "navTitle": "Settings sections",
+      "loading": "Loading settings...",
+      "loadErrorTitle": "Could not load settings",
+      "loadErrorDesc": "Check your connection and try again",
+      "retry": "Retry",
+      "sections": {
+        "general": {
+          "title": "General Settings",
+          "description": "Name, support, maintenance mode, registration"
+        },
+        "platform": {
+          "title": "Platform Information",
+          "description": "Company details and legal links"
+        },
+        "branding": {
+          "title": "Branding",
+          "description": "Logo, colors, and brand identity"
+        },
+        "appearance": {
+          "title": "Appearance",
+          "description": "Theme, UI, and layout"
+        },
+        "users": {
+          "title": "Users & Permissions",
+          "description": "Roles, signup, and verification"
+        },
+        "payment": {
+          "title": "Payment Settings",
+          "description": "Syriatel Cash and webhooks"
+        },
+        "notifications": {
+          "title": "Notifications",
+          "description": "Email, SMS, and system alerts"
+        },
+        "security": {
+          "title": "Security",
+          "description": "Sessions, passwords, and protection"
+        },
+        "integrations": {
+          "title": "API & Integrations",
+          "description": "API keys and audit logging"
+        },
+        "subscription": {
+          "title": "Subscriptions",
+          "description": "Pricing, trial, and grace period"
+        },
+        "localization": {
+          "title": "Localization",
+          "description": "Default language, RTL, and date format"
+        }
+      },
+      "actions": {
+        "save": "Save changes",
+        "cancel": "Cancel",
+        "saving": "Saving...",
+        "saved": "Saved successfully",
+        "saveFailed": "Save failed",
+        "unsavedChanges": "You have unsaved changes",
+        "noChanges": "No changes",
+        "resetDefaults": "Reset to defaults"
+      },
+      "errors": {
+        "required": "This field is required",
+        "invalidEmail": "Invalid email address",
+        "invalidPhone": "Invalid mobile number",
+        "invalidColor": "Invalid color (e.g. #1e3a6d)",
+        "invalidUrl": "Invalid URL",
+        "minAmount": "Minimum amount is 1000 SYP",
+        "minSession": "Minimum 5 minutes",
+        "minAttempts": "At least 1 attempt",
+        "minPrice": "Invalid price",
+        "minZero": "Cannot be negative"
+      },
+      "options": {
+        "themeLight": "Light",
+        "themeDark": "Dark",
+        "themeSystem": "System",
+        "radiusMd": "Medium",
+        "radiusLg": "Large",
+        "radiusXl": "Extra large",
+        "localeAr": "Arabic",
+        "localeEn": "English",
+        "dateDmy": "DD/MM/YYYY",
+        "dateYmd": "YYYY-MM-DD",
+        "roles": {
+          "student": "Student",
+          "reception": "Reception",
+          "admin": "Admin",
+          "super_admin": "Super Admin"
+        }
+      },
+      "fields": {
+        "general": {
+          "siteName": "Platform name",
+          "siteNameHint": "Shown in title and sidebar",
+          "supportEmail": "Support email",
+          "supportPhone": "Support phone",
+          "supportPhoneHint": "Syrian format: 09xxxxxxxx",
+          "maintenanceMode": "Maintenance mode",
+          "maintenanceModeHint": "Temporarily block user access",
+          "allowRegistration": "Allow registration",
+          "allowRegistrationHint": "Enable new account signups"
+        },
+        "platform": {
+          "platformTagline": "Platform tagline",
+          "companyName": "Company name",
+          "companyAddress": "Address",
+          "termsUrl": "Terms URL",
+          "privacyUrl": "Privacy URL"
+        },
+        "branding": {
+          "logoUrl": "Logo URL",
+          "faviconUrl": "Favicon URL",
+          "primaryColor": "Primary color",
+          "secondaryColor": "Secondary color",
+          "showPoweredBy": "Show Powered by"
+        },
+        "appearance": {
+          "defaultTheme": "Default theme",
+          "borderRadius": "Border radius",
+          "compactSidebar": "Compact sidebar",
+          "showHeroPattern": "Hero background pattern"
+        },
+        "users": {
+          "defaultRole": "Default role for new users",
+          "defaultRoleHint": "Applied on first signup",
+          "maxStudentsPerUniversity": "Max students per university",
+          "requireEmailVerification": "Require email verification",
+          "allowStudentSelfSignup": "Allow student self-signup"
+        },
+        "payment": {
+          "syriatelEnabled": "Enable Syriatel Cash",
+          "syriatelEnabledHint": "Primary payment method in Syria",
+          "syriatelMerchantId": "Merchant ID",
+          "minAmountSyp": "Minimum payment (SYP)",
+          "webhookUrl": "Payment webhook URL",
+          "webhookUrlHint": "Receive payment confirmations from server",
+          "paymentMockMode": "Payment mock mode",
+          "paymentMockModeHint": "Development and testing only"
+        },
+        "notifications": {
+          "adminAlertEmail": "Admin alert email",
+          "emailNotifications": "Email notifications",
+          "smsNotifications": "SMS notifications",
+          "smsNotificationsHint": "Requires SMS provider integration",
+          "notifyNewCase": "Notify on new case",
+          "notifyPaymentSuccess": "Notify on payment success"
+        },
+        "security": {
+          "sessionTimeoutMinutes": "Session timeout (minutes)",
+          "maxLoginAttempts": "Max login attempts",
+          "requireStrongPassword": "Require strong password",
+          "twoFactorEnabled": "Two-factor authentication",
+          "twoFactorEnabledHint": "Coming soon — ready to wire",
+          "ipAllowlist": "IP allowlist",
+          "ipAllowlistHint": "One IP per line, leave empty to allow all"
+        },
+        "integrations": {
+          "apiBaseUrl": "API base URL",
+          "syriatelApiKey": "Syriatel API key",
+          "syriatelApiSecret": "Syriatel API secret",
+          "webhookSecret": "Webhook signing secret",
+          "webhookSecretHint": "Verify incoming server requests",
+          "enableAuditLog": "Enable audit log",
+          "enableAuditLogHint": "Log settings changes"
+        },
+        "subscription": {
+          "monthlyPriceSyp": "Monthly price (SYP)",
+          "semesterPriceSyp": "Semester price (SYP)",
+          "annualPriceSyp": "Annual price (SYP)",
+          "trialDays": "Free trial days",
+          "gracePeriodDays": "Grace period after expiry"
+        },
+        "localization": {
+          "defaultLocale": "Default locale",
+          "fallbackLocale": "Fallback locale",
+          "dateFormat": "Date format",
+          "rtlByDefault": "RTL by default for Arabic"
+        }
       }
     },
-    "fields": {
-      "general": {
-        "siteName": "Platform name",
-        "siteNameHint": "Shown in title and sidebar",
-        "supportEmail": "Support email",
-        "supportPhone": "Support phone",
-        "supportPhoneHint": "Syrian format: 09xxxxxxxx",
-        "maintenanceMode": "Maintenance mode",
-        "maintenanceModeHint": "Temporarily block user access",
-        "allowRegistration": "Allow registration",
-        "allowRegistrationHint": "Enable new account signups"
+    "adminNotifications": {
+      "pageTitle": "Notification Center",
+      "pageSubtitle": "Admin-only alerts — system, payment, and security activity",
+      "dropdownTitle": "Notifications",
+      "bellLabel": "Open notifications",
+      "viewAll": "View all notifications",
+      "markAllRead": "Mark all as read",
+      "markRead": "Mark as read",
+      "markUnread": "Mark as unread",
+      "delete": "Delete",
+      "deleteRead": "Delete read",
+      "loadError": "Could not load notifications",
+      "retry": "Retry",
+      "unreadBadge": "{count} unread",
+      "byActor": "By {name}",
+      "filters": {
+        "all": "All",
+        "unread": "Unread",
+        "payment": "Payment",
+        "security": "Security",
+        "system": "System",
+        "admin": "Admin"
       },
-      "platform": {
-        "platformTagline": "Platform tagline",
-        "companyName": "Company name",
-        "companyAddress": "Address",
-        "termsUrl": "Terms URL",
-        "privacyUrl": "Privacy URL"
+      "empty": {
+        "title": "No notifications",
+        "dropdownDesc": "System, payment, and security alerts will appear here",
+        "inboxDesc": "No admin notifications yet. Check back later."
       },
-      "branding": {
-        "logoUrl": "Logo URL",
-        "faviconUrl": "Favicon URL",
-        "primaryColor": "Primary color",
-        "secondaryColor": "Secondary color",
-        "showPoweredBy": "Show Powered by"
-      },
-      "appearance": {
-        "defaultTheme": "Default theme",
-        "borderRadius": "Border radius",
-        "compactSidebar": "Compact sidebar",
-        "showHeroPattern": "Hero background pattern"
-      },
-      "users": {
-        "defaultRole": "Default role for new users",
-        "defaultRoleHint": "Applied on first signup",
-        "maxStudentsPerUniversity": "Max students per university",
-        "requireEmailVerification": "Require email verification",
-        "allowStudentSelfSignup": "Allow student self-signup"
-      },
-      "payment": {
-        "syriatelEnabled": "Enable Syriatel Cash",
-        "syriatelEnabledHint": "Primary payment method in Syria",
-        "syriatelMerchantId": "Merchant ID",
-        "minAmountSyp": "Minimum payment (SYP)",
-        "webhookUrl": "Payment webhook URL",
-        "webhookUrlHint": "Receive payment confirmations from server",
-        "paymentMockMode": "Payment mock mode",
-        "paymentMockModeHint": "Development and testing only"
-      },
-      "notifications": {
-        "adminAlertEmail": "Admin alert email",
-        "emailNotifications": "Email notifications",
-        "smsNotifications": "SMS notifications",
-        "smsNotificationsHint": "Requires SMS provider integration",
-        "notifyNewCase": "Notify on new case",
-        "notifyPaymentSuccess": "Notify on payment success"
-      },
-      "security": {
-        "sessionTimeoutMinutes": "Session timeout (minutes)",
-        "maxLoginAttempts": "Max login attempts",
-        "requireStrongPassword": "Require strong password",
-        "twoFactorEnabled": "Two-factor authentication",
-        "twoFactorEnabledHint": "Coming soon — ready to wire",
-        "ipAllowlist": "IP allowlist",
-        "ipAllowlistHint": "One IP per line, leave empty to allow all"
-      },
-      "integrations": {
-        "apiBaseUrl": "API base URL",
-        "syriatelApiKey": "Syriatel API key",
-        "syriatelApiSecret": "Syriatel API secret",
-        "webhookSecret": "Webhook signing secret",
-        "webhookSecretHint": "Verify incoming server requests",
-        "enableAuditLog": "Enable audit log",
-        "enableAuditLogHint": "Log settings changes"
-      },
-      "subscription": {
-        "monthlyPriceSyp": "Monthly price (SYP)",
-        "semesterPriceSyp": "Semester price (SYP)",
-        "annualPriceSyp": "Annual price (SYP)",
-        "trialDays": "Free trial days",
-        "gracePeriodDays": "Grace period after expiry"
-      },
-      "localization": {
-        "defaultLocale": "Default locale",
-        "fallbackLocale": "Fallback locale",
-        "dateFormat": "Date format",
-        "rtlByDefault": "RTL by default for Arabic"
+      "items": {
+        "paymentReceived": "New subscription payment",
+        "paymentReceivedMsg": "A Syriatel Cash payment was received successfully",
+        "loginAttempt": "Login attempt detected",
+        "loginAttemptMsg": "A sign-in attempt from a new IP address was logged",
+        "settingsUpdated": "Settings updated",
+        "settingsUpdatedMsg": "Platform general settings were modified",
+        "casePendingApproval": "Case pending approval",
+        "casePendingApprovalMsg": "A new educational case requires admin review",
+        "systemBackup": "Backup completed",
+        "systemBackupMsg": "System backup finished successfully",
+        "maintenanceScheduled": "Maintenance scheduled",
+        "maintenanceScheduledMsg": "Maintenance mode will activate tonight at 2:00 AM",
+        "studentRegistered": "New student",
+        "studentRegisteredMsg": "A new student joined the platform",
+        "paymentFailed": "Payment failed",
+        "paymentFailedMsg": "A subscription payment failed — review required",
+        "reviewSubscriptions": "Reminder: review subscriptions",
+        "reviewSubscriptionsMsg": "Some subscriptions expire within 7 days",
+        "apiConnected": "API connected",
+        "apiConnectedMsg": "Server API connection verified successfully",
+        "realtimeTest": "Test notification",
+        "realtimeTestMsg": "New alert received via sync channel (simulated)"
       }
+    },
+    "studentProfile": {
+      "title": "Student Profile",
+      "description": "From here you can manage your student profile and add a new medical case.",
+      "infoHeading": "Profile information",
+      "infoText": "Complete your student profile and keep your academic data up to date.",
+      "newCaseHeading": "Add a new medical case",
+      "newCaseText": "Submit a patient's case directly from your student dashboard.",
+      "addCaseButton": "Add case"
+    },
+    "studentCases": {
+      "title": "Register a new medical case",
+      "description": "Enter patient details and case information to save the case in the student workflow.",
+      "fields": {
+        "patientCode": "Patient code",
+        "patientAge": "Patient age",
+        "patientGender": "Patient gender",
+        "category": "Case category",
+        "subcategory": "Case subcategory",
+        "clinicalNotes": "Clinical notes"
+      },
+      "placeholders": {
+        "patientCode": "Example: 12345 or ABC-001",
+        "patientAge": "Age in years",
+        "selectGender": "Select gender",
+        "selectCategory": "Select case category",
+        "selectSubcategory": "Select subcategory",
+        "clinicalNotes": "Enter diagnosis or case details"
+      },
+      "submit": "Register case",
+      "helpText": "You can review your submitted cases later in your personal cases section.",
+      "loadingCategories": "Loading categories...",
+      "errors": {
+        "required": "Please fill in all required fields.",
+        "submitFailed": "Unable to submit the case. Please try again.",
+        "loadingCategories": "Unable to load case categories from the server.",
+        "loadingCategoriesDetail": "The categories service returned an error. Retry or contact support."
+      },
+      "retry": "Retry",
+      "successMessage": "Medical case registered successfully."
     }
-  },
-  "adminNotifications": {
-    "pageTitle": "Notification Center",
-    "pageSubtitle": "Admin-only alerts — system, payment, and security activity",
-    "dropdownTitle": "Notifications",
-    "bellLabel": "Open notifications",
-    "viewAll": "View all notifications",
-    "markAllRead": "Mark all as read",
-    "markRead": "Mark as read",
-    "markUnread": "Mark as unread",
-    "delete": "Delete",
-    "deleteRead": "Delete read",
-    "loadError": "Could not load notifications",
-    "retry": "Retry",
-    "unreadBadge": "{count} unread",
-    "byActor": "By {name}",
-    "filters": {
-      "all": "All",
-      "unread": "Unread",
-      "payment": "Payment",
-      "security": "Security",
-      "system": "System",
-      "admin": "Admin"
-    },
-    "empty": {
-      "title": "No notifications",
-      "dropdownDesc": "System, payment, and security alerts will appear here",
-      "inboxDesc": "No admin notifications yet. Check back later."
-    },
-    "items": {
-      "paymentReceived": "New subscription payment",
-      "paymentReceivedMsg": "A Syriatel Cash payment was received successfully",
-      "loginAttempt": "Login attempt detected",
-      "loginAttemptMsg": "A sign-in attempt from a new IP address was logged",
-      "settingsUpdated": "Settings updated",
-      "settingsUpdatedMsg": "Platform general settings were modified",
-      "casePendingApproval": "Case pending approval",
-      "casePendingApprovalMsg": "A new educational case requires admin review",
-      "systemBackup": "Backup completed",
-      "systemBackupMsg": "System backup finished successfully",
-      "maintenanceScheduled": "Maintenance scheduled",
-      "maintenanceScheduledMsg": "Maintenance mode will activate tonight at 2:00 AM",
-      "studentRegistered": "New student",
-      "studentRegisteredMsg": "A new student joined the platform",
-      "paymentFailed": "Payment failed",
-      "paymentFailedMsg": "A subscription payment failed — review required",
-      "reviewSubscriptions": "Reminder: review subscriptions",
-      "reviewSubscriptionsMsg": "Some subscriptions expire within 7 days",
-      "apiConnected": "API connected",
-      "apiConnectedMsg": "Server API connection verified successfully",
-      "realtimeTest": "Test notification",
-      "realtimeTestMsg": "New alert received via sync channel (simulated)"
-    }
-  },
-  "studentProfile": {
-    "title": "Student Profile",
-    "description": "From here you can manage your student profile and add a new medical case.",
-    "infoHeading": "Profile information",
-    "infoText": "Complete your student profile and keep your academic data up to date.",
-    "newCaseHeading": "Add a new medical case",
-    "newCaseText": "Submit a patient's case directly from your student dashboard.",
-    "addCaseButton": "Add case"
-  },
-  "studentCases": {
-    "title": "Register a new medical case",
-    "description": "Enter patient details and case information to save the case in the student workflow.",
-    "fields": {
-      "patientCode": "Patient code",
-      "patientAge": "Patient age",
-      "patientGender": "Patient gender",
-      "category": "Case category",
-      "subcategory": "Case subcategory",
-      "clinicalNotes": "Clinical notes"
-    },
-    "placeholders": {
-      "patientCode": "Example: 12345 or ABC-001",
-      "patientAge": "Age in years",
-      "selectGender": "Select gender",
-      "selectCategory": "Select case category",
-      "selectSubcategory": "Select subcategory",
-      "clinicalNotes": "Enter diagnosis or case details"
-    },
-    "submit": "Register case",
-    "helpText": "You can review your submitted cases later in your personal cases section.",
-    "loadingCategories": "Loading categories...",
-    "errors": {
-      "required": "Please fill in all required fields.",
-      "submitFailed": "Unable to submit the case. Please try again.",
-      "loadingCategories": "Unable to load case categories from the server.",
-      "loadingCategoriesDetail": "The categories service returned an error. Retry or contact support."
-    },
-    "retry": "Retry",
-    "successMessage": "Medical case registered successfully."
   }
 }
