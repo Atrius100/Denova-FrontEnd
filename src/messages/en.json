@@ -1,14 +1,11 @@
 {
   "nav": {
     "home": "Home",
-    "cases": "Cases",
-    "universities": "Universities",
-    "about": "About",
     "login": "Log in",
     "register": "Get started",
     "brandTagline": "Dental Platform",
     "reception": "Reception",
-    "student": "Student",
+    "student": "Student Cases",
     "admin": "Admin"
   },
   "hero": {
@@ -43,6 +40,7 @@
     "lockTitle": "Log in to view cases",
     "lockDesc": "This section shows live cases from the platform. Sign in to continue.",
     "login": "Log in",
+    "signup": "signup",
     "searchPlaceholder": "Search cases…",
     "loading": "Loading cases…",
     "empty": "No matching cases.",
@@ -182,9 +180,9 @@
   "studentSidebar": {
     "subtitle": "Student panel",
     "profile": "Profile",
-    "addCase": "Add case",
+    "addPation": "addPation",
     "payment": "Payment",
-    "sequerty": "sequerty",
+    "security": "security",
     "footerTitle": "Student panel",
     "footerSubtitle": "Clinical case management"
   },

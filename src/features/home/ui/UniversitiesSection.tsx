@@ -16,8 +16,8 @@ export function UniversitiesSection() {
         />
       </div>
 
-<div
-  className="
+      <div
+        className="
     mt-6
 
     flex
@@ -30,7 +30,7 @@ export function UniversitiesSection() {
     lg:grid-cols-4
     
   "
->
+      >
         {t.raw("branches").map(
           (
             uni: {
@@ -41,10 +41,10 @@ export function UniversitiesSection() {
           ) => (
             <div
               key={uni.email}
-className="
+              className="
   group
    w-full
-  sm:w-[320px]
+  sm:w-[300px]
   md:w-[360px]
   lg:w-auto
 
@@ -66,8 +66,8 @@ className="
   hover:border-dnv-accent/35
   hover:shadow-2xl
 ">
-<h3
-  className="
+              <h3
+                className="
     font-bold
     text-dnv-heading
     transition
@@ -76,7 +76,7 @@ className="
 
     group-hover:text-dnv-navy
   "
->                {uni.name}
+              >                {uni.name}
               </h3>
 
               <div className="space-y-1.5 md:space-y-3">

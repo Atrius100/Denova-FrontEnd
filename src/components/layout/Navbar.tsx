@@ -10,7 +10,7 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
-
+import { readAuthSession } from "@/lib/auth/session";
 import { usePreferences } from "@/providers/PreferencesProvider";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
@@ -20,7 +20,7 @@ export function Navbar() {
     theme,
     toggleTheme,
   } = usePreferences();
-  
+
   const t = useTranslations("nav");
   const locale = useLocale();
   const router = useRouter();
@@ -39,47 +39,72 @@ export function Navbar() {
 
     router.push(newPath);
   }
-  const [menuOpen, setMenuOpen] =
-    useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const [scrolled, setScrolled] =
-    useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const navLinks = useMemo(
-    () => [
+  const session = readAuthSession();
+
+  let role: "Student" | "Reception" | "Admin" | null = null;
+
+  if (session?.token) {
+    try {
+      const payload = JSON.parse(
+        atob(session.token.split(".")[1])
+      );
+
+      role =
+        payload[
+        "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+        ] ?? null;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const isGuest = !session;
+  const dashboardLabel =
+  role === "Student"
+    ? t("student")
+    : role === "Reception"
+    ? t("reception")
+    : role === "Admin"
+    ? t("admin")
+    : "";
+
+  const navLinks = useMemo(() => {
+    const links = [
       {
         label: t("home"),
         href: "/#home",
       },
-      {
-        label: t("cases"),
-        href: "/#cases",
-      },
-      {
-        label: t("universities"),
-        href: "/#universities",
-      },
-      {
-        label: t("about"),
-        href: "/#about",
-      },
-      {
-        label: t("reception"),
-        href: "/dashboard",
-      },
-      {
+    ];
+
+    if (role === "Student") {
+      links.push({
         label: t("student"),
         href: "/profile",
-      },
-      {
+      });
+    }
+
+    if (role === "Reception") {
+      links.push({
+        label: t("reception"),
+        href: "/dashboard",
+      });
+    }
+
+    if (role === "Admin") {
+      links.push({
         label: t("admin"),
         href: "/dashboardA",
-      },
-    ],
-    [t]
-  );
+      });
+    }
+
+    return links;
+  }, [role, t]);
 
   useEffect(() => {
     const getScrollY = () =>
@@ -94,33 +119,22 @@ export function Navbar() {
 
     onScroll();
 
-    window.addEventListener(
-      "scroll",
-      onScroll,
-      { passive: true }
-    );
+    window.addEventListener("scroll", onScroll, {
+      passive: true,
+    });
 
-    window.addEventListener(
-      "resize",
-      onScroll
-    );
+    window.addEventListener("resize", onScroll);
 
     return () => {
-      window.removeEventListener(
-        "scroll",
-        onScroll
-      );
-
-      window.removeEventListener(
-        "resize",
-        onScroll
-      );
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
   }, []);
 
-  // إغلاق السايد بار عند الضغط خارجه
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (
+      event: MouseEvent
+    ) => {
       if (
         menuRef.current &&
         !menuRef.current.contains(event.target as Node)
@@ -144,8 +158,7 @@ export function Navbar() {
     };
   }, [menuOpen]);
 
-  const solidBar =
-    scrolled || menuOpen;
+  const solidBar = scrolled || menuOpen;
 
   const headerSurface = solidBar
     ? "border-b border-dnv-border bg-background/95 shadow-sm backdrop-blur-xl"
@@ -155,8 +168,7 @@ export function Navbar() {
     "flex h-11 w-11 items-center justify-center rounded-xl border border-dnv-border bg-background text-dnv-muted transition hover:border-dnv-accent/35 hover:text-dnv-navy";
 
   const linkMuted =
-    "text-[14px] xl:text-base  font-medium text-dnv-muted transition duration-200 hover:text-dnv-navy";
-
+    "text-[14px] xl:text-base font-medium text-dnv-muted transition duration-200 hover:text-dnv-navy";
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 w-full transition-[background-color,border-color,box-shadow] duration-300 ${headerSurface}`}
@@ -238,20 +250,36 @@ export function Navbar() {
               <Moon className="h-5 w-5" />
             )}
           </button>
+          {isGuest ? (
+            <>
+              <Link
+                href="/login"
+                className="text-sm font-semibold text-dnv-heading transition duration-200"
+              >
+                {t("login")}
+              </Link>
 
-          <Link
-            href="/login"
-            className="text-sm font-semibold text-dnv-heading transition duration-200"
-          >
-            {t("login")}
-          </Link>
-
-          <Link
-           href="/payment?plan=semester"
-            className="rounded-xl bg-gradient-to-r from-dnv-navy to-dnv-blue p-3 xl:p-4 text-sm font-semibold text-white shadow-lg shadow-dnv-accent/25 transition duration-200 hover:scale-[1.03]"
-          >
-            {t("register")}
-          </Link>
+              <Link
+                href="/payment?plan=semester"
+                className="rounded-xl bg-gradient-to-r from-dnv-navy to-dnv-blue p-3 xl:p-4 text-sm font-semibold text-white shadow-lg shadow-dnv-accent/25 transition duration-200 hover:scale-[1.03]"
+              >
+                {t("register")}
+              </Link>
+            </>
+          ) : (
+            <Link
+              href={
+                role === "Student"
+                  ? "/profile"
+                  : role === "Reception"
+                    ? "/dashboard"
+                    : "/dashboardA"
+              }
+              className="rounded-xl bg-gradient-to-r from-dnv-navy to-dnv-blue p-3 xl:p-4 text-sm font-semibold text-white shadow-lg shadow-dnv-accent/25 transition duration-200 hover:scale-[1.03]"
+            >
+             {dashboardLabel}
+            </Link>
+          )}
         </div>
 
         <button
@@ -320,19 +348,36 @@ export function Navbar() {
                 <Globe className="h-5 w-5" />
               </button>
 
-              <Link
-                href="/login"
-                className="min-w-[8rem] flex-1 rounded-xl border border-dnv-border py-3 text-center text-sm font-semibold text-dnv-heading"
-              >
-                {t("login")}
-              </Link>
+              {isGuest ? (
+                <>
+                  <Link
+                    href="/login"
+                    className="min-w-[8rem] flex-1 rounded-xl border border-dnv-border py-3 text-center text-sm font-semibold text-dnv-heading"
+                  >
+                    {t("login")}
+                  </Link>
 
-              <Link
-                href="/register"
-                className="min-w-[8rem] flex-1 rounded-xl bg-gradient-to-r from-dnv-navy to-dnv-blue py-3 text-center text-sm font-semibold text-white"
-              >
-                {t("register")}
-              </Link>
+                  <Link
+                    href="/payment?plan=semester"
+                    className="min-w-[8rem] flex-1 rounded-xl bg-gradient-to-r from-dnv-navy to-dnv-blue py-3 text-center text-sm font-semibold text-white"
+                  >
+                    {t("register")}
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  href={
+                    role === "Student"
+                      ? "/profile"
+                      : role === "Reception"
+                        ? "/dashboard"
+                        : "/dashboardA"
+                  }
+                  className="min-w-[8rem] flex-1 rounded-xl bg-gradient-to-r from-dnv-navy to-dnv-blue py-3 text-center text-sm font-semibold text-white"
+                >
+                  {dashboardLabel}
+                </Link>
+              )}
             </div>
           </div>
         </div>

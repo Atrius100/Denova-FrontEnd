@@ -2,14 +2,11 @@
   
   "nav": {
     "home": "الرئيسية",
-    "cases": "الحالات",
-    "universities": "الجامعات",
-    "about": "حول المنصة",
     "login": "تسجيل الدخول",
     "register": "ابدأ الآن",
     "brandTagline": "Dental Platform",
     "reception": "الاستقبال",
-    "student": "الطالب",
+    "student": "حالات الطالب",
     "admin": "الأدمن"
   }
 ,
@@ -53,6 +50,7 @@
       "lockDesc":
         "هذا القسم يعرض الحالات الحقيقية من المنصة. أنشئ حساباً أو سجّل دخولك للمتابعة.",
       "login": "تسجيل الدخول",
+      "signup" :"إنشاء حساب",
       "searchPlaceholder": "ابحث في الحالات…",
       "loading": "جاري تحميل الحالات…",
       "empty": "لا توجد حالات مطابقة.",
@@ -203,9 +201,9 @@
   "studentSidebar": {
     "subtitle": "لوحة الطالب",
     "profile": "الملف الشخصي",
-    "addCase": "إضافة حالة",
+    "addPation": "إضافة مريض",
     "payment": "الدفع",
-    "sequerty": "الامان",
+    "security": "الامان",
     "footerTitle": "لوحة الطالب",
     "footerSubtitle": "إدارة الحالات السريرية"
   },

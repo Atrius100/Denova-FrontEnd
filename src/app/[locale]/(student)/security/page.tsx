@@ -11,7 +11,10 @@ export default function StudentSecurityPage() {
 
       <div className="mt-6 flex justify-center">
         <div className="w-full max-w-2xl">
-          <ChangePass />
+          <ChangePass
+            forgotPasswordHref="/security/ForgetPassS"
+            successHref="security/successPassS"
+          />
         </div>
       </div>
     </div>

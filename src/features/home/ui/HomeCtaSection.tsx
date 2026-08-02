@@ -58,7 +58,7 @@ export function HomeCtaSection() {
 
         {/* Button */}
         <Link
-          href="/payment?plan=semester"
+          href="/payment"
           className="
           mt-4
             md:mt-8

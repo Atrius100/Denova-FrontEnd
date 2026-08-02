@@ -2,13 +2,13 @@
 "use client";
 
 
+
 type Student = {
     fullName: string;
-    age: number;
+    phoneNumber: string;
     studyYear: string;
     university: string;
 };
-
 type Props = {
     student: Student;
 };
@@ -17,16 +17,17 @@ type Props = {
 export default function StudentInfo({
     student,
 }: Props) {
+
     return (
         <section
             className="
        
-    h-full
-
+    h-auto lg:h-full
+    bg-white
     rounded-2xl
     border
     border-slate-200
-   overflow-hidden
+    overflow-hidden
     shadow-sm
    
       "
@@ -48,7 +49,7 @@ export default function StudentInfo({
  
         "
             >
-              
+
 
                 {/* Name */}
 
@@ -86,10 +87,9 @@ export default function StudentInfo({
                 />
 
                 <InfoItem
-                    title="العمر"
-                    value={`${student.age} سنة`}
+                    title="رقم الهاتف"
+                    value={student.phoneNumber}
                 />
-
                 <InfoItem
                     title="السنة الدراسية"
                     value={student.studyYear}
@@ -117,6 +117,7 @@ function InfoItem({
     return (
         <div
             className="
+            w-max
         border-b
         border-slate-100
         lg:py-5

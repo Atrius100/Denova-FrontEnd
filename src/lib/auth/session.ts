@@ -1,59 +1,66 @@
-const TOKEN_KEY = "denova-token"
-const LEGACY_TOKEN_KEY = "token"
-const STUDENT_ID_KEY = "denova-student-id"
-const UNIVERSITY_ID_KEY = "denova-university-id"
+import Cookies from "js-cookie";
+
+const TOKEN_KEY = "denova-token";
+const STUDENT_ID_KEY = "denova-student-id";
+const UNIVERSITY_ID_KEY = "denova-university-id";
 
 export type AuthSession = {
-  token: string
-  studentId?: string
-  universityId?: string
-}
+  token: string;
+  studentId?: string;
+  universityId?: string;
+};
 
 export function readAuthToken(): string | null {
-  if (typeof window === "undefined") return null
-  return (
-    localStorage.getItem(TOKEN_KEY) ??
-    localStorage.getItem(LEGACY_TOKEN_KEY)
-  )
+  return Cookies.get(TOKEN_KEY) ?? null;
 }
 
 export function isLoggedIn(): boolean {
-  return Boolean(readAuthToken())
+  return Boolean(readAuthToken());
 }
 
 export function readAuthSession(): AuthSession | null {
-  const token = readAuthToken()
-  if (!token) return null
+  const token = readAuthToken();
+
+  if (!token) return null;
 
   return {
     token,
-    studentId:
-      localStorage.getItem(STUDENT_ID_KEY) ?? undefined,
-    universityId:
-      localStorage.getItem(UNIVERSITY_ID_KEY) ?? undefined,
-  }
+    studentId: Cookies.get(STUDENT_ID_KEY),
+    universityId: Cookies.get(UNIVERSITY_ID_KEY),
+  };
 }
 
 export function saveAuthToken(token: string) {
-  localStorage.setItem(TOKEN_KEY, token)
-  localStorage.setItem(LEGACY_TOKEN_KEY, token)
+  Cookies.set(TOKEN_KEY, token, {
+    expires: 7,
+    sameSite: "Lax",
+    path: "/",
+  });
 }
 
 export function saveAuthProfile(ids: {
-  studentId?: string
-  universityId?: string
+  studentId?: string;
+  universityId?: string;
 }) {
   if (ids.studentId) {
-    localStorage.setItem(STUDENT_ID_KEY, ids.studentId)
+    Cookies.set(STUDENT_ID_KEY, ids.studentId, {
+      expires: 7,
+      sameSite: "Lax",
+      path: "/",
+    });
   }
+
   if (ids.universityId) {
-    localStorage.setItem(UNIVERSITY_ID_KEY, ids.universityId)
+    Cookies.set(UNIVERSITY_ID_KEY, ids.universityId, {
+      expires: 7,
+      sameSite: "Lax",
+      path: "/",
+    });
   }
 }
 
 export function clearAuthSession() {
-  localStorage.removeItem(TOKEN_KEY)
-  localStorage.removeItem(LEGACY_TOKEN_KEY)
-  localStorage.removeItem(STUDENT_ID_KEY)
-  localStorage.removeItem(UNIVERSITY_ID_KEY)
+  Cookies.remove(TOKEN_KEY);
+  Cookies.remove(STUDENT_ID_KEY);
+  Cookies.remove(UNIVERSITY_ID_KEY);
 }

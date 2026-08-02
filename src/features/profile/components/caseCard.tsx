@@ -3,7 +3,6 @@
 import { StudentCase } from "@/types/profile";
 import StatusBadge from "./StatusBadge";
 
-
 type Props = {
   item: StudentCase;
 };
@@ -11,6 +10,8 @@ type Props = {
 export default function CaseCard({
   item,
 }: Props) {
+  const problem = item.problems[0];
+
   return (
     <div
       className="
@@ -31,8 +32,7 @@ export default function CaseCard({
         hover:shadow-md
       "
     >
-      {/* Case Name */}
-
+      {/* اسم الحالة */}
       <div>
         <h3
           className="
@@ -41,12 +41,11 @@ export default function CaseCard({
             text-[#1e3a6d]
           "
         >
-          {item.name}
+          {problem.subcategoryName}
         </h3>
       </div>
 
       {/* Footer */}
-
       <div
         className="
           lg:mt-5
@@ -56,7 +55,6 @@ export default function CaseCard({
         "
       >
         <div className="flex items-center gap-2">
-
           <span className="text-sm text-slate-500">
             رقم السن
           </span>
@@ -72,15 +70,11 @@ export default function CaseCard({
               text-slate-700
             "
           >
-            {item.toothNumber}
+            {problem.toothNumber ?? "-"}
           </span>
-
         </div>
 
-        <StatusBadge
-          status={item.status}
-        />
-
+        <StatusBadge status={problem.status} />
       </div>
     </div>
   );

@@ -1,38 +1,75 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 import NavDash from "../../../components/layout/NavDash";
 import { Sidebar } from "../../../components/layout/Sidebar";
-
-
-
+import { readAuthSession } from "@/lib/auth/session";
 
 type ReceptionLayoutProps = {
-    children: React.ReactNode;
+  children: React.ReactNode;
 };
 
 export default function ReceptionLayout({
-    children,
+  children,
 }: ReceptionLayoutProps) {
+  const router = useRouter();
 
-    return (
-        <div className="flex min-h-screen bg-[#f5f7fb]">
+//   useEffect(() => {
+//     const session = readAuthSession();
 
-            {/* Sidebar */}
-            <Sidebar role="reception" />
+//     if (!session?.token) {
+//       router.replace("/");
+//       return;
+//     }
 
-            {/* Main */}
-            <div className="flex flex-1 flex-col">
+//     try {
+//       const payload = JSON.parse(
+//         atob(session.token.split(".")[1])
+//       );
 
-                {/* Navbar */}
-                <NavDash
-                    fullName="Ahmad Khaled"
-                    role="employee"
-                />
+//       const role =
+//         payload[
+//           "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+//         ];
 
-                {/* Content */}
-                <main className="flex-1 p-2 lg:p-6">
-                    {children}
-                </main>
+//       const exp = payload.exp;
 
-            </div>
-        </div>
-    );
+//       // انتهت صلاحية التوكن
+//       if (Date.now() >= exp * 1000) {
+//         router.replace("/");
+//         return;
+//       }
+
+//       // إذا مو Reception
+//       if (role !== "Reception") {
+//         router.replace("/");
+//         return;
+//       }
+//     } catch {
+//       router.replace("/");
+//     }
+//   }, [router]);
+
+  return (
+    <div className="flex min-h-screen bg-[#f5f7fb]">
+      {/* Sidebar */}
+      <Sidebar role="reception" />
+
+      {/* Main */}
+      <div className="flex flex-1 flex-col">
+        {/* Navbar */}
+        <NavDash
+          fullName="Ahmad Khaled"
+          role="employee"
+        />
+
+        {/* Content */}
+        <main className="flex-1 p-2 lg:p-6">
+          {children}
+        </main>
+      </div>
+    </div>
+  );
 }

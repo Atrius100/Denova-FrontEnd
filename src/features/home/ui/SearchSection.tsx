@@ -2,11 +2,15 @@
 import { TitleSectionCommon } from "@/components/ui/TitleSectionCommon";
 import { useLocale, useTranslations } from "next-intl";
 import { useCaseCategories } from "../hooks/useCaseCategories";
+import Link from "next/link";
+import { isLoggedIn } from "@/lib/auth/session";
+import { Lock } from "lucide-react";
 
 export function SearchSection() {
     const t = useTranslations("cases");
   const { data, isLoading } = useCaseCategories();
   const locale = useLocale();
+  const loggedIn = isLoggedIn();
   return (
     <section className="p-5 md:p-10 lg:p-[60px]">
       <div className="">

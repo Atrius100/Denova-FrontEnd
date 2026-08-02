@@ -1,19 +1,20 @@
 export type CaseStatus =
-  | "pending"
-  | "accepted"
-  | "completed"
-  | "rejected";
+  | "Pending"
+  | "InProgress"
+  | "Completed"
+  | "Rejected";
 
-export interface Student {
-  fullName: string;
-  age: number;
-  studyYear: string;
-  university: string;
+export interface Problem {
+  id: string;
+  categoryName: string;
+  subcategoryName: string;
+  toothNumber: number | null;
+  status: CaseStatus;
 }
 
 export interface StudentCase {
-  id: string;
-  name: string;
-  toothNumber: number;
-  status: CaseStatus;
+  patientCode: string;
+  patientAge: number;
+  universityId: string;
+  problems: Problem[];
 }

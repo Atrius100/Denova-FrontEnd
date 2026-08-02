@@ -60,8 +60,9 @@ export default function StudentCases({
             "
                     >
                         {cases.map((item) => (
+                            
                             <CaseCard
-                                key={item.id}
+                                key={item.patientCode}
                                 item={item}
                             />
                         ))}

@@ -1,9 +1,13 @@
 "use client";
 
 import React from "react";
-import SecurityField from "./input";
+
+import { FormInputR } from "@/components/CommonApp/FormInputR";
+import { PasswordField } from "@/features/auth/components/PassworedFailed";
+import { InputField } from "@/features/auth/components/InputFailed";
 
 type Field = {
+  key: string;
   label: string;
   type?: string;
   placeholder?: string;
@@ -15,19 +19,35 @@ type SecurityCardProps = {
   description: string;
   fields: Field[];
   buttonText: string;
+
+  values: Record<string, string>;
+  onChange: (
+    key: string,
+    value: string
+  ) => void;
+
+  onSubmit: () => void;
+
+  loading?: boolean;
+  error?: string;
+
   footer?: React.ReactNode;
   helperText?: React.ReactNode;
 };
-
 export default function SecurityCard({
   icon,
   title,
   description,
   fields,
   buttonText,
+  values,
+  onChange,
+  onSubmit,
+  loading,
+  error,
   footer,
   helperText,
-}: SecurityCardProps){
+}: SecurityCardProps) {
   return (
     <div className="flex justify-center mt-9">
       <div
@@ -91,27 +111,54 @@ export default function SecurityCard({
 
         {/* Form */}
         <div className="mt-4 md:mt-6 space-y-1 md:space-y-3">
-          {fields.map((field) => (
-            <SecurityField
-              key={field.label}
-              label={field.label}
-              type={field.type}
-              placeholder={field.placeholder}
-            />
-          ))}
+          {fields.map((field) =>
+            field.type === "password" ? (
+              <PasswordField
+                key={field.key}
+                id={field.key}
+                label={field.label}
+                value={values[field.key]}
+                onChange={(e) =>
+                  onChange(field.key, e.target.value)
+
+                }
+                error={
+                  field.key === "currentPassword"
+                    ? error
+                    : undefined
+                }
+                required
+              />
+            ) : (
+              <InputField
+                key={field.key}
+                id={field.key}
+                label={field.label}
+                type={field.type}
+                placeholder={field.placeholder}
+                value={values[field.key]}
+                onChange={(e) =>
+                  onChange(field.key, e.target.value)
+                }
+                required
+              />
+            )
+          )}
         </div>
-{helperText && (
-  <div className="mt-3 text-center">
-    {helperText}
-  </div>
-)}
+        {helperText && (
+          <div className="mt-3 text-center">
+            {helperText}
+          </div>
+        )}
         {/* Button */}
         <button
-        
+          onClick={onSubmit}
+          disabled={loading}
+
           className="
           
             mt-2 md:mt-4
-            h-10 md:h-14
+            h-10 md:h-11
             w-full
             rounded-2xl
             bg-gradient-to-r
@@ -128,7 +175,8 @@ export default function SecurityCard({
 
           "
         >
-          {buttonText}
+
+          {loading ? "جاري التنفيذ..." : buttonText}
         </button>
 
         {footer && (

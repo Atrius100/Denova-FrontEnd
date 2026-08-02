@@ -4,7 +4,7 @@ import { Smartphone, Wallet } from "lucide-react";
 import { useState } from "react";
 import { FormInputR } from "@/components/CommonApp/FormInputR";
 
-export default function PaymentPage() {
+export default function page() {
   const [phone, setPhone] = useState("");
 
   const amount = "25,000 ل.س";

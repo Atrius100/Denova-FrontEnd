@@ -12,8 +12,8 @@ export const studentSidebarLinks = [
     icon: UserCircle,
   },
   {
-    key: "addCase",
-    href: "/casesStudent",
+    key: "addPation",
+    href: "/addPation",
     icon: Briefcase,
   },
   {
@@ -22,8 +22,8 @@ export const studentSidebarLinks = [
     icon: CreditCard,
   },
   {
-    key: "sequerty",
-    href: "/sequerty",
+    key: "security",
+    href: "/security",
     icon: FolderOpen,
   },
 ]
