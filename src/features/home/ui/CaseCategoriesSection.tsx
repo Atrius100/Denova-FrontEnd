@@ -6,16 +6,16 @@ import { Search } from "lucide-react";
 import { TitleSectionCommon } from "@/components/ui/TitleSectionCommon";
 import { Spinner } from "@/components/ui/Spinner";
 import { LandingCasesLock } from "@/features/home/ui/LandingCasesLock";
-import { useLandingMedicalCases } from "@/features/home/ui/hook/useLandingMedicalCases";
+import { useCaseCategories } from "@/features/home/hooks/useCaseCategories";
 import { useAuthSession } from "@/hooks/useAuthSession";
 import { useTranslations } from "next-intl";
 
 export function CasesSection() {
   const t = useTranslations("cases");
-  
+
   const { ready, isLoggedIn } = useAuthSession();
   const [query, setQuery] = useState("");
-  const { data: cases = [], isLoading, isError } = useLandingMedicalCases();
+  const { data: cases = [], isLoading, isError } = useCaseCategories();
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

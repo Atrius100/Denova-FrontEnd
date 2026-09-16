@@ -17,12 +17,6 @@ type PaymentStepIndicatorProps = {
 }
 
 function stepIndex(step: PaymentFlowStep) {
-
-  if (step === "review") return 2
-  if (step === "initiating") return 3
-
-  if (step === "initiating") return 2
-
   if (step === "verifying") return 3
   if (step === "failed") return 3
   if (step === "success") return 4
@@ -57,13 +51,12 @@ export function PaymentStepIndicator({
             className="flex min-w-0 flex-1 flex-col items-center gap-1.5"
           >
             <span
-              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold transition ${
-                isDone
+              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold transition ${isDone
                   ? "bg-[#1e3a6d] text-white"
                   : isActive
                     ? "bg-gradient-to-br from-[#2563eb] to-[#1e3a6d] text-white shadow-md"
                     : "border border-slate-200 bg-white text-slate-400"
-              }`}
+                }`}
             >
               {isDone ? (
                 <Check className="h-4 w-4" />
@@ -72,11 +65,10 @@ export function PaymentStepIndicator({
               )}
             </span>
             <span
-              className={`hidden text-center text-[10px] font-medium sm:block sm:text-xs ${
-                isActive || isDone
+              className={`hidden text-center text-[10px] font-medium sm:block sm:text-xs ${isActive || isDone
                   ? "text-[#1e3a6d]"
                   : "text-slate-400"
-              }`}
+                }`}
             >
               {label}
             </span>

@@ -24,3 +24,23 @@ export type CreateMedicalCasePayload = {
   universityId?: string
   clinicalNotes: string
 }
+
+export interface MedicalCaseCard {
+  id: string;
+  title: string;
+  subtitle: string;
+}
+
+export interface AvailableMedicalCasesQuery {
+  studentId?: string | number;
+  studentUniversityId?: string | number;
+}
+
+export interface MedicalCasesQuery {
+  categoryId?: string | number;
+  subcategoryId?: string | number;
+  status?: string | number;
+  universityId?: string | number;
+  page?: number;
+  pageSize?: number;
+}

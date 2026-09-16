@@ -14,3 +14,8 @@ export type CaseCategoryDto = {
   nameEn?: string
   subcategories?: CaseSubcategoryDto[]
 }
+
+export interface CaseCategoryCard {
+  id: string | number;
+  label: string;
+}
