@@ -18,3 +18,17 @@ export interface StudentCase {
   universityId: string;
   problems: Problem[];
 }
+
+export interface Student {
+  fullName: string;
+  age: number;
+  studyYear: string;
+  university: string;
+}
+
+export interface LegacyStudentCase {
+  id: string;
+  name: string;
+  toothNumber: number;
+  status: "pending" | "accepted" | "completed" | "rejected";
+}

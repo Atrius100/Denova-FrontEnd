@@ -1,4 +1,5 @@
-import { Student , StudentCase } from "./profile";
+import { Student, LegacyStudentCase } from "./profile";
+
 
 
 export const mockStudent: Student = {
@@ -8,7 +9,7 @@ export const mockStudent: Student = {
   university: "جامعة دمشق",
 };
 
-export const mockCases: StudentCase[] = [
+export const mockCases: LegacyStudentCase[] = [
   {
     id: "1",
     name: "علاج عصب",
